@@ -1,0 +1,50 @@
+// SCSS Helper Functions
+@import "sass-map-get-next-prev/map-get-functions";
+
+// Settings
+@import "settings/colors";
+@import "settings/fonts";
+@import "settings/layers";
+@import "settings/breakpoints";
+@import "settings/paths";
+@import "settings/spacing";
+
+// Base
+@import "base/typography";
+@import "base/animations";
+@import "base/buttons";
+@import "base/decorations";
+@import "base/forms";
+@import "base/layout";
+@import "base/loaders";
+@import "base/reset";
+@import "base/scrollbars";
+@import "base/utility";
+@import "base/media-queries.scss";
+
+// Components
+@import "components/date-picker.scss";
+@import "components/ngx-notification-message.scss";
+@import "components/placeholders";
+@import "components/modal.scss";
+@import "components/ngn-grid.scss";
+
+// Vendor Styles
+@import "~ngx-smart-modal/ngx-smart-modal";
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+.ability-icon {
+	width: 32px;
+	transform: translateY(-2px);
+	margin-left: -4px;
+	margin-right: -4px;
+	margin-top: -3px;
+	margin-bottom: -3px;
+}

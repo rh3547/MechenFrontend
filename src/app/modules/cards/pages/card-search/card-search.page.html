@@ -1,0 +1,46 @@
+<div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;" class="bg-background"></div>
+<div class="main-content">
+  <div class="content-wrapper">
+		<nuc-pageheader
+			titleContent="<h1><span class='fg-primary'>Mech</span> Card Game</h1>"
+			subtitleContent="<h3 class='fw-normal fg-contrast-muted'>Card Library</h3>">
+		</nuc-pageheader>
+		<div class="p-relative mb-xl pt-xxl">
+			<div class="card-search-toolbar mt-lg">
+				<a class="toolbar-link" routerLink="{{ routes.Cards.CardCreate }}"><i class="fas fa-plus mr-sm"></i>Create New Card</a>
+			</div>
+			<div class="card-search bg-background-light mt-md p-md">
+				<div class="card-filter search-filter p-relative">
+					<i class="search-icon fas fa-search"></i>
+					<input type="text" class="search-input" placeholder="Search cards by name..." [(ngModel)]="searchTerm" (ngModelChange)="searchTermChanged($event)">
+					<i class="clear-search-icon fas fa-times-circle" *ngIf="searchTerm" (click)="searchTerm = ''; searchTermChanged('')"></i>
+				</div>
+				<ngn-select
+						[options]="cardTypeOptions"
+						[allowMultiple]="false"
+						[useModelValues]="true"
+						[allowSingleDeselection]="true"
+						[defaultControlText]="'Filter by card type...'"
+						[(ngModel)]="cardTypeFilter"
+						(ngModelChange)="getFilteredCards()"
+						class="card-filter card-type-filter">
+				</ngn-select>
+			</div>
+			<div class="card-results-wrapper pt-lg">
+				<a *ngFor="let card of cards" class="card-result-link" routerLink="{{ getCardRoute(card) }}">
+					<div class="card-result">
+						<h4 class="m-0">
+							<img *ngIf="card.type == 'Core'" alt="Core" title="Core" class="type-icon" src="assets/images/icons/core.png">
+							<img *ngIf="card.type == 'Leg'" alt="Leg" title="Leg" class="type-icon" src="assets/images/icons/leg.png">
+							<img *ngIf="card.type == 'Arm'" alt="Arm" title="Arm" class="type-icon" src="assets/images/icons/arm.png">
+							<img *ngIf="card.type == 'Head'" alt="Head" title="Head" class="type-icon" src="assets/images/icons/head.png">
+							<img *ngIf="card.type == 'Hardpoint'" alt="Hardpoint" title="Hardpoint" class="type-icon" src="assets/images/icons/hardpoint.png">
+							<img *ngIf="card.type == 'Mod'" alt="Mod" title="Mod" class="type-icon" src="assets/images/icons/mod.png">
+							{{ card.name }}
+						</h4>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

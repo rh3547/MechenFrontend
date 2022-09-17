@@ -1,0 +1,36 @@
+<div class="content-wrapper no-sidebar d-flex flex-column">
+	<div class="row flex-fill">
+		<div class="col-xl-12">
+			<div class="login-wrapper">
+				<div class="login-content">
+					<div class="logo-wrapper">
+						<img class="logo mb-xl" src="/assets/images/logos/logo-text-dualtone.png">
+					</div>
+					<div class="login-body">
+						<div class="header-wrapper mb-lg">
+							<p class="fw-bold pb-xs">Sign In</p>
+						</div>
+						<div>
+							<form [formGroup]="loginForm" (ngSubmit)="login()">
+								<label class="text-left mt-lg fw-bold login-form-label">Email</label>
+								<input class="mt-xs" type="text" formControlName="username" [ngnValidate]="submitted"/>
+								<label class="text-left mt-lg fw-bold login-form-label">Password</label>
+								<div class="p-relative password-wrapper">
+									<input class="mt-xs" [type]="(hidePassword) ? 'password' : 'text'" formControlName="password" [ngnValidate]="submitted"/>
+									<i (click)="hidePassword = !hidePassword" class="fas password-hide-icon" [ngClass]="{'fa-eye': !hidePassword, 'fa-eye-slash': hidePassword}"></i>
+								</div>
+								<button class="mt-xl nuc-btn fg-white w-100% mb-xl fs-md pointer" type="submit">SIGN IN</button>
+							</form>
+						</div>
+						<div class="text-center">
+							<p (click)="goToForgotPassword()" class="forgot-password-link fg-medium-1 pointer">Forgot password</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

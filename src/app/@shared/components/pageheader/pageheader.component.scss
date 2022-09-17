@@ -1,0 +1,143 @@
+@import '../../../../theme/styles.scss';
+
+.pageheader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	width: calc(100% - 128px);
+  z-index: 1;
+
+	.ph-nav-right {
+		background-color: map-get($colors, background-light);
+		border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+		padding-top: map-get($pixelSpacings, xs);
+		padding-bottom: map-get($pixelSpacings, xs);
+		padding-left: map-get($pixelSpacings, sm);
+		position: relative;
+
+		// &::after {
+		// 	content: '';
+		// 	position: absolute;
+		// 	width: 64px;
+		// 	height: 100%;
+		// 	background-color: map-get($colors, background-light);
+		// 	top: 0px;
+		// 	right: -64px;
+		// }
+	}
+
+	.link-wrapper {
+		.link {
+			position: relative;
+			padding-right: map-get($pixelSpacings, md);
+			padding-left: map-get($pixelSpacings, md);
+			padding-top: map-get($pixelSpacings, sm);
+			padding-bottom: map-get($pixelSpacings, sm);
+
+			.link-text {
+			}
+
+			.link-icon {
+				padding-bottom: 2px;
+				font-size: 14px;
+				color: map-get($colors, primary);
+			}
+
+			&.active::after {
+				content: '';
+				position: absolute;
+				width: 80%;
+				height: 1.2px;
+				opacity: .4;
+				background-color: map-get($colors, contrast);
+				bottom: 4px;
+				left: 11%;
+			}
+
+			&.icon-only {
+				.link-icon {
+					line-height: 22px;
+				}
+
+				&.active::after {
+					width: 50%;
+					left: 18%;
+				}
+			}
+		}
+
+		.link:hover {
+			text-decoration: none;
+		}
+
+		.sep {
+			background-color: map-get($colors, contrast-muted);
+			opacity: .7;
+			width: 2px;
+			position: relative;
+			height: 50%;
+			top: 25%;
+		}
+	}
+
+	.dropdown-toggle {
+		color: map-get($colors, contrast);
+	}
+
+	.full {
+		display: flex;
+	}
+
+	.logo {
+		width: 120px;
+		z-index: 10;
+	}
+
+	@media screen and (max-width: 1111px) {
+		.full {
+			display: none;
+		}
+
+		.ph-nav-right {
+			background-color: transparent;
+
+			&::after {
+				display: none;
+			}
+		}
+	}
+
+	@media screen and (min-width: 1112px) {
+		.mobile-nav {
+			display: none;
+		}
+	}
+}
+
+::ng-deep {
+	.dropdown .dropdown-menu {
+		white-space: nowrap;
+		border-radius: 8px;
+		padding: map-get($pixelSpacings, sm);
+		background-color: map-get($colors, background-light);
+
+		.dropdown-item {
+			color: map-get($colors, contrast);
+			border-radius: 5px;
+		}
+
+		.dropdown-item:hover {
+			color: map-get($colors, contrast);
+			background-color: map-get($colors, primary);
+		}
+
+		.dropdown-item.active {
+			color: map-get($colors, contrast);
+			background-color: map-get($colors, primary);
+		}
+	}
+}

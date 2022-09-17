@@ -1,0 +1,262 @@
+/**
+ * Global Typography
+ */
+
+@mixin font-brand {
+	font-family: map-get($fonts, brand-family);
+	font-size: map-get($fonts, brand-size);
+	font-weight: map-get($fonts, brand-weight);
+	text-transform: map-get($fonts, brand-transform);
+}
+
+@mixin font-heading {
+	font-family: map-get($fonts, heading-family);
+}
+
+@mixin font-h1 {
+	font-family: map-get($fonts, h1-family);
+	font-size: map-get($fonts, h1-size);
+	font-weight: map-get($fonts, h1-weight);
+	text-transform: map-get($fonts, h1-transform);
+	color: map-get($colors, contrast);
+}
+
+@mixin font-h2 {
+	font-family: map-get($fonts, h2-family);
+	font-size: map-get($fonts, h2-size);
+	font-weight: map-get($fonts, h2-weight);
+	text-transform: map-get($fonts, h2-transform);
+	color: map-get($colors, contrast);
+}
+
+@mixin font-h3 {
+	font-family: map-get($fonts, h3-family);
+	font-size: map-get($fonts, h3-size);
+	font-weight: map-get($fonts, h3-weight);
+	text-transform: map-get($fonts, h3-transform);
+	color: map-get($colors, contrast);
+}
+
+@mixin font-h4 {
+	font-family: map-get($fonts, h4-family);
+	font-size: map-get($fonts, h4-size);
+	font-weight: map-get($fonts, h4-weight);
+	text-transform: map-get($fonts, h4-transform);
+	color: map-get($colors, contrast);
+}
+
+@mixin font-h5 {
+	font-family: map-get($fonts, h5-family);
+	font-size: map-get($fonts, h5-size);
+	font-weight: map-get($fonts, h5-weight);
+	text-transform: map-get($fonts, h5-transform);
+	color: map-get($colors, contrast);
+}
+
+@mixin font-h6 {
+	font-family: map-get($fonts, h6-family);
+	font-size: map-get($fonts, h6-size);
+	font-weight: map-get($fonts, h6-weight);
+	text-transform: map-get($fonts, h6-transform);
+	color: map-get($colors, contrast);
+}
+
+@mixin font-body {
+	font-family: map-get($fonts, body-family) !important;
+	font-size: map-get($fonts, body-size) !important;
+	font-weight: map-get($fonts, body-weight) !important;
+	text-transform: map-get($fonts, body-transform) !important;
+	color: map-get($colors, contrast) !important;
+}
+
+@mixin font-body-large {
+	font-family: map-get($fonts, body-large-family);
+	font-size: map-get($fonts, body-large-size);
+	font-weight: map-get($fonts, body-large-weight);
+	text-transform: map-get($fonts, body-large-transform);
+	color: map-get($colors, contrast);
+}
+
+@mixin font-button {
+	font-family: map-get($fonts, button-family) !important;
+	font-size: map-get($fonts, button-size) !important;
+	font-weight: map-get($fonts, button-weight) !important;
+	text-transform: map-get($fonts, button-transform) !important;
+	color: map-get($colors, contrast) !important;
+}
+
+@mixin font-button-large {
+	font-family: map-get($fonts, button-large-family);
+	font-size: map-get($fonts, button-large-size);
+	font-weight: map-get($fonts, button-large-weight);
+	text-transform: map-get($fonts, button-large-transform);
+	color: map-get($colors, contrast);
+}
+
+@mixin font-label {
+	font-family: map-get($fonts, label-family);
+	font-size: map-get($fonts, label-size);
+	font-weight: map-get($fonts, label-weight);
+	text-transform: map-get($fonts, label-transform);
+	color: map-get($colors, contrast);
+}
+
+@mixin font-nav {
+	font-family: map-get($fonts, nav-family);
+	font-size: map-get($fonts, nav-size);
+	font-weight: map-get($fonts, nav-weight);
+	text-transform: map-get($fonts, nav-transform);
+	color: map-get($colors, contrast);
+}
+
+@mixin font-card-name {
+	font-family: map-get($fonts, card-name-family) !important;
+	font-size: map-get($fonts, card-name-size) !important;
+	font-weight: map-get($fonts, card-name-weight) !important;
+	text-transform: map-get($fonts, card-name-transform) !important;
+	color: map-get($colors, contrast) !important;
+}
+
+@mixin font-card-stats {
+	font-family: map-get($fonts, card-stats-family) !important;
+	font-size: map-get($fonts, card-stats-size) !important;
+	font-weight: map-get($fonts, card-stats-weight) !important;
+	text-transform: map-get($fonts, card-stats-transform) !important;
+	color: map-get($colors, contrast) !important;
+}
+
+@mixin font-card-body {
+	font-family: map-get($fonts, card-body-family) !important;
+	font-size: map-get($fonts, card-body-size) !important;
+	font-weight: map-get($fonts, card-body-weight) !important;
+	text-transform: map-get($fonts, card-body-transform) !important;
+	color: map-get($colors, contrast) !important;
+}
+
+.font-brand,
+.f-brand {
+	@include font-brand;
+}
+
+.font-heading,
+.f-heading {
+	@include font-heading;
+}
+
+h1,
+.h1 {
+	@include font-h1;
+	margin-top: 0px;
+	margin-bottom: 4px;
+}
+
+h2,
+.h2 {
+	@include font-h2;
+	margin-top: 0px;
+	margin-bottom: 4px;
+}
+
+h3,
+.h3 {
+	@include font-h3;
+	margin-top: 0px;
+	margin-bottom: 4px;
+}
+
+h4,
+.h4 {
+	@include font-h4;
+	margin-top: 0px;
+	margin-bottom: 4px;
+}
+
+h5,
+.h5 {
+	@include font-h5;
+	margin-top: 0px;
+	margin-bottom: 4px;
+}
+
+h6,
+.h6 {
+	@include font-h6;
+	margin-top: 0px;
+	margin-bottom: 4px;
+}
+
+.font-body,
+.f-body {
+	@include font-body;
+}
+
+.font-body-large,
+.f-body-large {
+	@include font-body-large;
+}
+
+.font-button,
+.f-button {
+	@include font-button;
+}
+
+.font-button-large,
+.f-button-large {
+	@include font-button-large;
+}
+
+.font-label,
+.f-label {
+	@include font-label;
+}
+
+.font-nav,
+.f-nav {
+	@include font-nav;
+}
+
+p,
+li,
+a,
+input {
+	@include font-body;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+p {
+	margin-bottom: 4px;
+}
+
+p.bold,
+li.bold,
+a.bold {
+	font-weight: bold;
+}
+
+label {
+	@include font-label;
+	margin-top: 0px;
+	margin-bottom: 4px;
+}
+
+button {
+	@include font-button;
+}
+
+a,
+.a {
+	color: map-get($colors, primary);
+}
+
+.font-card-name {
+	@include font-card-name;
+}
+
+.font-card-stats {
+	@include font-card-stats;
+}
+
+.font-card-body {
+	@include font-card-body;
+}

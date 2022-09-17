@@ -1,0 +1,60 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es5",
+    "module": "es2020",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "types": [
+      "node"
+    ],
+    "paths": {
+      "@environments": ["src/environments/index"],
+      "@environments/*": ["src/environments/*"],
+      "@theme/*": ["src/theme/*"],
+      "@assets/*": ["src/assets/*"],
+      "@app/*": ["src/app/*"],
+			"@routes": ["src/app/app-routes.ts"],
+
+      "@core/*": ["src/app/@core/*"],
+			"@guards": ["src/app/@core/guards/index"],
+      "@guards/*": ["src/app/@core/guards/*"],
+      "@interceptors": ["src/app/@core/interceptors/index"],
+      "@interceptors/*": ["src/app/@core/interceptors/*"],
+			"@pages": ["src/app/@core/pages/index"],
+      "@pages/*": ["src/app/@core/pages/*"],
+			"@services": ["src/app/@core/services/index"],
+      "@services/*": ["src/app/@core/services/*"],
+			"@utils": ["src/app/@core/utils/index"],
+      "@utils/*": ["src/app/@core/utils/*"],
+
+      "@shared/*": ["src/app/@shared/*"],
+			"@components": ["src/app/@shared/components/index"],
+      "@components/*": ["src/app/@shared/components/*"],
+			"@modals": ["src/app/@shared/components/modals/index"],
+      "@modals/*": ["src/app/@shared/components/modals/*"],
+			"@directives": ["src/app/@shared/directives/index"],
+      "@directives/*": ["src/app/@shared/directives/*"],
+			"@models": ["src/app/@shared/models/index"],
+      "@models/*": ["src/app/@shared/models/*"],
+			"@pipes": ["src/app/@shared/pipes/index"],
+      "@pipes/*": ["src/app/@shared/pipes/*"],
+
+			"@modules/*": ["src/app/modules/*"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false
+  }
+}

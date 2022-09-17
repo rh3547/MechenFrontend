@@ -1,0 +1,281 @@
+//=============================================================================== [ Media Queries ]
+//
+@media screen and (max-width: map-get($breakpoints, xxl)) {
+	.xl-stack {
+		margin-bottom: 32px;
+	}
+
+	.xl-collapsable:hover .height-collapse {
+		opacity: 1;
+		pointer-events: all;
+		transition: opacity .2s ease-in-out;
+	}
+
+	.xl-not-height-collapsable:hover .height-collapse {
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity .2s ease-in-out;
+	}
+
+	.xl-width-collapsable:hover .width-collapse {
+		width: 16px;
+		opacity: 1;
+		pointer-events: all;
+
+		transition: width .2s ease-in-out, opacity .2s ease-in-out;
+	}
+
+	.xl-not-width-collapsable:hover .width-collapse {
+		width: 0px;
+		opacity: 0;
+		pointer-events: none;
+
+		transition: width .2s ease-in-out, opacity .2s ease-in-out;
+	}
+}
+
+
+@media screen and (max-width: map-get($breakpoints, xl)) {
+	.lg-stack {
+		margin-bottom: 32px;
+	}
+
+	.lg-height-collapsable:hover .height-collapse {
+		opacity: 1;
+		pointer-events: all;
+		transition: opacity .2s ease-in-out;
+	}
+
+	.lg-not-height-collapsable:hover .height-collapse {
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity .2s ease-in-out;
+	}
+
+	.lg-width-collapsable:hover .width-collapse {
+		width: 16px;
+		opacity: 1;
+		pointer-events: all;
+
+		transition: width .2s ease-in-out, opacity .2s ease-in-out;
+	}
+
+	.lg-not-width-collapsable:hover .width-collapse {
+		width: 0px;
+		opacity: 0;
+		pointer-events: none;
+
+		transition: width .2s ease-in-out, opacity .2s ease-in-out;
+	}
+
+	.grid-wrap {
+		padding: map-get($pixelSpacings, xl);
+	}
+}
+
+@media screen and (max-width: map-get($breakpoints, lg)) {
+	.md-stack {
+		margin-bottom: 32px;
+	}
+
+	.md-height-collapsable:hover .height-collapse {
+		opacity: 1;
+		pointer-events: all;
+		transition: opacity .2s ease-in-out;
+	}
+
+	.md-not-height-collapsable:hover .height-collapse {
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity .2s ease-in-out;
+	}
+
+	.md-width-collapsable:hover .width-collapse {
+		width: 16px;
+		opacity: 1;
+		pointer-events: all;
+
+		transition: width .2s ease-in-out, opacity .2s ease-in-out;
+	}
+
+	.md-not-width-collapsable:hover .width-collapse {
+		width: 0px;
+		opacity: 0;
+		pointer-events: none;
+
+		transition: width .2s ease-in-out, opacity .2s ease-in-out;
+	}
+
+	.desktop-hidden {
+		display: initial;
+	}
+
+	.mobile-hidden {
+		display: none;
+	}
+}
+
+@media screen and (max-width: map-get($breakpoints, md)) {
+	.content-wrapper {
+		padding: map-get($pixelSpacings, xl);
+	}
+
+	.sm-stack {
+		margin-bottom: map-get($pixelSpacings, xl);
+	}
+
+	.sm-height-collapsable:hover .height-collapse {
+		opacity: 1;
+		pointer-events: all;
+		transition: opacity .2s ease-in-out;
+	}
+
+	.sm-not-height-collapsable:hover .height-collapse {
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity .2s ease-in-out;
+	}
+
+	.sm-width-collapsable:hover .width-collapse {
+		width: 16px;
+		opacity: 1;
+		pointer-events: all;
+
+		transition: width .2s ease-in-out, opacity .2s ease-in-out;
+	}
+
+	.sm-not-width-collapsable:hover .width-collapse {
+		width: 0px;
+		opacity: 0;
+		pointer-events: none;
+
+		transition: width .2s ease-in-out, opacity .2s ease-in-out;
+	}
+
+	.grid-card .gc-header {
+		display: block !important;
+		padding-left: 32px;
+		padding-right: 32px;
+
+		.header-left {
+			text-align: center !important;
+		}
+
+		.header-right {
+			text-align: center !important;
+
+			button {
+				width: 100%;
+				margin-top: 16px;
+			}
+
+			p {
+				margin-top: 16px;
+			}
+		}
+	}
+
+	.grid-card .gc-body {
+		padding-left: 32px;
+		padding-right: 32px;
+	}
+
+	.desktop-hidden {
+		display: initial;
+	}
+
+	.mobile-hidden {
+		display: none;
+	}
+}
+
+@media screen and (max-width: map-get($breakpoints, sm)) {
+	.xs-stack {
+		margin-bottom: 32px;
+	}
+
+	.xs-height-collapsable:hover .height-collapse {
+		opacity: 1;
+		pointer-events: all;
+		transition: opacity .2s ease-in-out;
+	}
+
+	.xs-not-height-collapsable:hover .height-collapse {
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity .2s ease-in-out;
+	}
+
+	.xs-width-collapsable:hover .width-collapse {
+		width: 16px;
+		opacity: 1;
+		pointer-events: all;
+
+		transition: width .2s ease-in-out, opacity .2s ease-in-out;
+	}
+
+	.xs-not-width-collapsable:hover .width-collapse {
+		width: 0px;
+		opacity: 0;
+		pointer-events: none;
+
+		transition: width .2s ease-in-out, opacity .2s ease-in-out;
+	}
+
+	.desktop-hidden {
+		display: initial;
+	}
+
+	.mobile-hidden {
+		display: none;
+	}
+
+	.content-wrapper {
+		padding: map-get($pixelSpacings, sm);
+		padding-top: map-get($pixelSpacings, md);
+	}
+}
+
+@media screen and (min-width: map-get($breakpoints, lg)) {
+	.desktop-hidden {
+		display: none;
+	}
+
+	.mobile-hidden {
+		display: initial;
+	}
+}
+
+@media screen and (min-width: map-get($breakpoints, xl)) {
+	.main-content {
+		margin-right: 64px;
+		margin-left: 64px;
+	}
+}
+
+@media screen and (min-width: map-get($breakpoints, xxl)) {
+	.main-content {
+		margin-right: 64px;
+		margin-left: 64px;
+	}
+}
+
+
+
+//============================================ CUSTOM MEDIA QUERY BREAKPOINTS
+//
+
+@media screen and (max-width: 991px) {
+	ion-menu.dash-menu {
+		max-width: 100% !important;
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.main-content.page-content {
+		padding-left: 15px;
+		padding-right: 15px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+}

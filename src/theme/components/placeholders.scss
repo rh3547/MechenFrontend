@@ -1,0 +1,135 @@
+/**
+ * Placeholder styles
+ */
+
+.placeholder {
+	max-width: 800px;
+	width: 200px;
+	height: 10px;
+	border-radius: 3px;
+	background-color: #eee;
+
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+	animation-iteration-count: infinite;
+	animation-name: placeHolder-shimmer;
+	animation-timing-function: linear;
+	background: darkgray;
+	background: linear-gradient(to right, #eeeeee 10%, #dddddd 18%, #eeeeee 33%);
+	background-size: 800px 104px;
+	position: relative;
+}
+
+.placeholder-xxxs {
+	@extend .placeholder;
+	width: 50px;
+}
+
+.placeholder-xxs {
+	@extend .placeholder;
+	width: 100px;
+}
+
+.placeholder-xs {
+	@extend .placeholder;
+	width: 200px;
+}
+
+.placeholder-sm {
+	@extend .placeholder;
+	width: 300px;
+}
+
+.placeholder-md {
+	@extend .placeholder;
+	width: 400px;
+}
+
+.placeholder-lg {
+	@extend .placeholder;
+	width: 500px;
+}
+
+.placeholder-xl {
+	@extend .placeholder;
+	width: 600px;
+}
+
+.placeholder-xxl {
+	@extend .placeholder;
+	width: 700px;
+}
+
+.placeholder-xxxl {
+	@extend .placeholder;
+	width: 800px;
+}
+
+.placeholder-full {
+	@extend .placeholder;
+	width: 100%;
+}
+
+.placeholder-square-xxxs {
+	@extend .placeholder;
+	width: 50px;
+	height: 50px;
+}
+
+.placeholder-square-xxs {
+	@extend .placeholder;
+	width: 100px;
+	height: 100px;
+}
+
+.placeholder-square-xs {
+	@extend .placeholder;
+	width: 200px;
+	height: 200px;
+}
+
+.placeholder-square-sm {
+	@extend .placeholder;
+	width: 300px;
+	height: 300px;
+}
+
+.placeholder-square-md {
+	@extend .placeholder;
+	width: 400px;
+	height: 400px;
+}
+
+.placeholder-square-lg {
+	@extend .placeholder;
+	width: 500px;
+	height: 500px;
+}
+
+.placeholder-square-xl {
+	@extend .placeholder;
+	width: 600px;
+	height: 600px;
+}
+
+.placeholder-square-xxl {
+	@extend .placeholder;
+	width: 700px;
+	height: 700px;
+}
+
+.placeholder-square-xxxl {
+	@extend .placeholder;
+	width: 800px;
+	height: 800px;
+}
+
+@keyframes placeHolder-shimmer {
+	0% {
+		background-position: -468px 0
+	}
+
+	100% {
+		background-position: 1168px 0
+	}
+}

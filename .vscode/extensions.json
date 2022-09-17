@@ -1,0 +1,17 @@
+{
+    "recommendations": [
+      "editorconfig.editorconfig",
+      "ms-vscode.atom-keybindings",
+      "eamodio.gitlens",
+      "ms-vsliveshare.vsliveshare",
+      "pkief.material-icon-theme",
+      "vscode-icons-team.vscode-icons",
+      "natewallace.angular2-inline",
+      "johnpapa.angular2",
+      "angular.ng-template",
+      "msjsdiag.debugger-for-chrome",
+      "eg2.vscode-npm-script",
+      "nrwl.angular-console",
+      "hookyqr.beautify"
+    ]
+}

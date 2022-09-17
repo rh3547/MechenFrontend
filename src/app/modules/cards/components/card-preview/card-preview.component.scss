@@ -1,0 +1,148 @@
+@import '../../../../../theme/styles.scss';
+
+.card-preview {
+	position: relative;
+
+	.card-content {
+		position: absolute;
+    width: 375px;
+    height: 525px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+		padding: 24px;
+
+		.card-type-icon {
+			position: absolute;
+			top: 8px;
+			left: 8px;
+
+			.type-icon {
+				width: 52px;
+				opacity: .6;
+			}
+		}
+
+		.card-slots-wrapper {
+			display: flex;
+			margin-top: 8px;
+
+			.card-slot {
+				background-color: #626262;
+				border-radius: 8px;
+				display: inline-block;
+				padding-right: 8px;
+				position: relative;
+				width: 60px;
+				padding-left: 27px;
+				padding-top: 2px;
+				padding-bottom: 2px;
+
+				&.cooldown-slot {
+					width: auto;
+
+					.slot-text {
+						position: relative;
+						top: 50%;
+						transform: translateY(-50%);
+					}
+				}
+
+				&.range-slot {
+					width: auto;
+
+					.slot-text {
+						position: relative;
+						top: 50%;
+						transform: translateY(-50%);
+					}
+				}
+
+				&:not(:last-child) {
+					margin-right: 8px;
+				}
+
+				&.direction-stat, &.aoe-stat {
+					padding-left: 8px;
+					width: auto;
+
+					img {
+						width: 32px;
+					}
+				}
+
+				.slot-icon {
+					width: 32px;
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+					left: -2px;
+				}
+
+				.infinite-range-icon {
+					width: 12px;
+				}
+
+				.slot-text {
+					color: map-get($colors, contrast);
+					display: inline-block;
+				}
+			}
+		}
+
+		.card-type {
+			font-style: italic;
+			opacity: .4;
+			margin-top: 10px;
+		}
+
+		.card-name {
+			text-transform: uppercase !important;
+    	transform: scaleY(1.2);
+			margin-top: 4px;
+		}
+
+		.card-ability-text {
+			margin-top: 8px;
+		}
+
+		.card-stats-wrapper {
+			display: flex;
+			margin-top: 8px;
+			justify-content: center;
+
+			.card-stat {
+				display: inline-block;
+				padding-right: 8px;
+
+				&:not(:last-child) {
+					margin-right: 10px;
+				}
+
+				.stat-icon {
+					width: 50px;
+					transform: translateX(-10px);
+				}
+
+				.stat-text {
+					color: map-get($colors, contrast);
+					font-weight: bold;
+					font-size: 20px !important;
+					transform: translate(-10px, 3px);
+					display: inline-block;
+				}
+			}
+		}
+	}
+
+	.card-rarity-border {
+		width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+	}
+
+	.card-art {
+		width: 100%;
+		width: 375px;
+	}
+}

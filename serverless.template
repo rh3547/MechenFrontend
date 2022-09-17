@@ -1,0 +1,159 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Transform": "AWS::Serverless-2016-10-31",
+  "Description": "A frontend web application hosting stack using S3 and CloudFront.",
+  "Parameters": {
+		"EnvironmentName": {
+      "Type": "String",
+      "Description": "The name of the environment to deploy to."
+    },
+    "ClientBucketName": {
+      "Type": "String",
+      "Description": "Name of the client site S3 bucket.",
+      "MinLength": "8"
+    },
+    "CloudFrontComment": {
+      "Type": "String",
+      "Description": "The comment to set for the CloudFront distribution to more easily find it in the list of distributions.",
+      "MinLength": "8"
+    }
+  },
+  "Resources": {
+    "ClientBucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": { "Fn::Join" : [ "-", [ { "Ref" : "ClientBucketName" }, { "Ref" : "EnvironmentName" } ] ] },
+        "AccessControl" : "PublicRead",
+        "BucketEncryption" : {
+            "ServerSideEncryptionConfiguration" : [{
+                "ServerSideEncryptionByDefault": {
+                    "SSEAlgorithm": "AES256"
+                }
+            }]
+        },
+        "CorsConfiguration": {
+            "CorsRules" : [
+                {
+                     "AllowedHeaders" : [ "*" ],
+                     "AllowedMethods" : [ "GET" ],
+                     "AllowedOrigins" : ["*"]
+                }
+            ]
+        },
+				"WebsiteConfiguration": {
+					"IndexDocument": "index.html",
+					"ErrorDocument": "index.html"
+				}
+      }
+    },
+		"ClientBucketPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+         "PolicyDocument": {
+            "Id": "ClientBucketPolicy",
+            "Version": "2012-10-17",
+            "Statement": [
+               {
+                  "Sid": "PublicReadForGetBucketObjects",
+                  "Effect": "Allow",
+                  "Principal": "*",
+                  "Action": "s3:GetObject",
+                  "Resource": {
+										"Fn::Join" : [
+											"",
+											[
+												"arn:aws:s3:::",
+												{
+													"Fn::Join" : [
+														"-",
+														[
+															{ "Ref" : "ClientBucketName" },
+															{ "Ref" : "EnvironmentName" }
+														]
+													]
+												},
+												"/*"
+											]
+										]
+									}
+               }
+            ]
+         },
+         "Bucket": { "Ref": "ClientBucket"}
+      }
+   },
+	 "ClientCloudFront": {
+      "Type": "AWS::CloudFront::Distribution",
+      "DependsOn": [
+         "ClientBucket"
+      ],
+      "Properties": {
+         "DistributionConfig": {
+            "Comment": {
+							"Fn::Join" : [
+								" - ",
+								[
+									{ "Ref" : "CloudFrontComment" },
+									{ "Ref" : "EnvironmentName" }
+								]
+							]
+						},
+            "Origins": [
+               {
+                  "DomainName": {
+										"Fn::Select": [
+											2,
+											{
+												"Fn::Split": [
+													"/",
+													{ "Fn::GetAtt" : [ "ClientBucket", "WebsiteURL" ] }
+												]
+											}
+										]
+									},
+                  "Id": "S3Origin",
+                  "CustomOriginConfig": {
+                     "HTTPPort": "80",
+                     "HTTPSPort": "443",
+                     "OriginProtocolPolicy": "http-only"
+                  }
+               }
+            ],
+            "Enabled": "true",
+            "HttpVersion": "http2",
+            "DefaultRootObject": "index.html",
+            "DefaultCacheBehavior": {
+               "AllowedMethods": [
+                  "GET",
+                  "HEAD"
+               ],
+               "Compress": true,
+               "TargetOriginId": "S3Origin",
+               "ForwardedValues": {
+                  "QueryString": true,
+                  "Cookies": {
+                     "Forward": "none"
+                  }
+               },
+               "ViewerProtocolPolicy": "redirect-to-https"
+            },
+            "PriceClass": "PriceClass_All",
+            "ViewerCertificate": {
+               "CloudFrontDefaultCertificate": "true"
+            }
+         }
+      }
+   	}
+  },
+	"Outputs": {
+		"EnvironmentName": {
+			"Value": { "Ref": "EnvironmentName" }
+		},
+    "ClientBucketName": {
+      "Value": { "Fn::Join" : [ "-", [ { "Ref" : "ClientBucketName" }, { "Ref" : "EnvironmentName" } ] ] }
+    },
+		"CloudFrontId": {
+			"Value": { "Ref": "ClientCloudFront" }
+		}
+  }
+}

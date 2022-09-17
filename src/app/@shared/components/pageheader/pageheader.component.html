@@ -1,0 +1,45 @@
+<div class="pageheader">
+	<div class="title">
+		<div [innerHTML]="titleContent"></div>
+		<div [innerHTML]="subtitleContent"></div>
+	</div>
+	<div class="ph-nav-right">
+		<div class="full">
+			<div class="link-wrapper mr-sm">
+				<a class="pointer d-flex flex-align-items-center link" routerLink="{{ routes.Cards.CardSearch }}" routerLinkActive="active">
+					<i class="far fa-books mr-sm link-icon"></i>
+					<p class="f-nav m-0 link-text">Card Library</p>
+				</a>
+			</div>
+			<!-- <div class="link-wrapper mr-sm">
+				<a class="pointer d-flex flex-align-items-center link icon-only" routerLink="{{ routes.Cards.CardSearch }}" routerLinkActive="active">
+					<i class="far fa-search mr-sm link-icon"></i>
+				</a>
+			</div> -->
+			<!-- <div class="link-wrapper mr-sm">
+				<div class="sep"></div>
+			</div> -->
+			<!-- <div class="link-wrapper mr-sm">
+				<a class="pointer d-flex flex-align-items-center link" (click)="scrollTo(routeParts.Home.Skills)" [ngClass]="{'active': navService.activeNav == routeParts.Home.Skills}">
+					<i class="far fa-book-spells mr-sm link-icon"></i>
+					<p class="f-nav m-0 link-text">Skills</p>
+				</a>
+			</div> -->
+	  </div>
+
+		<!--Mobile Menu-->
+		<div class="mobile-nav">
+			<div ngbDropdown container="body" placement="bottom-right">
+				<div class="menu-circle pointer" id="mobileMenuToggle" ngbDropdownToggle>
+					<i class="far fa-bars"></i>
+				</div>
+				<div class="mobile-user-dropdown" ngbDropdownMenu aria-labelledby="mobileMenuToggle">
+					<a ngbDropdownItem (click)="scrollTo('home')" [ngClass]="{'active': navService.activeNav == 'home'}" class="pointer link-text">Home</a>
+					<!-- <a ngbDropdownItem (click)="scrollTo(routeParts.Home.Skills)" [ngClass]="{'active': navService.activeNav == routeParts.Home.Skills}" class="pointer link-text">Skills</a> -->
+				</div>
+			</div>
+	  </div>
+	</div>
+</div>
+
+

@@ -1,0 +1,9 @@
+<div class="toolbar-wrapper">
+  <div *ngFor="let btn of buttons; let i = index" class="toolbar-option d-inline-block p-relative" [ngClass]="{'toolbar-separator pt-sm pb-sm': isSeparator(btn) }">
+    <button *ngIf="!isSeparator(btn)" (click)="functionFired(btn)" [ngClass]="btn.buttonClass" class="pr-xl pl-xl pt-sm pb-sm">
+      <i [ngClass]="btn.iconClass" class="mb-xs mr-xs block"></i>
+      {{ btn.text }}
+    </button>
+    <hr *ngIf="shouldShowDivider(i)" />
+  </div>
+</div>

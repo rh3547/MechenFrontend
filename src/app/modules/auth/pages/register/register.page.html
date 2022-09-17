@@ -1,0 +1,115 @@
+<div class="content-wrapper no-sidebar d-flex flex-column">
+	<div class="row flex-fill">
+		<div class="col-xl-12">
+			<div class="page-wrapper">
+				<div class="page-content">
+					<div class="logo-wrapper">
+						<img class="logo mb-xl" src="/assets/images/logos/logo-text-dualtone.png">
+					</div>
+					<div *ngIf="registrationCompleted == false" class="page-body">
+						<div class="header-wrapper">
+							<p class="fw-bold mb-0">Account Sign Up</p>
+						</div>
+						<div class="page-info-wrapper p-xl">
+							<form [formGroup]="form" (ngSubmit)="register()">
+								<div class="row mb-lg">
+									<div class="col-xs-12 col-sm-12 md-stack col-lg-6 col-xl-6">
+										<label class="required">First Name</label>
+										<input type="text" formControlName="firstName" [ngnValidate]="submitted"/>
+									</div>
+									<div class="col-xs-12 col-sm-12 md-stack col-lg-6 col-xl-6">
+										<label class="required">Last Name</label>
+										<input type="text" formControlName="lastName" [ngnValidate]="submitted"/>
+									</div>
+								</div>
+								<div class="row mb-lg">
+									<div class="col-xs-12 col-sm-12 md-stack col-lg-6 col-xl-6">
+										<div class="d-flex flex-align-center">
+											<label class="required">Email</label>
+											<div *ngIf="checkingUserName == true" class="ml-xs spinner lds-dual-ring"></div>
+											<i *ngIf="usernameUnique == true && checkingUserName == false" class="fas fa-check-circle fg-success ml-xs" [ngbTooltip]="usernameAvailable"></i>
+											<i *ngIf="usernameUnique == false && checkingUserName == false" class="fas fa-times-circle fg-danger ml-xs" [ngbTooltip]="usernameUnavailable"></i>
+											<ng-template #usernameAvailable>Username available.</ng-template>
+											<ng-template #usernameUnavailable>Username not available. Please enter another.</ng-template>
+										</div>
+										<input type="text" formControlName="email" [ngnValidate]="submitted"/>
+									</div>
+									<div class="col-xs-12 col-sm-12 md-stack col-lg-6 col-xl-6">
+										<label class="required">Phone</label>
+										<input type="text" formControlName="phoneNumber" [mask]="globalVars.phoneMask" [ngnValidate]="submitted"/>
+									</div>
+								</div>
+								<hr>
+								<div class="row mb-lg">
+									<div class="col-xs-12 col-sm-12 md-stack col-lg-4 col-xl-4">
+										<label class="required">Country</label>
+										<ngn-select [ngnValidate]="submitted"
+										[options]="countryOptions"
+										[maxOptionsHeight]="300"
+										[allowMultiple]="false"
+										[useModelValues]="true"
+										[defaultControlText]="''"
+										[searchable]="true"
+										formControlName="countryId">
+										</ngn-select>
+									</div>
+									<div *ngIf="hideStateSelect == false" class="col-xs-12 col-sm-12 md-stack col-lg-4 col-xl-4">
+										<label class="required">State</label>
+										<ngn-select [ngnValidate]="submitted"
+										[options]="stateOptions"
+										[maxOptionsHeight]="300"
+										[allowMultiple]="false"
+										[useModelValues]="true"
+										[defaultControlText]="''"
+										[searchable]="true"
+										formControlName="stateId">
+										</ngn-select>
+									</div>
+									<div *ngIf="hideStateSelect == true" class="col-xs-12 col-sm-12 md-stack col-lg-4 col-xl-4">
+										<label class="required">Other State/Province</label>
+										<input type="text" formControlName="otherState" [ngnValidate]="submitted"/>
+									</div>
+									<div class="col-xs-12 col-sm-12 md-stack col-lg-4 col-xl-4">
+										<label class="required">City</label>
+										<input type="text" formControlName="city" [ngnValidate]="submitted"/>
+									</div>
+								</div>
+								<div class="row mb-lg">
+									<div class="col-xs-12 col-sm-12 md-stack col-lg-4 col-xl-4">
+										<label class="required">Address</label>
+										<input type="text" formControlName="address1" [ngnValidate]="submitted"/>
+									</div>
+									<div class="col-xs-12 col-sm-12 md-stack col-lg-4 col-xl-4">
+										<label>Address 2</label>
+										<input type="text" formControlName="address2" [ngnValidate]="submitted"/>
+									</div>
+									<div class="col-xs-12 col-sm-12 md-stack col-lg-4 col-xl-4">
+										<label class="required">Zipcode</label>
+										<input type="text" formControlName="zipCode" [ngnValidate]="submitted"/>
+									</div>
+								</div>
+								<div class="row mt-xl">
+									<div class="col-xs-12 col-sm-12 md-stack col-lg-4 col-xl-4 offset-lg-8">
+										<button [disabled]="usernameUnique == false" type="submit" class="nuc-btn">REGISTER</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div *ngIf="registrationCompleted == true" class="page-body">
+						<div class="page-info-wrapper p-xl">
+							<p class="fs-lg fw-bold mb-md">Registration Submitted<i class="fas fa-check-circle fg-success ml-sm"></i></p>
+							<p class="fs-md">Thank you for registering an account with Nucleus!</p>
+							<p class="fs-md">You should receive an email to the email address you supplied, containing instrutions to complete your account setup.</p>
+							<hr>
+							<div class="mt-xl text-center">
+								<p class="fs-md">You may close this window.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,19 @@
+<div id="app-wrapper">
+	<!-- Page Loader -->
+	<div class="page-loader" *ngIf="(globalVars.shouldShowPageLoader() | async) == true">
+		<div class="spinner lds-dual-ring"></div>
+	</div>
+
+	<!-- Processing Loader -->
+	<div class="processing-alert" *ngIf="(globalVars.shouldShowProcessingLoader() | async) == true">
+		<div class="inner">
+			<div class="spinner lds-dual-ring"></div>
+			<p>{{ globalVars.getProcessingText() }}</p>
+		</div>
+	</div>
+
+	<!-- App Router Outlet -->
+	<div id="router-wrapper">
+		<router-outlet></router-outlet>
+	</div>
+</div>

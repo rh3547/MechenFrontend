@@ -1,0 +1,22 @@
+<div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;" class="bg-background"></div>
+<div class="main-content">
+  <div class="content-wrapper">
+		<nuc-pageheader
+			titleContent="<h1><span class='fg-primary'>Mech</span> Card Game</h1>"
+			subtitleContent="<h3 class='fw-normal fg-contrast-muted'>Card Details</h3>">
+		</nuc-pageheader>
+		<div class="p-relative mb-xl pt-xxl">
+			<div class="card-detail-wrapper pt-lg pb-xl">
+				<div class="game-card mb-md">
+					<card-viewer [card]="card"></card-viewer>
+				</div>
+			</div>
+			<!-- <div class="skills" id="{{routeParts.Home.Skills}}">
+				<div class="title">
+					<div class="title-line"></div>
+					<h1 class="title-text">Skills</h1>
+				</div>
+			</div> -->
+		</div>
+	</div>
+</div>

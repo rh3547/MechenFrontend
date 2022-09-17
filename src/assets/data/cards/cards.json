@@ -1,0 +1,21 @@
+[
+	{
+		"name": "Standard Biped Core",
+		"type": "Core",
+		"subtype": "Standard",
+		"versions": [
+			{
+				"version": 1,
+				"imageUrl": "assets/data/cards/images/Standard Biped Core v1.png"
+			},
+			{
+				"version": 2,
+				"imageUrl": "assets/data/cards/images/Standard Biped Core v2.png"
+			},
+			{
+				"version": 3,
+				"imageUrl": "assets/data/cards/images/Standard Biped Core v3.png"
+			}
+		]
+	}
+]

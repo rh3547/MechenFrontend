@@ -1,0 +1,23 @@
+/**
+ * Z-Index / Layer Vars
+ */
+
+$layer-bottom: -1;
+$layer-default: 0;
+$layer-top: 1;
+$layer-dropdown: 10;
+$layer-menu: 1000;
+$layer-overlay: 1100;
+$layer-dialog: 1200;
+$layer-notification: 1300;
+
+$layers: (
+	"bottom": $layer-bottom,
+	"default": $layer-default,
+	"top": $layer-top,
+	"dropdown": $layer-dropdown,
+	"menu": $layer-menu,
+	"overlay": $layer-overlay,
+	"dialog": $layer-dialog,
+	"notification": $layer-notification
+);

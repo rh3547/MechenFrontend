@@ -1,0 +1,616 @@
+/**
+ * Global Layout and Grid System
+ */
+
+//=============================================================================== [ Data Table Styles ]
+//
+.ngx-datatable .datatable-header-cell-label {
+	font-size: 14px !important;
+	font-weight: 900 !important;
+}
+
+.ngx-datatable .datatable-body-cell-label > span {
+	font-size: 14px !important;
+	font-weight: 400 !important;
+}
+
+.ngx-datatable.bootstrap .datatable-body .progress-linear {
+	display: block;
+	position: relative;
+	width: 100%;
+	height: 5px;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+}
+
+.ngx-datatable.bootstrap .datatable-body .progress-linear .container {
+	display: block;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 5px;
+	-webkit-transform: translate(0, 0) scale(1, 1);
+	transform: translate(0, 0) scale(1, 1);
+	background-color: rgba(map-get($colors, primary), 0.03);
+}
+
+.ngx-datatable.bootstrap .datatable-body .progress-linear .container .bar {
+	transition: all 0.2s linear;
+	-webkit-animation: query 0.8s infinite cubic-bezier(0.39, 0.575, 0.565, 1);
+	animation: query 0.8s infinite cubic-bezier(0.39, 0.575, 0.565, 1);
+	transition: -webkit-transform 0.2s linear;
+	transition: transform 0.2s linear;
+	background-color: map-get($colors, primary);
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 5px;
+}
+
+.ngx-datatable datatable-body {
+	border-left: 2px solid rgba(0, 0, 0, 0.1);
+	border-right: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.ngx-datatable datatable-footer {
+	border: 2px solid rgba(0, 0, 0, 0.1);
+	border-top: none;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.ngx-datatable .datatable-footer .datatable-pager .pager li a {
+	padding-top: 1px;
+}
+
+.ngx-datatable datatable-row-wrapper:nth-child(even) datatable-body-row {
+	background-color: map-get($colors, primary-light);
+}
+
+.ngx-datatable .datatable-body-cell-label {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.ngx-datatable.material {
+	box-shadow: none;
+}
+
+.ngx-datatable.material .empty-row {
+	padding-top: 13px;
+}
+
+.grid-label-on {
+	background: map-get($colors, success-light) 0% 0% no-repeat padding-box;
+	border-radius: 10px;
+	opacity: 1;
+	padding: 12px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.grid-label-on > span {
+	text-align: left;
+	letter-spacing: 0.26px;
+	color: map-get($colors, success-shade);
+	opacity: 1;
+}
+
+.grid-label-off {
+	background: map-get($colors, danger-light) 0% 0% no-repeat padding-box;
+	border-radius: 10px;
+	opacity: 1;
+	padding: 12px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.grid-label-off > span {
+	text-align: left;
+	letter-spacing: 0.26px;
+	color: map-get($colors, danger-shade);
+	opacity: 1;
+}
+
+.ngx-datatable.material .datatable-header {
+	background-color: map-get($colors, primary-tint);
+}
+
+.ngx-datatable .datatable-header-cell-label {
+	color: map-get($colors, primary-light);
+}
+
+.ngx-datatable.material .datatable-header .datatable-header-cell > div > span {
+	color: map-get($colors, primary-light);
+}
+
+.ngx-datatable.material .datatable-footer .datatable-pager li.active a {
+	background-color: map-get($colors, primary);
+	color: map-get($colors, primary-light);
+}
+
+.ngx-datatable .datatable-footer .datatable-pager .pager li a {
+	color: map-get($colors, primary);
+}
+
+.ngx-datatable {
+	border-radius: 8px 8px 8px 8px;
+}
+
+.grid-icon {
+	font-size: 18px;
+	cursor: pointer;
+}
+
+.grid-link {
+	a i {
+		cursor: pointer;
+	}
+}
+
+.page-item.active .page-link {
+	background-color: map-get($colors, primary);
+	border-color: rgba(map-get($colors, primary), 0.03);
+}
+
+.tooltip-styles .tooltip-inner {
+	background-color: #ffffff;
+	color: black;
+	border-radius: 20px;
+	box-shadow: 0px 3px 10px #0000001c;
+	opacity: 1;
+	text-align: left;
+	max-width: 350px;
+	padding: 15px;
+	padding-bottom: 10px;
+}
+
+.tooltip-styles .arrow {
+	display: none;
+}
+
+//=============================================================================== [ Sidebar/Nav Styles ]
+//
+ion-menu.sidebar-menu {
+	min-width: 200px !important;
+	max-width: 250px !important;
+
+	.page-header {
+		--ion-background-color: #{map-get($colors, primary)};
+
+		&::after {
+			background-image: none;
+		}
+
+		.page-toolbar {
+			--padding-start: 20px;
+			--padding-top: 15px;
+			--padding-bottom: 15px;
+			--min-height: 60px;
+		}
+
+		img {
+			float: left;
+		}
+
+		.main-title {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 14px;
+			color: map-get($colors, light);
+			padding-left: 0;
+		}
+	}
+
+	.main-content {
+		background-color: #{map-get($colors, primary)};
+
+		ion-item {
+			padding-left: 20px;
+			font-family: #{map-get($fonts, h6-family)};
+			font-size: map-get($fonts, h6-size);
+			font-weight: map-get($fonts, h6-weight);
+			// --font-body-transform: #{map-get($fonts, h6-transform)};
+			color: #{map-get($colors, light)};
+			border-style: none;
+
+			ion-icon {
+				color: map-get($colors, primary-light);
+				opacity: 0.5;
+				margin-right: 20px;
+				font-size: 22px;
+			}
+
+			&.active {
+				border-left: 5px solid map-get($colors, accent);
+				--padding-start: 15px;
+				--background: #{map-get($colors, primary-shade)};
+
+				ion-icon {
+					color: map-get($colors, accent);
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
+
+//=============================================================================== [ PDF Viewer Styles ]
+//
+pdf-viewer {
+	.ng2-pdf-viewer-container {
+		width: 100% !important;
+		height: auto !important;
+
+		.pdfViewer {
+			padding-top: 5px;
+			padding-bottom: 5px;
+			border-radius: 0px !important;
+			border-bottom: 1px solid map-get($colors, medium-3) !important;
+		}
+
+		.pdfViewer .page {
+			margin: auto !important;
+			margin-top: 10px !important;
+			border-radius: 7px;
+
+			.canvasWrapper {
+				border-radius: 7px;
+			}
+		}
+
+		.pdfViewer .page:first-child {
+			margin-top: 0px !important;
+			border-top: none !important;
+		}
+	}
+}
+
+.static {
+	position: static !important;
+}
+
+//=============================================================================== [ Dashboard Styles ]
+//
+
+ion-card.grid-card {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 20px;
+	background-color: #ffffff;
+	border-radius: 0;
+	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.04);
+}
+
+.upcoming-holidays-widget {
+	h6 {
+		margin: 0;
+	}
+}
+
+//=============================================================================== [ Popover Styles ]
+//
+.popover {
+	width: 200px;
+
+	.popover-header {
+		background-color: transparent;
+		color: map-get($colors, dark);
+		margin-top: 0px;
+		text-align: center;
+		margin-left: 10px;
+		margin-right: 10px;
+		border-bottom: 2px solid #ebebeb;
+	}
+}
+
+.user-dropdown {
+	padding-bottom: 16px;
+
+	.logged-label {
+		margin: 0;
+		text-align: center;
+		margin-bottom: 2px;
+		font-size: 12px;
+		opacity: 0.8;
+	}
+
+	.logged-username {
+		margin: 0;
+		text-align: center;
+		font-weight: 500;
+		font-size: 14px;
+	}
+
+	.logged-sep {
+		width: 85%;
+		height: 1px;
+		background-color: rgba(0, 0, 0, 0.1);
+		margin: auto;
+		margin-top: 8px;
+		margin-bottom: 16px;
+	}
+
+	button {
+		text-align: center;
+		margin-bottom: 8px;
+	}
+
+	button:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.dropdown-toggle::after {
+	display: none;
+}
+
+.dropdown-item.active {
+	background-color: map-get($colors, primary);
+}
+
+.dropdown-item:hover {
+	background-color: map-get($colors, primary);
+	color: map-get($colors, primary-contrast);
+}
+
+.dropdown-item:active {
+	background-color: map-get($colors, primary);
+}
+
+//=============================================================================== [ Page Structure Styles ]
+//
+#app-wrapper {
+	background-color: map-get($colors, background);
+}
+
+.main-content {
+	min-height: 100vh;
+	margin-right: 64px;
+	margin-left: 64px;
+}
+
+.main-content.page-content {
+	padding-left: 35px;
+	padding-right: 35px;
+	padding-top: 35px;
+	padding-bottom: 35px;
+}
+
+.content-wrapper {
+	min-height: 100vh;
+	padding-top: 32px;
+	padding-bottom: 32px;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.with-sidebar {
+	margin-left: 159px;
+}
+
+.no-sidebar {
+	margin-left: 0;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.grid-card {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	margin: 0;
+	background-color: #ffffff;
+	border-radius: 8px;
+	box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.188);
+
+	&.edge {
+		border-left: 8px solid map-get($colors, medium-3);
+	}
+
+	.gc-header {
+		padding-left: 32px;
+		padding-right: 32px;
+		padding-top: 16px;
+		padding-bottom: 16px;
+
+		border-top: 5px solid map-get($colors, primary);
+		border-radius: 5px 5px 0px 0px;
+		background-color: map-get($colors, light);
+		color: map-get($colors, dark);
+
+		p {
+			line-height: 14px;
+			color: map-get($colors, medium-1);
+		}
+	}
+
+	.gc-body {
+		padding-left: 32px;
+		padding-right: 32px;
+		padding-top: 32px;
+		padding-bottom: 32px;
+	}
+
+	.gc-footer {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: 32px;
+		background-color: map-get($colors, light);
+		border-radius: 0px 0px 8px 8px;
+	}
+}
+
+.processing-alert {
+	position: fixed;
+	z-index: 1000;
+	background: rgba(0, 0, 0, 0.26);
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+
+	.inner {
+		width: 200px;
+		background: white;
+		border-radius: 8px;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		padding-top: 32px;
+		padding-bottom: 32px;
+
+		.spinner {
+			position: relative;
+			left: 51%;
+			transform: translateX(-50%);
+		}
+
+		p {
+			margin-bottom: 0;
+			text-align: center;
+			font-weight: bold;
+		}
+	}
+}
+
+//=============================================================================== [ UI Component Styles ]
+//
+.list-item-group {
+	margin-left: -40px;
+	margin-right: -32px;
+}
+
+.list-item {
+	border-left: 8px solid map-get($colors, medium-3);
+	position: relative;
+
+	.item-inner {
+		display: flex;
+		align-items: center;
+		border-bottom: 1px solid map-get($colors, medium-3);
+		padding-left: 32px;
+		padding-right: 96px;
+		padding-top: 18px;
+		padding-bottom: 18px;
+	}
+
+	.item-text p {
+		margin: 0;
+	}
+
+	.item-right-icon {
+		position: absolute;
+		right: 42px;
+		font-size: 22px;
+		color: map-get($colors, medium-2);
+	}
+
+	&.active {
+		background-color: map-get($colors, primary-light);
+		border-left-color: map-get($colors, accent);
+
+		.item-right-icon {
+			color: map-get($colors, accent);
+		}
+	}
+}
+
+.list-item:last-child {
+	border-bottom-left-radius: 8px;
+
+	.item-inner {
+		border-bottom: 0;
+	}
+}
+
+.detail-grid {
+	border-radius: 8px;
+}
+
+.detail-grid-item {
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 16px;
+	padding-right: 16px;
+	display: flex;
+	align-items: center;
+
+	span:first-child {
+		flex: 1 1;
+		text-align: left;
+		font-weight: 500;
+	}
+
+	span:last-child {
+		flex: 1 1;
+		text-align: right;
+	}
+}
+
+.detail-grid-item:first-child {
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.detail-grid-item:last-child {
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.detail-grid-item:nth-child(odd) {
+	background-color: map-get($colors, primary-light);
+}
+
+.single-detail-header {
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 16px;
+	padding-right: 16px;
+	border-radius: 8px;
+	font-weight: 500;
+	background-color: map-get($colors, primary-light);
+}
+
+//=============================================================================== [ Toolbar Styles ]
+//
+.toolbar-btn {
+	background-color: map-get($colors, light);
+	color: map-get($colors, primary);
+}
+
+.toolbar-icon {
+	color: map-get($colors, primary);
+	font-size: 18px;
+}
+
+.toolbar-option:nth-of-type(2) {
+	.highlight-icon {
+		color: map-get($colors, accent);
+	}
+}
+
+.toolbar-option:nth-of-type(3) {
+	.highlight-icon {
+		color: map-get($colors, danger);
+	}
+}
+
+//=============================================================================== [ Base Style Overrides ]
+//
+.lds-dual-ring:after {
+	border: 5px solid map-get($colors, primary);
+	border-color: map-get($colors, primary) transparent map-get($colors, primary)
+		transparent;
+}

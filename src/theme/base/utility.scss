@@ -1,0 +1,273 @@
+/**
+ * Global Utility Classes (mostly auto-generated from maps in settings)
+ */
+
+// Utility classes will be generated from this list. You can add additional modifiers here, but adding too many may affect performance
+$psuedo-modifiers: (
+	"none": "none",
+	"hover": "hover",
+	"focus": "focus",
+	"first": "first-child",
+	"last": "last-child"
+);
+
+// Auto-generated utility styles by breakpoint
+@each $bp_name, $bp_value in $breakpoints {
+
+	$bp_prefix: "";
+	$next_bp: 100001px;
+
+	@if $bp_name !="none" {
+		$bp_prefix: $bp_name+"\\:";
+		$next_bp: map-get-next($breakpoints, $bp_name, 100001px);
+	}
+
+	// Mobile first (applicable at breakpoint or higher)
+	// @media (min-width: $bp_value) {
+
+	// Desktop first (applicable at breakpoint or lower)
+	@media (max-width: $bp_value) {
+
+	// Only applicable when within exact breakpoint boundary
+	// @media (min-width: $bp_value) and (max-width: $next_bp - 1px) {
+
+		// Auto-generated styles with psuedo modifiers (hover, focus, first-child, etc)
+		@each $selector, $psuedo in $psuedo-modifiers {
+
+			// Determine psuedo element prefix and suffix
+			$psuedo-prefix: "";
+			$psuedo-suffix: "";
+
+			@if $selector !="none" {
+				$psuedo-prefix: $selector + "\\:";
+			}
+
+			@if $psuedo !="none" {
+				$psuedo-suffix: ":"+ $psuedo;
+			}
+
+			// Styles here work with both psuedo modifiers and breakpoint modifiers
+
+			// Auto-generate color classes
+			@each $name, $color in $colors {
+				.#{$bp-prefix}#{$psuedo-prefix}bg-#{$name}#{$psuedo-suffix} { background-color: #{$color}; --background: #{$color};}
+				.#{$bp-prefix}#{$psuedo-prefix}fg-#{$name}#{$psuedo-suffix} { color: #{$color}; --color: #{$color}; }
+				.#{$bp-prefix}#{$psuedo-prefix}boc-#{$name}#{$psuedo-suffix} { border-color: #{$color}; }
+			}
+
+			// Auto-generate font weight classes
+			@each $weight in $font-weights {
+				.#{$bp-prefix}#{$psuedo-prefix}fw-#{$weight}#{$psuedo-suffix} { font-weight: #{$weight}; }
+			}
+
+			// Font size
+			@each $name, $size in $font-sizes {
+				.#{$bp-prefix}#{$psuedo-prefix}fs-#{$name}#{$psuedo-suffix} { font-size: #{$size}; }
+			}
+
+			// Layers
+			@each $name, $layer in $layers {
+				.#{$bp-prefix}#{$psuedo-prefix}layer-#{$name}#{$psuedo-suffix} { z-index: #{$layer}; }
+			}
+
+			// Stack utlity classes based on breakpoint
+			.#{$bp-prefix}#{$psuedo-prefix}stack#{$psuedo-suffix} {
+				margin: 0;
+				margin-bottom: 32px;
+				width: 100%;
+			}
+
+			// Position
+			.#{$bp-prefix}#{$psuedo-prefix}p-static#{$psuedo-suffix} { position: static; }
+			.#{$bp-prefix}#{$psuedo-prefix}p-absolute#{$psuedo-suffix} { position: absolute; }
+			.#{$bp-prefix}#{$psuedo-prefix}p-relative#{$psuedo-suffix} { position: relative; }
+			.#{$bp-prefix}#{$psuedo-prefix}p-fixed#{$psuedo-suffix} { position: fixed; }
+			.#{$bp-prefix}#{$psuedo-prefix}p-sticky#{$psuedo-suffix} { position: sticky; }
+			.#{$bp-prefix}#{$psuedo-prefix}f-left#{$psuedo-suffix} { float: left; }
+			.#{$bp-prefix}#{$psuedo-prefix}f-right#{$psuedo-suffix} { float: right; }
+			.#{$bp-prefix}#{$psuedo-prefix}f-none#{$psuedo-suffix} { float: none; }
+			.#{$bp-prefix}#{$psuedo-prefix}clear-left#{$psuedo-suffix} { clear: left; }
+			.#{$bp-prefix}#{$psuedo-prefix}clear-right#{$psuedo-suffix} { clear: right; }
+			.#{$bp-prefix}#{$psuedo-prefix}clear-both#{$psuedo-suffix} { clear: both; }
+
+			// Display
+			.#{$bp-prefix}#{$psuedo-prefix}d-none#{$psuedo-suffix} { display: none; }
+			.#{$bp-prefix}#{$psuedo-prefix}d-block#{$psuedo-suffix} { display: block; }
+			.#{$bp-prefix}#{$psuedo-prefix}d-inline#{$psuedo-suffix} { display: inline; }
+			.#{$bp-prefix}#{$psuedo-prefix}d-inline-block#{$psuedo-suffix} { display: inline-block; }
+			.#{$bp-prefix}#{$psuedo-prefix}d-flex#{$psuedo-suffix} { display: flex; }
+			.#{$bp-prefix}#{$psuedo-prefix}d-inline-flex#{$psuedo-suffix} { display: inline-flex; }
+			.#{$bp-prefix}#{$psuedo-prefix}d-flow-root#{$psuedo-suffix} { display: flow-root; }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-align-start#{$psuedo-suffix} { align-items: flex-start; }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-align-center#{$psuedo-suffix} { align-items: center; }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-align-end#{$psuedo-suffix} { align-items: flex-end; }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-justify-start#{$psuedo-suffix} { justify-content: flex-start; }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-justify-center#{$psuedo-suffix} { justify-content: center; }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-justify-end#{$psuedo-suffix} { justify-content: flex-end; }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-justify-space-between#{$psuedo-suffix} { justify-content: space-between; }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-justify-space-evenly#{$psuedo-suffix} { justify-content: space-evenly; }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-align-items-center#{$psuedo-suffix} { align-items: center; }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-fill#{$psuedo-suffix} { flex: 1 1 100% }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-wrap#{$psuedo-suffix} { flex-wrap: wrap }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-nowrap#{$psuedo-suffix} { flex-wrap: nowrap }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-grow#{$psuedo-suffix} { flex-grow: 1 }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-1#{$psuedo-suffix} { flex: 1 }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-2#{$psuedo-suffix} { flex: 2 }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-3#{$psuedo-suffix} { flex: 3 }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-4#{$psuedo-suffix} { flex: 4 }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-5#{$psuedo-suffix} { flex: 5 }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-6#{$psuedo-suffix} { flex: 6 }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-7#{$psuedo-suffix} { flex: 7 }
+			.#{$bp-prefix}#{$psuedo-prefix}flex-8#{$psuedo-suffix} { flex: 8 }
+
+			// Overflow
+			.#{$bp-prefix}#{$psuedo-prefix}of-hidden#{$psuedo-suffix} { overflow: hidden; }
+			.#{$bp-prefix}#{$psuedo-prefix}of-visible#{$psuedo-suffix} { overflow: visible; }
+			.#{$bp-prefix}#{$psuedo-prefix}of-scroll#{$psuedo-suffix} { overflow: scroll; }
+			.#{$bp-prefix}#{$psuedo-prefix}of-auto#{$psuedo-suffix} { overflow: auto; }
+			.#{$bp-prefix}#{$psuedo-prefix}of-x-hidden#{$psuedo-suffix} { overflow: hidden; }
+			.#{$bp-prefix}#{$psuedo-prefix}of-x-visible#{$psuedo-suffix} { overflow: visible; }
+			.#{$bp-prefix}#{$psuedo-prefix}of-x-scroll#{$psuedo-suffix} { overflow: scroll; }
+			.#{$bp-prefix}#{$psuedo-prefix}of-x-auto#{$psuedo-suffix} { overflow: auto; }
+			.#{$bp-prefix}#{$psuedo-prefix}of-y-hidden#{$psuedo-suffix} { overflow: hidden; }
+			.#{$bp-prefix}#{$psuedo-prefix}of-y-visible#{$psuedo-suffix} { overflow: visible; }
+			.#{$bp-prefix}#{$psuedo-prefix}of-y-scroll#{$psuedo-suffix} { overflow: scroll; }
+			.#{$bp-prefix}#{$psuedo-prefix}of-y-auto#{$psuedo-suffix} { overflow: auto; }
+
+			// Centering
+			.#{$bp-prefix}#{$psuedo-prefix}text-center#{$psuedo-suffix} { text-align: center; }
+			.#{$bp-prefix}#{$psuedo-prefix}text-left#{$psuedo-suffix} { text-align: left; }
+			.#{$bp-prefix}#{$psuedo-prefix}text-right#{$psuedo-suffix} { text-align: right; }
+
+			.#{$bp-prefix}#{$psuedo-prefix}center-h#{$psuedo-suffix} { position: relative; left: 50%; transform: translateX(-50%); }
+    	.#{$bp-prefix}#{$psuedo-prefix}center-v#{$psuedo-suffix} { position: relative; top: 50%; transform: translateY(-50%); }
+
+			// Visibility
+			.#{$bp-prefix}#{$psuedo-prefix}v-hidden#{$psuedo-suffix} { visibility: hidden; }
+    	.#{$bp-prefix}#{$psuedo-prefix}v-visible#{$psuedo-suffix} { visibility: visible; }
+
+			// Auto margin, width, and height
+			.#{$bp-prefix}#{$psuedo-prefix}m-auto#{$psuedo-suffix} { margin: auto; }
+			.#{$bp-prefix}#{$psuedo-prefix}mt-auto#{$psuedo-suffix} { margin-top: auto; }
+			.#{$bp-prefix}#{$psuedo-prefix}mr-auto#{$psuedo-suffix} { margin-right: auto; }
+			.#{$bp-prefix}#{$psuedo-prefix}mb-auto#{$psuedo-suffix} { margin-bottom: auto; }
+			.#{$bp-prefix}#{$psuedo-prefix}ml-auto#{$psuedo-suffix} { margin-left: auto; }
+			.#{$bp-prefix}#{$psuedo-prefix}mx-auto#{$psuedo-suffix} { margin-left: auto; margin-right: auto; }
+
+			.#{$bp-prefix}#{$psuedo-prefix}w-auto#{$psuedo-suffix} { width: auto; }
+			.#{$bp-prefix}#{$psuedo-prefix}mw-auto#{$psuedo-suffix} { min-width: auto; }
+
+			.#{$bp-prefix}#{$psuedo-prefix}h-auto#{$psuedo-suffix} { height: auto; }
+			.#{$bp-prefix}#{$psuedo-prefix}mh-auto#{$psuedo-suffix} { min-height: auto; }
+
+			// Width 0
+			.#{$bp-prefix}#{$psuedo-prefix}w-0#{$psuedo-suffix} { width: 0px; }
+			.#{$bp-prefix}#{$psuedo-prefix}mw-0#{$psuedo-suffix} { min-width: 0px; }
+
+			// Height 0
+			.#{$bp-prefix}#{$psuedo-prefix}h-0#{$psuedo-suffix} { height: 0px; }
+			.#{$bp-prefix}#{$psuedo-prefix}mh-0#{$psuedo-suffix} { min-height: 0px; }
+
+			// Auto-generate pixel spacing classes
+			@each $name, $space in $pixelSpacings {
+
+				// Margin
+				.#{$bp-prefix}#{$psuedo-prefix}m-#{$name}#{$psuedo-suffix} { margin: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}mt-#{$name}#{$psuedo-suffix} { margin-top: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}mr-#{$name}#{$psuedo-suffix} { margin-right: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}mb-#{$name}#{$psuedo-suffix} { margin-bottom: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}ml-#{$name}#{$psuedo-suffix} { margin-left: #{$space}; }
+
+				// Padding
+				.#{$bp-prefix}#{$psuedo-prefix}p-#{$name}#{$psuedo-suffix} { padding: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}pt-#{$name}#{$psuedo-suffix} { padding-top: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}pr-#{$name}#{$psuedo-suffix} { padding-right: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}pb-#{$name}#{$psuedo-suffix} { padding-bottom: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}pl-#{$name}#{$psuedo-suffix} { padding-left: #{$space}; }
+
+				// Position
+				.#{$bp-prefix}#{$psuedo-prefix}t-#{$name}#{$psuedo-suffix} { top: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}r-#{$name}#{$psuedo-suffix} { right: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}b-#{$name}#{$psuedo-suffix} { bottom: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}l-#{$name}#{$psuedo-suffix} { left: #{$space}; }
+
+				// Width
+				.#{$bp-prefix}#{$psuedo-prefix}w-#{$name}#{$psuedo-suffix} { width: #{$space}; }
+
+				// Height
+				.#{$bp-prefix}#{$psuedo-prefix}h-#{$name}#{$psuedo-suffix} { height: #{$space}; }
+
+				// Translate
+				.#{$bp-prefix}#{$psuedo-prefix}translatex-#{$name}#{$psuedo-suffix} { transform: translateX(#{$space}); }
+        .#{$bp-prefix}#{$psuedo-prefix}translatey-#{$name}#{$psuedo-suffix} { transform: translateY(#{$space}); }
+        .#{$bp-prefix}#{$psuedo-prefix}translatexy-#{$name}#{$psuedo-suffix} { transform: translate(#{$space}, #{$space}); }
+
+        .#{$bp-prefix}#{$psuedo-prefix}translatex-neg-#{$name}#{$psuedo-suffix} { transform: translateX(#{"-"}#{$space}); }
+        .#{$bp-prefix}#{$psuedo-prefix}translatey-neg-#{$name}#{$psuedo-suffix} { transform: translateY(#{"-"}#{$space}); }
+        .#{$bp-prefix}#{$psuedo-prefix}translatexy-neg-#{$name}#{$psuedo-suffix} { transform: translate(#{"-"}#{$space}, #{"-"}#{$space}); }
+			}
+
+			// Auto-generate percent spacing classes
+			@each $name, $space in $percentSpacings {
+
+				// Margin
+				.#{$bp-prefix}#{$psuedo-prefix}m-#{$name}#{$psuedo-suffix} { margin: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}mt-#{$name}#{$psuedo-suffix} { margin-top: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}mr-#{$name}#{$psuedo-suffix} { margin-right: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}mb-#{$name}#{$psuedo-suffix} { margin-bottom: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}ml-#{$name}#{$psuedo-suffix} { margin-left: #{$space}; }
+
+				// Padding
+				.#{$bp-prefix}#{$psuedo-prefix}p-#{$name}#{$psuedo-suffix} { padding: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}pt-#{$name}#{$psuedo-suffix} { padding-top: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}pr-#{$name}#{$psuedo-suffix} { padding-right: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}pb-#{$name}#{$psuedo-suffix} { padding-bottom: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}pl-#{$name}#{$psuedo-suffix} { padding-left: #{$space}; }
+
+				// Position
+				.#{$bp-prefix}#{$psuedo-prefix}t-#{$name}#{$psuedo-suffix} { top: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}r-#{$name}#{$psuedo-suffix} { right: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}b-#{$name}#{$psuedo-suffix} { bottom: #{$space}; }
+				.#{$bp-prefix}#{$psuedo-prefix}l-#{$name}#{$psuedo-suffix} { left: #{$space}; }
+
+				// Width
+				.#{$bp-prefix}#{$psuedo-prefix}w-#{$name}#{$psuedo-suffix} { width: #{$space}; }
+
+				// Height
+				.#{$bp-prefix}#{$psuedo-prefix}h-#{$name}#{$psuedo-suffix} { height: #{$space}; }
+
+				// Translate
+				.#{$bp-prefix}#{$psuedo-prefix}translatex-#{$name}#{$psuedo-suffix} { transform: translateX(#{$space}); }
+        .#{$bp-prefix}#{$psuedo-prefix}translatey-#{$name}#{$psuedo-suffix} { transform: translateY(#{$space}); }
+        .#{$bp-prefix}#{$psuedo-prefix}translatexy-#{$name}#{$psuedo-suffix} { transform: translate(#{$space}, #{$space}); }
+
+        .#{$bp-prefix}#{$psuedo-prefix}translatex-neg-#{$name}#{$psuedo-suffix} { transform: translateX(#{"-"}#{$space}); }
+        .#{$bp-prefix}#{$psuedo-prefix}translatey-neg-#{$name}#{$psuedo-suffix} { transform: translateY(#{"-"}#{$space}); }
+        .#{$bp-prefix}#{$psuedo-prefix}translatexy-neg-#{$name}#{$psuedo-suffix} { transform: translate(#{"-"}#{$space}, #{"-"}#{$space}); }
+			}
+		}
+
+		// Styles here work only with breakpoint modifiers
+
+		// Clearfix
+		.#{$bp-prefix}clearfix:after,
+		.#{$bp-prefix}group:after {
+			visibility: hidden;
+			display: block;
+			content: "";
+			clear: both;
+			height: 0;
+		}
+	}
+}
+
+// Styles here do NOT work with any modifiers
+
+// Mouse "hand" pointer
+.pointer {
+	cursor: pointer;
+}
+
+.help-cursor {
+	cursor: help;
+}

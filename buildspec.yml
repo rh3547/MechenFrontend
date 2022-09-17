@@ -1,0 +1,21 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - npm install -g @angular/cli@11.2.10
+    runtime-versions:
+      nodejs: 12
+  pre_build:
+    commands:
+      - echo PreBuild started on `date`
+  build:
+    commands:
+      - echo Build started on `date`
+      - npm install
+      - node --max_old_space_size=6144 node_modules/@angular/cli/bin/ng build -c=$EnvironmentName
+      - npm run replace_index_modules
+  post_build:
+    commands:
+      - echo Publish started on `date`
+      - aws s3 cp ./dist s3://$ClientBucketName --recursive
+      - aws cloudfront create-invalidation --distribution-id $CloudFrontId --paths "/*"

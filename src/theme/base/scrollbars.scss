@@ -1,0 +1,13 @@
+/**
+ * Scrollbars styles
+ */
+
+.scrollbar::-webkit-scrollbar {
+	width: 6px;
+	background-color: map-get($colors, medium-3);
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+	background-color: map-get($colors, medium-2);
+	border-radius: 50px;
+}

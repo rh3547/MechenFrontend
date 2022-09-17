@@ -1,0 +1,131 @@
+/**
+ * Font Imports / Vars
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Raleway:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;800&family=Roboto:ital@0;1&display=swap');
+/*
+	font-family: 'Poppins', sans-serif;
+	- Headings
+	- Body
+	- Buttons
+
+	font-family: 'Raleway', sans-serif;
+	- Nav
+	- Labels
+
+	font-family: 'Kanit', sans-serif;
+	- Card Name (800)
+	- Card Stat Text (500)
+
+	font-family: 'Roboto', sans-serif;
+	- Card Ability Text (400)
+	- Card Flavor Text (400 italic)
+*/
+
+$fonts: (
+	brand-family: 'Poppins',
+	brand-size: 34px,
+	brand-weight: 700,
+	brand-transform: none,
+
+	heading-family: 'Poppins',
+
+	h1-family: 'Poppins',
+	h1-size: 28px,
+	h1-weight: 700,
+	h1-transform: none,
+
+	h2-family: 'Poppins',
+	h2-size: 24px,
+	h2-weight: 700,
+	h2-transform: none,
+
+	h3-family: 'Poppins',
+	h3-size: 18px,
+	h3-weight: 700,
+	h3-transform: none,
+
+	h4-family: 'Poppins',
+	h4-size: 16px,
+	h4-weight: 700,
+	h4-transform: none,
+
+	h5-family: 'Poppins',
+	h5-size: 14px,
+	h5-weight: 700,
+	h5-transform: none,
+
+	h6-family: 'Poppins',
+	h6-size: 12px,
+	h6-weight: 700,
+	h6-transform: none,
+
+	body-family: 'Poppins',
+	body-size: 16px,
+	body-weight: 400,
+	body-transform: none,
+
+	body-large-family: 'Poppins',
+	body-large-size: 20px,
+	body-large-weight: 400,
+	body-large-transform: none,
+
+	button-family: 'Poppins',
+	button-size: 16px,
+	button-weight: 500,
+	button-transform: none,
+
+	button-large-family: 'Poppins',
+	button-large-size: 24px,
+	button-large-weight: 500,
+	button-large-transform: none,
+
+	label-family: 'Raleway',
+	label-size: 14px,
+	label-weight: 600,
+	label-transform: none,
+
+	nav-family: 'Raleway',
+	nav-size: 16px,
+	nav-weight: 400,
+	nav-transform: none,
+
+	card-name-family: 'Kanit',
+	card-name-size: 28px,
+	card-name-weight: 800,
+	card-name-transform: none,
+
+	card-stats-family: 'Kanit',
+	card-stats-size: 17px,
+	card-stats-weight: 500,
+	card-stats-transform: none,
+
+	card-body-family: 'Roboto',
+	card-body-size: 15px,
+	card-body-weight: 400,
+	card-body-transform: none,
+);
+
+$font-sizes: (
+	default: 1em,
+	xs: .5em,
+	sm: .6em,
+	md: .75em,
+	lg: 1.2em,
+	xl: 1.4em
+);
+
+$font-weights: (
+	"normal",
+	"bold",
+	"100",
+	"200",
+	"300",
+	"400",
+	"500",
+	"600",
+	"700",
+	"800",
+	"900"
+);

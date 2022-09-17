@@ -1,0 +1,90 @@
+<div class="card-preview">
+	<div class="card-content">
+
+		<div class="card-type-icon" *ngIf="card.type">
+			<img *ngIf="card.type == 'Core'" alt="Core" title="Core" class="type-icon" src="assets/images/icons/core.png">
+			<img *ngIf="card.type == 'Leg'" alt="Leg" title="Leg" class="type-icon" src="assets/images/icons/leg.png">
+			<img *ngIf="card.type == 'Arm'" alt="Arm" title="Arm" class="type-icon" src="assets/images/icons/arm.png">
+			<img *ngIf="card.type == 'Head'" alt="Head" title="Head" class="type-icon" src="assets/images/icons/head.png">
+			<img *ngIf="card.type == 'Hardpoint'" alt="Hardpoint" title="Hardpoint" class="type-icon" src="assets/images/icons/hardpoint.png">
+			<img *ngIf="card.type == 'Mod'" alt="Mod" title="Mod" class="type-icon" src="assets/images/icons/mod.png">
+		</div>
+
+		<div class="card-slots" *ngIf="cardVersion.legSlots || cardVersion.armSlots || cardVersion.headSlots || cardVersion.hardpointSlots || cardVersion.modSlots">
+			<div class="card-slots-wrapper">
+				<div class="card-slot" *ngIf="cardVersion.legSlots" title="Leg Slots">
+					<img class="slot-icon" src="assets/images/icons/leg.png" alt="Leg">
+					<span class="slot-text font-card-stats">x {{ cardVersion.legSlots }}</span>
+				</div>
+				<div class="card-slot" *ngIf="cardVersion.armSlots" title="Arm Slots">
+					<img class="slot-icon" src="assets/images/icons/arm.png" alt="Arm">
+					<span class="slot-text font-card-stats">x {{ cardVersion.armSlots }}</span>
+				</div>
+				<div class="card-slot" *ngIf="cardVersion.headSlots" title="Head Slots">
+					<img class="slot-icon" src="assets/images/icons/head.png" alt="Head">
+					<span class="slot-text font-card-stats">x {{ cardVersion.headSlots }}</span>
+				</div>
+				<div class="card-slot" *ngIf="cardVersion.hardpointSlots" title="Hardpoint Slots">
+					<img class="slot-icon" src="assets/images/icons/hardpoint.png" alt="Hardpoint">
+					<span class="slot-text font-card-stats">x {{ cardVersion.hardpointSlots }}</span>
+				</div>
+				<div class="card-slot" *ngIf="cardVersion.modSlots" title="Mod Slots">
+					<img class="slot-icon" src="assets/images/icons/mod.png" alt="Mod">
+					<span class="slot-text font-card-stats">x {{ cardVersion.modSlots }}</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="card-slots-wrapper" *ngIf="cardVersion.cooldown || cardVersion.minRange || cardVersion.maxRange || cardVersion.direction || cardVersion.areaOfEffect">
+			<div class="card-slot cooldown-slot" *ngIf="cardVersion.cooldown" title="{{ cardVersion.cooldown }} Cooldown">
+				<img class="slot-icon" src="assets/images/icons/cooldown.png" alt="Cooldown">
+				<span class="slot-text font-card-stats">&nbsp;{{ cardVersion.cooldown }}</span>
+			</div>
+			<div class="card-slot range-slot" *ngIf="cardVersion.minRange || cardVersion.maxRange" title="{{ cardVersion.minRange ? cardVersion.minRange : 'No' }} Min Range / {{ cardVersion.maxRange ? cardVersion.maxRange : 'No' }} Max Range">
+				<img class="slot-icon" src="assets/images/icons/range.png" alt="Range">
+				<span class="slot-text font-card-stats">
+					{{ cardVersion.minRange ? cardVersion.minRange : "" }}
+					<img class="infinite-range-icon" *ngIf="!cardVersion.minRange" src="assets/images/icons/infinite_range.png" alt="None">
+					/
+					{{ cardVersion.maxRange ? cardVersion.maxRange : "" }}
+					<img class="infinite-range-icon" *ngIf="!cardVersion.maxRange" src="assets/images/icons/infinite_range.png" alt="None">
+				</span>
+			</div>
+			<div class="card-slot direction-stat" *ngIf="cardVersion.direction" title="{{ cardVersion.direction }} Direction">
+				<img class="direction-icon" src="assets/images/icons/direction_{{ cardVersion.direction.toLowerCase() }}.png" alt="Direction">
+			</div>
+			<div class="card-slot aoe-stat" *ngIf="cardVersion.areaOfEffect" title="{{ cardVersion.areaOfEffect == 'Single' ? (cardVersion.areaOfEffect + ' Target') : (cardVersion.areaOfEffect + ' Area of Effect')}}">
+				<img class="aoe-icon" src="assets/images/icons/aoe_{{ cardVersion.areaOfEffect.toLowerCase() }}.png" alt="Area of Effect">
+			</div>
+		</div>
+
+		<p class="font-card-body card-type" *ngIf="card.type || card.subtype">{{ card.type }} {{ card.subtype ? (" - " + card.subtype) : "" }}</p>
+
+		<h2 class="font-card-name card-name"*ngIf="card.name">{{ card.name }}</h2>
+
+		<p class="font-card-body card-ability-text" *ngIf="cardVersion.abilityText" [innerHTML]="globalVars.parseAbilityText(cardVersion.abilityText)"></p>
+
+		<div class="card-stats-wrapper" *ngIf="cardVersion.coreHealth || cardVersion.armor || cardVersion.agility || cardVersion.energy">
+			<div class="card-stat" *ngIf="cardVersion.coreHealth">
+				<img class="stat-icon" src="assets/images/icons/corehealth.png" alt="Core Health" title="Core Health">
+				<span class="stat-text font-card-stats">{{ cardVersion.coreHealth }}</span>
+			</div>
+			<div class="card-stat" *ngIf="cardVersion.armor">
+				<img class="stat-icon" src="assets/images/icons/armor.png" alt="Armor" title="Armor">
+				<span class="stat-text font-card-stats">{{ cardVersion.armor }}</span>
+			</div>
+			<div class="card-stat" *ngIf="cardVersion.agility">
+				<img class="stat-icon" src="assets/images/icons/agility.png" alt="Agility" title="Agility">
+				<span class="stat-text font-card-stats">{{ cardVersion.agility }}</span>
+			</div>
+			<div class="card-stat" *ngIf="cardVersion.energy">
+				<img class="stat-icon" src="assets/images/icons/energy.png" alt="Energy" title="Energy">
+				<span class="stat-text font-card-stats">{{ cardVersion.energy }}</span>
+			</div>
+		</div>
+
+		<img *ngIf="card?.rarity" class="card-rarity-border" src="assets/images/card-graphics/{{ card?.rarity?.toLowerCase().replace(' ', '') }}.png">
+
+	</div>
+	<img class="card-art" src="{{ cardVersion.imageUrl ? cardVersion.imageUrl : placeholderCardArtUrl }}">
+</div>

@@ -1,0 +1,473 @@
+/**
+ * Global Buttons
+ */
+//
+// Nucleus Styles
+// Version: 1.2.0
+//
+// DON'T CHANGE THIS FILE
+// Add all custom styles to global.scss
+
+
+
+//=============================================================================== [ Button Styles ]
+//
+/*
+---
+name: Buttons
+category: Components
+---
+
+Theme buttons can be used with `<a>` or `<button>` elements as long as they have the theme button class.
+All buttons will use the theme's primary color by default. To change the button's color, use the styleguide color classes.
+
+Types of buttons:
+- Default: Standard button with colored background and contrast text
+- Ghost: A button with no background, but a colored outline and text
+- Inline: A smaller button that is intended to be placed inline with other buttons
+- Thin: A thinner (in height) button with the same general styles as the default button
+
+```types.html
+<button class="nuc-btn">Default</button>
+<button class="nuc-btn ghost">Ghost</button>
+<button class="nuc-btn inline">Inline</button>
+<button class="nuc-btn thin">Thin</button>
+```
+*/
+button {
+	cursor: pointer;
+}
+
+.btn,
+.theme-btn,
+.theme-button,
+button {
+	min-width: 100px;
+	height: 40px;
+	border-radius: 5px;
+	border: none;
+	// border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+	// border-right: 0px solid rgba(0, 0, 0, 0.25);
+	cursor: pointer;
+	display: block;
+	position: relative;
+	padding: 4px 20px;
+
+	@include font-button;
+
+	background-color: map-get($colors, primary);
+	color: map-get($colors, primary-contrast);
+
+	transition: background .2s;
+
+	span {
+		@include font-button;
+		color: map-get($colors, primary-contrast);
+	}
+
+	&.long {
+		min-width: 300px;
+	}
+
+	&.lg {
+		padding: 24px 55px;
+		height: auto;
+	}
+
+	&.ghost {
+		background: none;
+		--background: none;
+		border: 2px solid map-get($colors, primary);
+		color: map-get($colors, contrast);
+		padding: 8px 16px;
+		height: auto;
+
+		span {
+			@include font-button;
+			color: map-get($colors, contrast);
+		}
+
+		&:hover {
+			background: map-get($colors, primary);
+			transition: background .2s;
+		}
+
+		&:focus {
+			background: map-get($colors, primary);
+			transition: background .2s;
+		}
+	}
+
+	&.ghost-lg {
+		background: none;
+		--background: none;
+		border: 2px solid map-get($colors, primary);
+		color: map-get($colors, contrast);
+		padding: 24px 55px;
+		height: auto;
+
+		span {
+			@include font-button;
+			color: map-get($colors, contrast);
+		}
+
+		&:hover {
+			background: map-get($colors, primary);
+			transition: background .2s;
+		}
+
+		&:focus {
+			background: map-get($colors, primary);
+			transition: background .2s;
+		}
+	}
+
+	&.inline {
+		min-width: 120px;
+		height: 30px;
+		display: inline-block;
+		font-size: 14px;
+	}
+
+	&.thin {
+		height: 35px;
+
+		.button-prepend {
+			line-height: 35px;
+		}
+	}
+
+	&.prepended {
+		text-align: left;
+	}
+
+	&.round {
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
+		border-radius: 50%;
+
+		i {
+			line-height: 24px;
+			font-size: 11px;
+		}
+	}
+
+	i.btn-icon {
+		margin-right: 10px;
+		font-size: 14px;
+	}
+
+	&.thin-mini {
+		height: 25px;
+		min-width: 75px;
+	}
+
+	&.grid {
+		min-width: 0;
+		width: 100%;
+		padding-top: 2px;
+	}
+
+	&.input {
+		min-width: 40px;
+		height: 40px;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		border: none;
+
+		i {
+			margin: auto;
+		}
+	}
+
+	&.square {
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
+		border-radius: 5px;
+
+		i {
+			line-height: 24px;
+			font-size: 11px;
+		}
+	}
+}
+
+button .button-prepend {
+	display: inline-block;
+	height: 100%;
+	line-height: 40px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+button.bg-primary {
+	background-color: map-get($colors, primary) !important;
+	background: map-get($colors, primary) !important;
+}
+
+button.bg-secondary {
+	background-color: map-get($colors, secondary) !important;
+	background: map-get($colors, secondary) !important;
+}
+
+button.bg-primary:hover,
+button.bg-primary:hover {
+	background-color: map-get($colors, primary-tint) !important;
+}
+
+button.bg-secondary:hover,
+button.bg-secondary:hover {
+	background-color: map-get($colors, secondary-tint) !important;
+}
+
+button.bg-accent:hover,
+button.bg-accent:hover {
+	background-color: map-get($colors, accent-tint) !important;
+}
+
+button.bg-danger:hover,
+button.bg-danger:hover {
+	background-color: map-get($colors, danger-tint) !important;
+}
+
+button.bg-warning:hover,
+button.bg-warning:hover {
+	background-color: map-get($colors, warning-tint) !important;
+}
+
+button.bg-success:hover,
+button.bg-success:hover {
+	background-color: map-get($colors, success-tint) !important;
+}
+
+button.bg-medium-3:hover,
+button.bg-medium-3:hover {
+	background-color: #e8e8e8 !important;
+}
+
+button:disabled {
+	opacity: .5;
+	cursor: not-allowed;
+	pointer-events: all !important;
+}
+
+.disabled {
+	opacity: .5;
+	cursor: not-allowed;
+}
+
+.disabled:active {
+	pointer-events: none !important;
+}
+
+//=============================================================================== [ Ionic Toast Styles ]
+//
+ion-toast.success {
+	--background: #{map-get($colors, success)};
+	--color: #{map-get($colors, light)};
+	--ion-font-family: #{map-get($fonts, body-family)};
+}
+
+ion-toast.warning {
+	--background: #{map-get($colors, warning)};
+	--color: #{map-get($colors, dark)};
+	--ion-font-family: #{map-get($fonts, body-family)};
+}
+
+ion-toast.error {
+	--background: #{map-get($colors, danger)};
+	--color: #{map-get($colors, light)};
+	--ion-font-family: #{map-get($fonts, body-family)};
+}
+
+ion-toast.info {
+	--background: #{map-get($colors, lightgrey)};
+	--color: #{map-get($colors, dark)};
+	--ion-font-family: #{map-get($fonts, body-family)};
+}
+
+
+
+//=============================================================================== [ Ionic Alert Styles ]
+//
+.alert-wrapper {
+	.alert-head {
+		background-color: map-get($colors, primary);
+
+		h2 {
+			@include font-h2;
+			font-size: 18px;
+
+			color: map-get($colors, light);
+		}
+	}
+
+	.alert-message {
+		@include font-body;
+		color: map-get($colors, dark);
+		padding-top: 20px !important;
+		line-height: 22px;
+	}
+
+	.alert-button-inner {
+		@include font-button;
+		color: map-get($colors, accent);
+	}
+}
+
+//=============================================================================== [ Other Feature Styles ]
+//
+.height-collapse {
+	position: absolute;
+	right: 32px;
+	top: 32px;
+	font-size: 22px;
+	color: map-get($colors, medium-1);
+	cursor: pointer;
+	padding: 4px;
+
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity .2s ease-in-out;
+}
+
+.height-collapsable:hover .height-collapse {
+	opacity: 1;
+	pointer-events: all;
+	transition: opacity .2s ease-in-out;
+}
+
+.not-height-collapsable .height-collapse {
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity .2s ease-in-out;
+}
+
+.height-collapsed .height-collapse {
+	opacity: 1;
+	pointer-events: all;
+	transition: opacity .2s ease-in-out;
+}
+
+.width-collapse-trigger {
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 32px;
+	z-index: 10;
+
+	.width-collapse {
+		position: absolute;
+		right: 0;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		padding-left: 4px;
+		background-color: #eaeaea;
+		color: #404040;
+		border-top-right-radius: 8px;
+		border-bottom-right-radius: 8px;
+		font-size: 14px;
+		overflow: hidden;
+		cursor: pointer;
+
+		width: 0px;
+		opacity: 0;
+		pointer-events: none;
+
+		transition: width .2s ease-in-out, opacity .2s ease-in-out;
+	}
+}
+
+.width-collapsable:hover .width-collapse {
+	width: 16px;
+	opacity: 1;
+	pointer-events: all;
+
+	transition: width .2s ease-in-out, opacity .2s ease-in-out;
+}
+
+.not-width-collapsable .width-collapse {
+	width: 0px;
+	opacity: 0;
+	pointer-events: none;
+
+	transition: width .2s ease-in-out, opacity .2s ease-in-out;
+}
+
+.width-collapsed {
+	overflow: hidden;
+	position: relative;
+	border-radius: 8px;
+}
+
+.width-collapsed::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 15px;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.35);
+	border-radius: 8px;
+}
+
+.width-collapsed .width-collapse {
+	background-color: #dedede;
+	width: 32px;
+	padding-left: 12px;
+	font-size: 18px;
+	opacity: 1;
+	pointer-events: all;
+	border-left: 2px solid #757575;
+
+	transition: width .2s ease-in-out, opacity .2s ease-in-out;
+}
+
+.width-collapsed-underlay {
+	width: 2000px;
+}
+
+.toolbar-btn {
+	background-color: map-get($colors, light);
+}
+
+.toolbar-icon {
+	color: map-get($colors, primary);
+	font-size: 18px;
+}
+
+.toolbar-option:nth-of-type(2) {
+
+	.highlight-icon {
+		color: map-get($colors, accent);
+	}
+}
+
+.button-icon-left {
+	i {
+		padding-right: map-get($pixelSpacings, sm);
+		margin-right: map-get($pixelSpacings, sm);
+		border-right: 1px solid map-get($colors, medium-3);
+	}
+}
+
+.button-icon-right {
+	i {
+		padding-left: map-get($pixelSpacings, sm);
+		margin-left: map-get($pixelSpacings, sm);
+		border-left: 1px solid map-get($colors, medium-3);
+	}
+}
+
+.calendar-picker-icon {
+  position: absolute !important;
+  right: 12px !important;
+  top: 12px !important;
+  cursor: pointer !important;
+	left: unset !important;
+}
+

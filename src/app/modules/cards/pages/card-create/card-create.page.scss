@@ -1,0 +1,72 @@
+@import '../../../../../theme/styles.scss';
+
+card-preview {
+	margin-right: 64px;
+}
+
+.main-content {
+	width: calc(100vw - 128px);
+	z-index: 99;
+	position: absolute;
+}
+
+.card-create-wrapper {
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	justify-content: center;
+}
+
+.card-form {
+	min-width: 700px;
+  max-width: 700px;
+}
+
+.field-label {
+	font-size: 13px;
+	opacity: .6;
+}
+
+.form-row {
+	display: flex;
+
+	&:not(:last-child) {
+		margin-bottom: 24px;
+	}
+}
+
+.form-field {
+	width: 100%;
+}
+
+.form-field:not(:last-child) {
+	margin-right: 16px;
+}
+
+.slot-fields-wrapper {
+	display: flex;
+
+	.slot-field {
+		display: flex;
+		flex: 1;
+
+		&:not(:last-child) {
+			margin-right: 16px;
+		}
+
+		&.dummy-field {
+			opacity: 0;
+			pointer-events: none;
+		}
+
+		.slot-icon {
+			height: 42px;
+			margin-right: 8px;
+		}
+
+		.slot-input {
+			flex: 1;
+		}
+	}
+}

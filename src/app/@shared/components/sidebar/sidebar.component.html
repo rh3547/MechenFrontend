@@ -1,0 +1,58 @@
+<!-- Sidebar Menu -->
+<div class="sidebar-menu shadow">
+  <div class="sb-header">
+    <img src="/assets/images/logos/logo-thumb-white.png" class="sidebar-logo w-100%">
+  </div>
+  <div class="sb-body">
+    <div class="sb-nav">
+      <div class="sb-nav-item pointer" [routerLink]="" routerLinkActive=" active">
+        <i class="fas fa-users"></i>
+        <p>Manage Users</p>
+      </div>
+    </div>
+  </div>
+  <div class="sb-footer">
+    <div ngbDropdown container="body" placement="right">
+      <div class="user-circle pointer" id="userMenuToggle" ngbDropdownToggle>
+        <i class="fas fa-user"></i>
+      </div>
+      <div ngbDropdownMenu aria-labelledby="userMenuToggle">
+        <button class="logout-btn" ngbDropdownItem (click)="logout()">Logout</button>
+      </div>
+    </div>
+    <p class="logged-label">logged in as</p>
+    <p class="logged-username">{{ userService.getCurrentUser()?.username || "John Doe" }}</p>
+  </div>
+</div>
+<!-- End Sidebar Menu -->
+
+<!-- Mobile Menu -->
+<div class="mobile-menu shadow">
+  <div class="mobile-logo">
+    <img src="/assets/images/logos/logo-thumb-white.png">
+  </div>
+  <div class="mobile-nav">
+    <div ngbDropdown container="body" placement="bottom-right">
+      <div class="menu-circle pointer" id="mobileMenuToggle" ngbDropdownToggle>
+        <i class="fas fa-bars menu-icon"></i>
+      </div>
+      <div ngbDropdownMenu aria-labelledby="mobileMenuToggle">
+        <button ngbDropdownItem routerLink="/template">Template</button>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-user-menu">
+    <div ngbDropdown container="body" placement="bottom-right">
+      <div class="user-circle pointer" id="mobileUserMenuToggle" ngbDropdownToggle>
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="mobile-user-dropdown" ngbDropdownMenu aria-labelledby="mobileUserMenuToggle">
+        <p class="logged-label">logged in as</p>
+        <p class="logged-username">{{ userService.getCurrentUser()?.username || "John Doe" }}</p>
+        <div class="logged-sep"></div>
+        <button ngbDropdownItem (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Mobile Menu -->

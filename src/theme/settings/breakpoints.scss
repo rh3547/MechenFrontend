@@ -1,0 +1,29 @@
+/**
+ * Common / Standard Media Breakpoint Vars
+ */
+
+$bp-xxs: 320px; 						// iPhone 5
+$bp-xxs-standard: 360px; 		// SmartPhone
+$bp-xs: 0px; 								// Bootstrap v4
+$bp-sm: 576px; 							// Bootstrap v4
+$bp-md: 768px; 							// Bootstrap v4
+$bp-lg: 992px; 							// Bootstrap v4
+$bp-xl: 1200px; 						// Bootstrap v4
+$bp-tablet: 1280px;
+$bp-laptop: 1366px;
+$bp-laptop-xl: 1440px;
+$bp-monitor: 1600px;
+$bp-monitor-xl: 1920px;
+
+// Utility classes will be generated from this list. You can add additional breakpoints here, but adding too many may affect performance
+$breakpoints: (
+	none: 100000px, // Uncomment for desktop-first, comment out for mobile-first
+	xxxl: $bp-monitor-xl,
+	xxl: $bp-laptop-xl,
+	xl: $bp-xl,
+	md: $bp-md,
+	sm: $bp-sm,
+	lg: $bp-lg,
+	xs: $bp-xs,
+	// none: 0px, // Uncomment for mobile-first, comment out for desktop-first
+);

@@ -1,0 +1,132 @@
+//=============================================================================== [ Grid Component Override Styles ]
+//
+.ngn-grid-cell-html {
+	font-family: 'Raleway', sans-serif;
+	color: map-get($colors, dark);
+	font-size: 14px;
+
+	.harmonic-part-link {
+		text-decoration: underline;
+		font-weight: bold;
+		color: map-get($colors, secondary);
+	}
+}
+
+.ngn-grid {
+	&.main {
+		border: none !important;
+
+		.ngn-grid-row {
+			&.ngn-grid-header-row {
+				background-color: map-get($colors, primary-light) !important;
+				border-bottom: none;
+				border-top-left-radius: 20px;
+				border-top-right-radius: 20px;
+
+				.ngn-grid-header-cell {
+					margin-right: map-get($pixelSpacings, sm);
+				}
+			}
+		}
+
+		.ngn-grid-row {
+			padding-right: map-get($pixelSpacings, lg);
+			padding-left: map-get($pixelSpacings, lg);
+
+			.ngn-grid-cell {
+				border-bottom: 1px solid rgba(0,0,0,.04);
+    		border-radius: 0px;
+				padding: 12px;
+				padding-right: 16px;
+				padding-left: 0;
+
+				&.ngn-grid-header-cell {
+					border-bottom: none;
+				}
+			}
+		}
+
+		.ngn-grid-row:last-child {
+			border-bottom-right-radius: 0px;
+			border-bottom-left-radius: 0px;
+
+			.ngn-grid-cell:first-child {
+				border-bottom-left-radius: 0px !important;
+			}
+
+			.ngn-grid-cell:last-child {
+				border-bottom-right-radius: 0px !important;
+			}
+		}
+
+		.ngn-grid-row:nth-child(even):not(.ngn-grid-header-row) {
+			background-color: white;
+		}
+
+		span, p {
+			font-size: 16px;
+		}
+
+		.ngn-grid-header-label {
+			font-family: 'Noto Sans';
+			font-size: 14px;
+			font-weight: bold;
+		}
+	}
+
+	.grid-btn {
+		padding: 0;
+    min-width: 50px;
+    height: auto;
+		border-radius: 7px;
+		font-size: 13px;
+		font-family: 'Noto Sans';
+		padding-right: 12px;
+		padding-left: 12px;
+		padding-top: 4px;
+		padding-bottom: 4px;
+	}
+}
+
+.square-grid {
+	.ngn-grid.main {
+		.ngn-grid-row {
+			&.ngn-grid-header-row {
+				border-top-left-radius: 0px !important;
+				border-top-right-radius: 0px !important;
+			}
+		}
+	}
+}
+
+.rounded-bottom-grid {
+	.ngn-grid-row:last-child {
+		border-bottom-left-radius: 20px !important;
+		border-bottom-right-radius: 20px !important;
+
+		.ngn-grid-cell {
+			border-bottom: 0px;
+		}
+	}
+}
+
+.ngn-paging {
+	padding-left: map-get($pixelSpacings, md);
+	padding-right: map-get($pixelSpacings, md);
+
+	.ngn-paging-label {
+		p {
+			font-size: 14px;
+		}
+	}
+
+	.ngn-paging-buttons {
+		.ngn-paging-button {
+			&.ngn-paging-number {
+				&.active {
+					background-color: map-get($colors, primary) !important;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,234 @@
+<div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;" class="bg-background"></div>
+<div class="main-content">
+  <div class="content-wrapper">
+		<nuc-pageheader
+			titleContent="<h1><span class='fg-primary'>Mech</span> Card Game</h1>"
+			subtitleContent="<h3 class='fw-normal fg-contrast-muted'>Create Card</h3>">
+		</nuc-pageheader>
+		<div class="p-relative mb-xl pt-xxl">
+			<div class="card-create-wrapper p-lg mt-xl">
+
+				<card-preview [card]="cardPreview" [cardVersion]="cardVersionPreview"></card-preview>
+
+				<form class="fg card-form" [formGroup]="formGroup">
+
+					<div class="form-row">
+						<div class="form-field flex-1">
+							<p class="field-label">NAME</p>
+							<input type="text" formControlName="name">
+						</div>
+						<div class="form-field flex-1">
+							<p class="field-label">CARD ART URL</p>
+							<input type="text" formControlName="imageUrl">
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-field flex-1">
+							<p class="field-label">TYPE</p>
+							<ngn-select
+								[options]="cardTypeOptions"
+								[allowMultiple]="false"
+								[useModelValues]="true"
+								[defaultControlText]="''"
+								formControlName="type">
+							</ngn-select>
+						</div>
+						<div class="form-field flex-1">
+							<p class="field-label">SUBTYPE</p>
+							<input type="text" formControlName="subtype">
+						</div>
+						<div class="form-field flex-1">
+							<p class="field-label">RARITY</p>
+							<ngn-select
+								[options]="cardRarityOptions"
+								[allowMultiple]="false"
+								[useModelValues]="true"
+								[defaultControlText]="''"
+								formControlName="rarity">
+							</ngn-select>
+						</div>
+					</div>
+
+					<div class="form-row" *ngIf="formGroup.controls.type.value == 'Core'">
+						<div class="form-field flex-1">
+							<p class="field-label">SLOTS</p>
+							<div class="slot-fields-wrapper">
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/leg.png" alt="Leg" title="Leg Slots">
+									<input type="number" class="slot-input" formControlName="legSlots">
+								</div>
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/arm.png" alt="Arm"  title="Arm Slots">
+									<input type="number" class="slot-input" formControlName="armSlots">
+								</div>
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/head.png" alt="Head"  title="Head Slots">
+									<input type="number" class="slot-input" formControlName="headSlots">
+								</div>
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/hardpoint.png" alt="Hardpoint"  title="Hardpoint Slots">
+									<input type="number" class="slot-input" formControlName="hardpointSlots">
+								</div>
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/mod.png" alt="Mod"  title="Mod Slots">
+									<input type="number" class="slot-input" formControlName="modSlots">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row" *ngIf="formGroup.controls.type.value && formGroup.controls.type.value != 'Core'">
+						<div class="form-field flex-1">
+							<p class="field-label">SLOTS</p>
+							<div class="slot-fields-wrapper">
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/hardpoint.png" alt="Hardpoint"  title="Hardpoint Slots">
+									<input type="number" class="slot-input" formControlName="hardpointSlots">
+								</div>
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/mod.png" alt="Mod"  title="Mod Slots">
+									<input type="number" class="slot-input" formControlName="modSlots">
+								</div>
+								<div class="slot-field dummy-field">
+									<img class="slot-icon" src="assets/images/icons/hardpoint.png">
+									<input type="number" class="slot-input">
+								</div>
+								<div class="slot-field dummy-field">
+									<img class="slot-icon" src="assets/images/icons/hardpoint.png">
+									<input type="number" class="slot-input">
+								</div>
+								<div class="slot-field dummy-field">
+									<img class="slot-icon" src="assets/images/icons/hardpoint.png">
+									<input type="number" class="slot-input">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-field flex-1">
+							<p class="field-label">ABILITY TEXT</p>
+							<textarea type="text" formControlName="abilityText"></textarea>
+						</div>
+					</div>
+
+					<div class="form-row" *ngIf="formGroup.controls.type.value == 'Hardpoint' || formGroup.controls.type.value == 'Mod'">
+						<div class="form-field flex-1">
+							<p class="field-label">ABILITY STATS</p>
+							<div class="slot-fields-wrapper">
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/cooldown.png" alt="Cooldown" title="Cooldown">
+									<input type="number" class="slot-input" formControlName="cooldown">
+								</div>
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/min_range.png" alt="Min Range" title="Minimum Range">
+									<input type="number" class="slot-input" formControlName="minRange">
+								</div>
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/max_range.png" alt="Max Range" title="Maximum Range">
+									<input type="number" class="slot-input" formControlName="maxRange">
+								</div>
+								<div class="slot-field dummy-field">
+									<img class="slot-icon" src="assets/images/icons/hardpoint.png">
+									<input type="number" class="slot-input">
+								</div>
+								<div class="slot-field dummy-field">
+									<img class="slot-icon" src="assets/images/icons/hardpoint.png">
+									<input type="number" class="slot-input">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row" *ngIf="formGroup.controls.type.value == 'Hardpoint' || formGroup.controls.type.value == 'Mod'">
+						<div class="form-field flex-1">
+							<div class="slot-fields-wrapper">
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/direction_lateral.png" alt="Direction" title="Direction">
+									<ngn-select
+										[options]="cardDirectionOptions"
+										[allowMultiple]="false"
+										[useModelValues]="true"
+										[defaultControlText]="''"
+										[allowSingleDeselection]="true"
+										formControlName="direction"
+										class="slot-input">
+									</ngn-select>
+								</div>
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/aoe_radial.png" alt="Area of Effect" title="Area of Effect">
+									<ngn-select
+										[options]="cardAreaOfEffectOptions"
+										[allowMultiple]="false"
+										[useModelValues]="true"
+										[defaultControlText]="''"
+										[allowSingleDeselection]="true"
+										formControlName="areaOfEffect"
+										class="slot-input">
+									</ngn-select>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row" *ngIf="formGroup.controls.type.value == 'Core'">
+						<div class="form-field flex-1">
+							<p class="field-label">CORE STATS</p>
+							<div class="slot-fields-wrapper">
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/corehealth.png" alt="Core Health"  title="Core Health">
+									<input type="number" class="slot-input" formControlName="coreHealth">
+								</div>
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/armor.png" alt="Armor" title="Armor">
+									<input type="number" class="slot-input" formControlName="armor">
+								</div>
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/agility.png" alt="Agility" title="Agility">
+									<input type="number" class="slot-input" formControlName="agility">
+								</div>
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/energy.png" alt="Energy"  title="Energy">
+									<input type="number" class="slot-input" formControlName="energy">
+								</div>
+								<div class="slot-field dummy-field">
+									<img class="slot-icon" src="assets/images/icons/hardpoint.png">
+									<input type="number" class="slot-input">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row" *ngIf="formGroup.controls.type.value == 'Leg' || formGroup.controls.type.value == 'Arm' || formGroup.controls.type.value == 'Head'">
+						<div class="form-field flex-1">
+							<p class="field-label">PART STATS</p>
+							<div class="slot-fields-wrapper">
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/armor.png" alt="Armor" title="Armor">
+									<input type="number" class="slot-input" formControlName="armor">
+								</div>
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/agility.png" alt="Agility" title="Agility">
+									<input type="number" class="slot-input" formControlName="agility">
+								</div>
+								<div class="slot-field">
+									<img class="slot-icon" src="assets/images/icons/energy.png" alt="Energy"  title="Energy">
+									<input type="number" class="slot-input" formControlName="energy">
+								</div>
+								<div class="slot-field dummy-field">
+									<img class="slot-icon" src="assets/images/icons/hardpoint.png">
+									<input type="number" class="slot-input">
+								</div>
+								<div class="slot-field dummy-field">
+									<img class="slot-icon" src="assets/images/icons/hardpoint.png">
+									<input type="number" class="slot-input">
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</form>
+		</div>
+	</div>
+</div>

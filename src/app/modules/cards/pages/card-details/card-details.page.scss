@@ -1,0 +1,55 @@
+@import '../../../../../theme/styles.scss';
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.main-content {
+	width: calc(100vw - 128px);
+	z-index: 99;
+	position: absolute;
+}
+
+.card-detail-wrapper {
+
+	margin-top: 16px;
+	border-radius: 5px;
+}
+
+.welcome {
+	margin-left: 200px;
+	margin-top: 28vh;
+	width: 55vw;
+
+	h1 {
+		font-size: 50px;
+	}
+
+	p {
+		width: 58%;
+	}
+}
+
+.title {
+	position: sticky;
+  top: 111px;
+}
+
+.title-line {
+	width: 50px;
+	height: 2px;
+	background-color: map-get($colors, primary);
+	margin-bottom: 16px;
+}
+
+.skills {
+	margin-top: 100vh;
+	width: 100%;
+}
+
+.section {
+	margin-top: 64px;
+	width: 100%;
+}

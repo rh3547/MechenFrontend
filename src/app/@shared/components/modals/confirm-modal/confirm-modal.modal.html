@@ -1,0 +1,15 @@
+<div class="nuc-modal-header {{ headerClass }}">
+	<i *ngIf="iconClass" class="fas fa-question d-inline-block fg-white mr-md"></i>
+  <h4 class="modal-title m-0px d-inline-block">{{ title }}</h4>
+</div>
+
+<div class="nuc-modal-body nuc-scrollbar bg-light {{ bodyClass }} pb-0">
+  <p class="message {{ messageClass }}">
+    {{ message }}
+  </p>
+	<hr class="bg-medium-3 pr-md pl-md mt-0 mb-0">
+</div>
+<div class="nuc-modal-footer nuc-button-footer bg-light {{ footerClass }}">
+  <button (click)="cancel()" class="{{ cancelBtnClass }}">{{ cancelBtnText }}</button>
+  <button (click)="confirm()" class="{{ confirmBtnClass }}">{{ confirmBtnText }}</button>
+</div>
