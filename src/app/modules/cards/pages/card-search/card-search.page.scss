@@ -11,7 +11,7 @@
 	justify-content: end;
 
 	.toolbar-link {
-		color: map-get($colors, primary);
+		color: map-get($colors, primary) !important;
 	}
 }
 

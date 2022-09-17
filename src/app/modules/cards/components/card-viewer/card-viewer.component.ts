@@ -3,6 +3,8 @@ import { GlobalVars } from '@services';
 import { Card } from '@models';
 import { CardVersion } from '@models/CardVersion.model';
 import { NgnSelectOption } from '@ng-nuc/components';
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
 
 @Component({
 	selector: 'card-viewer',
@@ -64,5 +66,17 @@ export class CardViewerComponent implements OnInit, OnChanges, AfterViewInit {
 				this.compareCardVersion = versionHighlow.previous;
 			}
 		}
+	}
+
+	public downloadImage() {
+		this.globalVars.showProcessingLoader("Preparing download...");
+
+		let _this = this;
+		let node = document.getElementById("card-preview");
+		domtoimage.toBlob(node, { width: 375, height: 525 })
+			.then(function (blob) {
+				saveAs(blob, "card.png");
+				_this.globalVars.hideProcessingLoader();
+			});
 	}
 }

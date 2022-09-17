@@ -51,6 +51,7 @@
     "amazon-cognito-identity-js": "^5.0.6",
     "angular-ui-grid": "^4.10.2",
     "aws-sdk": "^2.906.0",
+    "dom-to-image": "^2.6.0",
     "fast-json-patch": "^3.0.0-1",
     "file-saver": "^2.0.5",
     "jquery": "^3.6.0",

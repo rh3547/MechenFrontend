@@ -462,7 +462,7 @@ ion-card.grid-card {
 
 	.inner {
 		width: 200px;
-		background: white;
+		background: #21212B;
 		border-radius: 8px;
 		position: absolute;
 		left: 50%;
@@ -470,6 +470,8 @@ ion-card.grid-card {
 		transform: translate(-50%, -50%);
 		padding-top: 32px;
 		padding-bottom: 32px;
+		padding-left: 8px;
+		padding-right: 8px;
 
 		.spinner {
 			position: relative;

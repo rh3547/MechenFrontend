@@ -9,6 +9,8 @@ import { Routes, resolveRouteParams, RouteParts } from '@app/app-routes';
 import { Card } from '@models';
 import { NgnSelectOption } from '@ng-nuc/components';
 import { CardVersion } from '@app/@shared/models/CardVersion.model';
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
 
 @Component({
 	selector: 'card-create-page',
@@ -93,5 +95,17 @@ export class CardCreatePage implements OnInit, OnDestroy, AfterViewInit {
 	public onFormValuesChanged(formValues) {
 		this.cardPreview = new Card(formValues);
 		this.cardVersionPreview = new CardVersion(formValues);
+	}
+
+	public downloadImage() {
+		this.globalVars.showProcessingLoader("Preparing download...");
+
+		let _this = this;
+		let node = document.getElementById("card-preview");
+		domtoimage.toBlob(node, { width: 375, height: 525 })
+			.then(function (blob) {
+				saveAs(blob, "card.png");
+				_this.globalVars.hideProcessingLoader();
+			});
 	}
 }
