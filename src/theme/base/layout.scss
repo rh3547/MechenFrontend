@@ -462,7 +462,7 @@ ion-card.grid-card {
 
 	.inner {
 		width: 200px;
-		background: #21212B;
+		background: map-get($colors, background-light);
 		border-radius: 8px;
 		position: absolute;
 		left: 50%;

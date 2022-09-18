@@ -7,15 +7,16 @@
 		</nuc-pageheader>
 		<div class="p-relative mb-xl pt-xxl">
 			<div class="card-create-wrapper p-lg mt-xl">
-
-				<card-preview [card]="cardPreview" [cardVersion]="cardVersionPreview"></card-preview>
+				<div class="mr-xxl">
+					<card-preview [card]="cardPreview" [cardVersion]="cardVersionPreview"></card-preview>
+				</div>
 
 				<form class="fg card-form" [formGroup]="formGroup">
 
 					<div class="form-row">
 						<div class="form-field flex-1">
 							<p class="field-label">NAME</p>
-							<input type="text" formControlName="name">
+							<input type="text" formControlName="name" [ngnValidate]="submitted" [ngnValidateLock]="!submitted">
 						</div>
 						<div class="form-field flex-1">
 							<p class="field-label">CARD ART URL</p>
@@ -31,7 +32,8 @@
 								[allowMultiple]="false"
 								[useModelValues]="true"
 								[defaultControlText]="''"
-								formControlName="type">
+								formControlName="type"
+								[ngnValidate]="submitted" [ngnValidateLock]="!submitted">
 							</ngn-select>
 						</div>
 						<div class="form-field flex-1">
@@ -45,7 +47,8 @@
 								[allowMultiple]="false"
 								[useModelValues]="true"
 								[defaultControlText]="''"
-								formControlName="rarity">
+								formControlName="rarity"
+								[ngnValidate]="submitted" [ngnValidateLock]="!submitted">
 							</ngn-select>
 						</div>
 					</div>
@@ -228,7 +231,11 @@
 						</div>
 					</div>
 
-					<button class="download-btn mb-md" (click)="downloadImage()"><i class="fas fa-download mr-sm"></i>Download Image</button>
+					<div class="button-group mt-xl">
+						<button class="back-btn" *ngIf="editMode" (click)="backToView()"><i class="fas fa-arrow-left mr-sm"></i>Back to View</button>
+						<button class="download-btn" (click)="downloadImage()"><i class="fas fa-download mr-sm"></i>Download</button>
+						<button (click)="saveCard()"><i class="fas fa-save mr-sm"></i>Save Card</button>
+					</div>
 				</form>
 		</div>
 	</div>

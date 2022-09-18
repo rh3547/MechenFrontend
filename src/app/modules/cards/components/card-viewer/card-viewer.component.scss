@@ -42,7 +42,6 @@
 			background: map-get($colors, contrast);
 			margin-top: 4px;
 			margin-bottom: 25px;
-			width: 70%;
 			margin-left: 0;
 			opacity: .2;
 		}
@@ -149,6 +148,14 @@
 
 		button {
 			width: 100%;
+		}
+	}
+
+	.button-group {
+		display: flex;
+
+		button:not(:last-child) {
+			margin-right: 8px;
 		}
 	}
 }

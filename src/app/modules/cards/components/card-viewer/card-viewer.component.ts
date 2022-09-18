@@ -5,6 +5,8 @@ import { CardVersion } from '@models/CardVersion.model';
 import { NgnSelectOption } from '@ng-nuc/components';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
+import { Router } from '@angular/router';
+import { resolveRouteParams, Routes } from '@routes';
 
 @Component({
 	selector: 'card-viewer',
@@ -20,7 +22,8 @@ export class CardViewerComponent implements OnInit, OnChanges, AfterViewInit {
 	public versionOptions: NgnSelectOption[];
 
 	constructor(
-		public globalVars: GlobalVars
+		public globalVars: GlobalVars,
+		private router: Router,
 	) { }
 
 	ngOnInit(): void { }
@@ -29,37 +32,13 @@ export class CardViewerComponent implements OnInit, OnChanges, AfterViewInit {
 
 	ngOnChanges(changes: SimpleChanges) {
 		if (changes.card) {
-
 			if (changes.card?.currentValue?.cardVersions) {
 				this.versionOptions = changes.card.currentValue.cardVersions.map((item) => {
 					return new NgnSelectOption({ name: "Version " + item.version, value: item });
 				});
 			}
 
-			let versionHighlow = changes.card?.currentValue?.cardVersions?.reduce((result, item) => {
-				if (!result) {
-					result = {
-						lowest: item,
-						previous: item,
-						highest: item
-					};
-					return result;
-				}
-
-				if (item.version < result.lowest.version) {
-					result.lowest = item;
-				}
-
-				if (item.version > result.highest.version) {
-					result.highest = item;
-				}
-
-				if (item.version == result.highest.version - 1) {
-					result.previous = item;
-				}
-
-				return result;
-			}, null);
+			let versionHighlow = this.globalVars.findRecentCardVersions(changes.card.currentValue);
 
 			if (versionHighlow) {
 				this.cardVersion = versionHighlow.highest;
@@ -78,5 +57,9 @@ export class CardViewerComponent implements OnInit, OnChanges, AfterViewInit {
 				saveAs(blob, "card.png");
 				_this.globalVars.hideProcessingLoader();
 			});
+	}
+
+	public editCard() {
+		this.router.navigateByUrl(resolveRouteParams(Routes.Cards.CardEdit, { id: this.card.id }));
 	}
 }

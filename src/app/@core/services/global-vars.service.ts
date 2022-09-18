@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Api } from './api.service';
 import { AlertService } from '@ng-nuc/core';
 import { NgnSelectOption } from '@ng-nuc/components';
+import { Card } from '@app/@shared/models';
 
 const END_DATE_RANGE_FILTER = "EndDateRangeFilter";
 const LOW_SEARCH_AMOUNT_THRESHOLD = "LowSearchAmountThreshold";
@@ -87,6 +88,11 @@ export class GlobalVars {
 		new NgnSelectOption({ name: "Cone", value: "Cone" })
 	];
 
+	public abilityKeywords: string[] = [
+		"Shield",
+		"Sustain"
+	];
+
 	constructor(
 		private httpClient: HttpClient,
 		private api: Api,
@@ -147,6 +153,35 @@ export class GlobalVars {
 		})
 	}
 
+	public findRecentCardVersions(card) {
+		let versionHighlow = card?.cardVersions?.reduce((result, item) => {
+			if (!result) {
+				result = {
+					lowest: item,
+					previous: item,
+					highest: item
+				};
+				return result;
+			}
+
+			if (item.version < result.lowest.version) {
+				result.lowest = item;
+			}
+
+			if (item.version > result.highest.version) {
+				result.highest = item;
+			}
+
+			if (item.version == result.highest.version - 1) {
+				result.previous = item;
+			}
+
+			return result;
+		}, null);
+
+		return versionHighlow;
+	}
+
 	public parseAbilityText(text: string) {
 		text = text.replace(/(core)(?=[.,\s])/gm, "<img src='assets/images/icons/core.png' alt='Core' title='Core' class='ability-icon'>");
 		text = text.replace(/(leg)(?=[.,\s])/gm, "<img src='assets/images/icons/leg.png' alt='Leg' title='Leg' class='ability-icon'>");
@@ -158,6 +193,13 @@ export class GlobalVars {
 		text = text.replace(/(armor)(?=[.,\s])/gm, "<img src='assets/images/icons/armor.png' alt='Armor' title='Armor' class='ability-icon'>");
 		text = text.replace(/(agility)(?=[.,\s])/gm, "<img src='assets/images/icons/agility.png' alt='Agility' title='Agility' class='ability-icon'>");
 		text = text.replace(/(energy)(?=[.,\s])/gm, "<img src='assets/images/icons/energy.png' alt='Energy' title='Energy' class='ability-icon'>");
+
+		this.abilityKeywords.forEach((keyword) => {
+			if (text.includes(keyword)) {
+				text = text.replace(keyword, `<span class='ability-keyword'>${keyword}</span>`);
+			}
+		});
+
 		return text;
 	}
 }

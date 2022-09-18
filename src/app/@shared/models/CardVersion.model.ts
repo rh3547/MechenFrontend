@@ -1,6 +1,8 @@
+import { NewLaunchProfileMember } from "aws-sdk/clients/nimble";
+
 export class CardVersion {
 	id: number;
-	version: string;
+	version: number;
 	imageUrl: string;
 	abilityText: string;
 	legSlots: number;
@@ -17,25 +19,27 @@ export class CardVersion {
 	maxRange: number;
 	direction: string;
 	areaOfEffect: string;
+	cardId: number;
 
 	constructor(obj?) {
 		this.id = obj?.id ?? null;
 		this.version = obj?.version ?? null;
-		this.imageUrl = obj?.imageUrl ?? null;
-		this.abilityText = obj?.abilityText ?? null;
-		this.legSlots = obj?.legSlots ?? null;
-		this.armSlots = obj?.armSlots ?? null;
-		this.headSlots = obj?.headSlots ?? null;
-		this.hardpointSlots = obj?.hardpointSlots ?? null;
-		this.modSlots = obj?.modSlots ?? null;
-		this.coreHealth = obj?.coreHealth ?? null;
-		this.armor = obj?.armor ?? null;
-		this.agility = obj?.agility ?? null;
-		this.energy = obj?.energy ?? null;
-		this.cooldown = obj?.cooldown ?? null;
-		this.minRange = obj?.minRange ?? null;
-		this.maxRange = obj?.maxRange ?? null;
-		this.direction = obj?.direction ?? null;
-		this.areaOfEffect = obj?.areaOfEffect ?? null;
+		this.imageUrl = obj?.imageUrl ?? "https://mechen-card-art.s3.amazonaws.com/placeholder_bg_art.png";
+		this.abilityText = obj?.abilityText ?? "";
+		this.legSlots = obj?.legSlots ?? 0;
+		this.armSlots = obj?.armSlots ?? 0;
+		this.headSlots = obj?.headSlots ?? 0;
+		this.hardpointSlots = obj?.hardpointSlots ?? 0;
+		this.modSlots = obj?.modSlots ?? 0;
+		this.coreHealth = obj?.coreHealth ?? 0;
+		this.armor = obj?.armor ?? 0;
+		this.agility = obj?.agility ?? 0;
+		this.energy = obj?.energy ?? 0;
+		this.cooldown = obj?.cooldown ?? 0;
+		this.minRange = obj?.minRange ?? 0;
+		this.maxRange = obj?.maxRange ?? 0;
+		this.direction = obj?.direction ?? "";
+		this.areaOfEffect = obj?.areaOfEffect ?? "";
+		this.cardId = obj?.cardId ?? null;
 	}
 }

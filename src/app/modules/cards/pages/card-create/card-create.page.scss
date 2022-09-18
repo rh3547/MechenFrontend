@@ -1,9 +1,5 @@
 @import '../../../../../theme/styles.scss';
 
-card-preview {
-	margin-right: 64px;
-}
-
 .main-content {
 	width: calc(100vw - 128px);
 	z-index: 99;
@@ -68,5 +64,17 @@ card-preview {
 		.slot-input {
 			flex: 1;
 		}
+	}
+}
+
+.download-btn, .back-btn {
+	background-color: #393944;
+}
+
+.button-group {
+	display: flex;
+
+	button:not(:last-child) {
+		margin-right: 16px;
 	}
 }

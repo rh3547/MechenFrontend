@@ -20,6 +20,7 @@
 			.type-icon {
 				width: 52px;
 				opacity: .6;
+				filter: drop-shadow(2px 4px 6px black);
 			}
 		}
 
@@ -139,6 +140,7 @@
 		width: 70%;
     margin-left: auto;
     margin-right: auto;
+		margin-top: 16px;
 	}
 
 	.card-art {

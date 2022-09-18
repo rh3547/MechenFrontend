@@ -10,10 +10,10 @@ export class Card {
 
 	constructor(obj?) {
 		this.id = obj?.id ?? null;
-		this.name = obj?.name ?? null;
-		this.type = obj?.type ?? null;
-		this.subtype = obj?.subtype ?? null;
-		this.rarity = obj?.rarity ?? null;
+		this.name = obj?.name ?? "";
+		this.type = obj?.type ?? "";
+		this.subtype = obj?.subtype ?? "";
+		this.rarity = obj?.rarity ?? "";
 		this.cardVersions = obj?.cardVersions ?? obj?.cardVersions?.map(x => new CardVersion(x)) ?? [];
 	}
 }
