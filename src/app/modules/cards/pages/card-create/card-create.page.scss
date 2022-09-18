@@ -67,6 +67,12 @@
 	}
 }
 
+.toggle-text {
+	margin-bottom: 0;
+  line-height: 27px;
+	color: map-get($colors, contrast) !important;
+}
+
 .download-btn, .back-btn {
 	background-color: #393944;
 }

@@ -6,7 +6,7 @@
 	align-items: center;
 	position: fixed;
 	width: calc(100% - 128px);
-  z-index: 1;
+  z-index: 1000;
 
 	.ph-nav-right {
 		background-color: map-get($colors, background-light);

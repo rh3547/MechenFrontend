@@ -70,7 +70,8 @@ export class CardCreatePage implements OnInit, OnDestroy, AfterViewInit {
 			minRange: [0, []],
 			maxRange: [0, []],
 			direction: ["", []],
-			areaOfEffect: ["", []]
+			areaOfEffect: ["", []],
+			saveAsNewVersion: [false, []]
 		});
 
 		this.formSub = this.formGroup.valueChanges.subscribe((changes) => {
@@ -117,7 +118,8 @@ export class CardCreatePage implements OnInit, OnDestroy, AfterViewInit {
 					minRange: this.cardVersion.minRange,
 					maxRange: this.cardVersion.maxRange,
 					direction: this.cardVersion.direction,
-					areaOfEffect: this.cardVersion.areaOfEffect
+					areaOfEffect: this.cardVersion.areaOfEffect,
+					saveAsNewVersion: false
 				});
 				this.formGroup.updateValueAndValidity()
 
@@ -163,7 +165,7 @@ export class CardCreatePage implements OnInit, OnDestroy, AfterViewInit {
 			});
 	}
 
-	public saveCard() {
+	public saveCard(createAnother: boolean = false) {
 		this.submitted = true;
 
 		if (this.formGroup.valid) {
@@ -183,18 +185,34 @@ export class CardCreatePage implements OnInit, OnDestroy, AfterViewInit {
 				this.api.Cards.post("", card).subscribe((cardRes) => {
 					this.api.Cards.post(`${cardRes.id}/card-versions`, cardVersion).subscribe((cardVersionRes) => {
 						this.globalVars.hideProcessingLoader();
-						this.router.navigateByUrl(resolveRouteParams(Routes.Cards.CardView, { id: cardRes.id }));
+
+						if (createAnother) {
+							this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => this.router.navigateByUrl(Routes.Cards.CardCreate));
+						}
+						else {
+							this.router.navigateByUrl(resolveRouteParams(Routes.Cards.CardView, { id: cardRes.id }));
+						}
 					});
 				});
 			}
 			else {
-				cardVersion.version = this.cardVersion.version + 1;
-
 				this.api.Cards.patch(this.cardId, card).subscribe((cardRes) => {
-					this.api.Cards.post(`${this.cardId}/card-versions`, cardVersion).subscribe((cardVersionRes) => {
-						this.globalVars.hideProcessingLoader();
-						this.router.navigateByUrl(resolveRouteParams(Routes.Cards.CardView, { id: this.cardId }));
-					});
+					if (this.formGroup.controls.saveAsNewVersion.value == true) {
+						cardVersion.version = this.cardVersion.version + 1;
+
+						this.api.Cards.post(`${this.cardId}/card-versions`, cardVersion).subscribe((cardVersionRes) => {
+							this.globalVars.hideProcessingLoader();
+							this.router.navigateByUrl(resolveRouteParams(Routes.Cards.CardView, { id: this.cardId }));
+						});
+					}
+					else {
+						cardVersion.version = this.cardVersion.version;
+
+						this.api.CardVersions.patch(this.cardVersion.id, cardVersion).subscribe((cardVersionRes) => {
+							this.globalVars.hideProcessingLoader();
+							this.router.navigateByUrl(resolveRouteParams(Routes.Cards.CardView, { id: this.cardId }));
+						});
+					}
 				});
 			}
 		}

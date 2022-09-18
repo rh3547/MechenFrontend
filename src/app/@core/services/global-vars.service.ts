@@ -183,16 +183,16 @@ export class GlobalVars {
 	}
 
 	public parseAbilityText(text: string) {
-		text = text.replace(/(core)(?=[.,\s])/gm, "<img src='assets/images/icons/core.png' alt='Core' title='Core' class='ability-icon'>");
-		text = text.replace(/(leg)(?=[.,\s])/gm, "<img src='assets/images/icons/leg.png' alt='Leg' title='Leg' class='ability-icon'>");
-		text = text.replace(/(arm)(?=[.,\s])/gm, "<img src='assets/images/icons/arm.png' alt='Arm' title='Arm' class='ability-icon'>");
-		text = text.replace(/(head)(?=[.,\s])/gm, "<img src='assets/images/icons/head.png' alt='Head' title='Head' class='ability-icon'>");
-		text = text.replace(/(hardpoint)(?=[.,\s])/gm, "<img src='assets/images/icons/hardpoint.png' alt='Hardpoint' title='Hardpoint' class='ability-icon'>");
-		text = text.replace(/(mod)(?=[.,\s])/gm, "<img src='assets/images/icons/mod.png' alt='Mod' title='Mod' class='ability-icon'>");
-		text = text.replace(/(core health)(?=[.,\s])/gm, "<img src='assets/images/icons/corehealth.png' alt='Core Health' title='Core Health' class='ability-icon'>");
-		text = text.replace(/(armor)(?=[.,\s])/gm, "<img src='assets/images/icons/armor.png' alt='Armor' title='Armor' class='ability-icon'>");
-		text = text.replace(/(agility)(?=[.,\s])/gm, "<img src='assets/images/icons/agility.png' alt='Agility' title='Agility' class='ability-icon'>");
-		text = text.replace(/(energy)(?=[.,\s])/gm, "<img src='assets/images/icons/energy.png' alt='Energy' title='Energy' class='ability-icon'>");
+		text = text.replace(/(leg)(?=[:'.,\s])/gm, "<img src='assets/images/icons/leg.png' alt='Leg' title='Leg' class='ability-icon'>");
+		text = text.replace(/(arm)(?=[:'.,\s])/gm, "<img src='assets/images/icons/arm.png' alt='Arm' title='Arm' class='ability-icon'>");
+		text = text.replace(/(head)(?=[:'.,\s])/gm, "<img src='assets/images/icons/head.png' alt='Head' title='Head' class='ability-icon'>");
+		text = text.replace(/(hardpoint)(?=[:'.,\s])/gm, "<img src='assets/images/icons/hardpoint.png' alt='Hardpoint' title='Hardpoint' class='ability-icon'>");
+		text = text.replace(/(mod)(?=[:'.,\s])/gm, "<img src='assets/images/icons/mod.png' alt='Mod' title='Mod' class='ability-icon'>");
+		text = text.replace(/(core health)(?=[:'.,\s])/gm, "<img src='assets/images/icons/corehealth.png' alt='Core Health' title='Core Health' class='ability-icon'>");
+		text = text.replace(/(core)(?=[:'.,\s])/gm, "<img src='assets/images/icons/core.png' alt='Core' title='Core' class='ability-icon'>");
+		text = text.replace(/(armor)(?=[:'.,\s])/gm, "<img src='assets/images/icons/armor.png' alt='Armor' title='Armor' class='ability-icon'>");
+		text = text.replace(/(agility)(?=[:'.,\s])/gm, "<img src='assets/images/icons/agility.png' alt='Agility' title='Agility' class='ability-icon'>");
+		text = text.replace(/(energy)(?=[:'.,\s])/gm, "<img src='assets/images/icons/energy.png' alt='Energy' title='Energy' class='ability-icon'>");
 
 		this.abilityKeywords.forEach((keyword) => {
 			if (text.includes(keyword)) {

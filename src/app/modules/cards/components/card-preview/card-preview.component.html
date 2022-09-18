@@ -64,20 +64,20 @@
 
 		<p class="font-card-body card-ability-text" *ngIf="cardVersion.abilityText" [innerHTML]="globalVars.parseAbilityText(cardVersion.abilityText)"></p>
 
-		<div class="card-stats-wrapper" *ngIf="cardVersion.coreHealth || cardVersion.armor || cardVersion.agility || cardVersion.energy">
-			<div class="card-stat" *ngIf="cardVersion.coreHealth">
+		<div class="card-stats-wrapper" *ngIf="card.type == 'Core' || card.type == 'Leg' || card.type == 'Arm' || card.type == 'Head'">
+			<div class="card-stat" *ngIf="cardVersion.coreHealth || card.type == 'Core'">
 				<img class="stat-icon" src="assets/images/icons/corehealth.png" alt="Core Health" title="Core Health">
 				<span class="stat-text font-card-stats">{{ cardVersion.coreHealth }}</span>
 			</div>
-			<div class="card-stat" *ngIf="cardVersion.armor">
+			<div class="card-stat">
 				<img class="stat-icon" src="assets/images/icons/armor.png" alt="Armor" title="Armor">
 				<span class="stat-text font-card-stats">{{ cardVersion.armor }}</span>
 			</div>
-			<div class="card-stat" *ngIf="cardVersion.agility">
+			<div class="card-stat">
 				<img class="stat-icon" src="assets/images/icons/agility.png" alt="Agility" title="Agility">
 				<span class="stat-text font-card-stats">{{ cardVersion.agility }}</span>
 			</div>
-			<div class="card-stat" *ngIf="cardVersion.energy">
+			<div class="card-stat">
 				<img class="stat-icon" src="assets/images/icons/energy.png" alt="Energy" title="Energy">
 				<span class="stat-text font-card-stats">{{ cardVersion.energy }}</span>
 			</div>

@@ -6,9 +6,23 @@
 	position: absolute;
 }
 
+.scroll-hide {
+	width: 100%;
+	position: fixed;
+	left: 0;
+	right: 0;
+	height: 410px;
+	top: -160px;
+	background-color: map-get($colors, background);
+	z-index: 50;
+}
+
 .card-search-toolbar {
 	display: flex;
 	justify-content: end;
+	position: sticky;
+  top: 120px;
+  z-index: 100;
 
 	.toolbar-link {
 		color: map-get($colors, primary) !important;
@@ -18,6 +32,9 @@
 .card-search {
 	display: flex;
 	border-radius: 8px;
+	position: sticky;
+  top: 160px;
+  z-index: 100;
 
 	.card-filter {
 		width: 100%;

@@ -1,11 +1,11 @@
 @import '../../../../../theme/styles.scss';
 
 ::ng-deep {
-	card-preview {
+	.card-viewer card-preview {
 		margin-right: 64px;
 	}
 
-	.ngn-select-wrapper {
+	.card-viewer .ngn-select-wrapper {
 		margin-bottom: 16px;
 	}
 }
@@ -37,6 +37,7 @@
     padding-right: 32px;
 		position: relative;
 		margin-bottom: 24px;
+		max-width: 450px;
 
 		hr {
 			background: map-get($colors, contrast);
