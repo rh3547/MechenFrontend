@@ -52,7 +52,7 @@ export class CardViewerComponent implements OnInit, OnChanges, AfterViewInit {
 
 		let _this = this;
 		let node = document.getElementById("card-preview");
-		domtoimage.toBlob(node, { width: 375, height: 525 })
+		domtoimage.toBlob(node, { width: 1500, height: 2100, style: { transform: "scale(4)", transformOrigin: "top left" } })
 			.then(function (blob) {
 				saveAs(blob, "card.png");
 				_this.globalVars.hideProcessingLoader();

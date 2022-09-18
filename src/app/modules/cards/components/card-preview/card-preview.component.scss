@@ -148,3 +148,15 @@
 		height: 525px;
 	}
 }
+
+.card-preview.hi-res {
+	.card-art {
+		width: 1500px;
+		height: 2100px;
+	}
+
+	.card-content {
+		transform: scale(4);
+    transform-origin: top left;
+	}
+}

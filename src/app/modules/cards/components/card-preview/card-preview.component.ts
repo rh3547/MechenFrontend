@@ -12,6 +12,7 @@ export class CardPreviewComponent implements OnInit, OnChanges, AfterViewInit {
 
 	@Input() card: Card;
 	@Input() cardVersion: CardVersion;
+	@Input() hiRes: boolean = false;
 
 	public placeholderCardArtUrl: string = "https://mechen-card-art.s3.amazonaws.com/placeholder_bg_art.png";
 

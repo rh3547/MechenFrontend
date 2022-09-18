@@ -39,6 +39,8 @@ export class CardCreatePage implements OnInit, OnDestroy, AfterViewInit {
 	public cardPreview: Card = new Card();
 	public cardVersionPreview: CardVersion = new CardVersion();
 
+	public downloading: boolean = false;
+
 	constructor(
 		private api: Api,
 		private fb: FormBuilder,
@@ -154,7 +156,7 @@ export class CardCreatePage implements OnInit, OnDestroy, AfterViewInit {
 
 		let _this = this;
 		let node = document.getElementById("card-preview");
-		domtoimage.toBlob(node, { width: 375, height: 525 })
+		domtoimage.toBlob(node, { width: 1500, height: 2100, style: { transform: "scale(4)", transformOrigin: "top left" } })
 			.then(function (blob) {
 				saveAs(blob, "card.png");
 				_this.globalVars.hideProcessingLoader();
