@@ -37,6 +37,7 @@ export class CardCreatePage implements OnInit, OnDestroy, AfterViewInit {
 	public cardAreaOfEffectOptions: NgnSelectOption[] = this.globalVars.cardAreaOfEffectOptions;
 
 	public cardPreview: Card = new Card();
+	public highestVersion: number = 0;
 	public cardVersionPreview: CardVersion = new CardVersion();
 
 	public downloading: boolean = false;
@@ -54,7 +55,7 @@ export class CardCreatePage implements OnInit, OnDestroy, AfterViewInit {
 			name: ["", [Validators.required]],
 			rarity: ["", [Validators.required]],
 			type: ["", [Validators.required]],
-			subtype: ["", [Validators.required]],
+			subtype: ["", []],
 			imageUrl: ["", []],
 			abilityText: ["", []],
 			legSlots: [0, []],
@@ -97,12 +98,13 @@ export class CardCreatePage implements OnInit, OnDestroy, AfterViewInit {
 				this.card = data;
 				let versionHighlow = this.globalVars.findRecentCardVersions(this.card);
 				this.cardVersion = versionHighlow.highest;
+				this.highestVersion = versionHighlow.highest.version;
 
 				this.formGroup.setValue({
-					name: this.card.name,
-					rarity: this.card.rarity,
-					type: this.card.type,
-					subtype: this.card.subtype,
+					name: this.cardVersion.name,
+					rarity: this.cardVersion.rarity,
+					type: this.cardVersion.type,
+					subtype: this.cardVersion.subtype,
 					imageUrl: this.cardVersion.imageUrl,
 					abilityText: this.cardVersion.abilityText,
 					legSlots: this.cardVersion.legSlots,
@@ -196,6 +198,13 @@ export class CardCreatePage implements OnInit, OnDestroy, AfterViewInit {
 				});
 			}
 			else {
+				if (this.cardVersion.version != this.highestVersion) {
+					card.name = this.card.name;
+					card.type = this.card.type;
+					card.subtype = this.card.subtype;
+					card.rarity = this.card.rarity;
+				}
+
 				this.api.Cards.patch(this.cardId, card).subscribe((cardRes) => {
 					if (this.formGroup.controls.saveAsNewVersion.value == true) {
 						cardVersion.version = this.cardVersion.version + 1;

@@ -12,24 +12,24 @@
 	</div>
 	<div class="card-details mt-xl">
 
-		<h1 class="card-name">{{ card.name }}</h1>
+		<h1 class="card-name">{{ cardVersion.name }}</h1>
 
 		<p class="fg-medium-2">
-			<img *ngIf="card.type == 'Core'" alt="Core" title="Core" class="type-icon" src="assets/images/icons/core.png">
-			<img *ngIf="card.type == 'Leg'" alt="Leg" title="Leg" class="type-icon" src="assets/images/icons/leg.png">
-			<img *ngIf="card.type == 'Arm'" alt="Arm" title="Arm" class="type-icon" src="assets/images/icons/arm.png">
-			<img *ngIf="card.type == 'Head'" alt="Head" title="Head" class="type-icon" src="assets/images/icons/head.png">
-			<img *ngIf="card.type == 'Hardpoint'" alt="Hardpoint" title="Hardpoint" class="type-icon" src="assets/images/icons/hardpoint.png">
-			<img *ngIf="card.type == 'Mod'" alt="Mod" title="Mod" class="type-icon" src="assets/images/icons/mod.png">
-			{{ card.type }} - {{ card.subtype }}
+			<img *ngIf="cardVersion.type == 'Core'" alt="Core" title="Core" class="type-icon" src="assets/images/icons/core.png">
+			<img *ngIf="cardVersion.type == 'Leg'" alt="Leg" title="Leg" class="type-icon" src="assets/images/icons/leg.png">
+			<img *ngIf="cardVersion.type == 'Arm'" alt="Arm" title="Arm" class="type-icon" src="assets/images/icons/arm.png">
+			<img *ngIf="cardVersion.type == 'Head'" alt="Head" title="Head" class="type-icon" src="assets/images/icons/head.png">
+			<img *ngIf="cardVersion.type == 'Hardpoint'" alt="Hardpoint" title="Hardpoint" class="type-icon" src="assets/images/icons/hardpoint.png">
+			<img *ngIf="cardVersion.type == 'Mod'" alt="Mod" title="Mod" class="type-icon" src="assets/images/icons/mod.png">
+			{{ cardVersion.type }} - {{ cardVersion.subtype }}
 		</p>
 
 		<hr>
 
 		<p class="mt-md">
 			<span class="detail-label">RARITY</span>
-			<i class="rarity-icon fad fa-diamond mr-xs" [ngClass]="{'common': card.rarity == 'Common', 'uncommon': card.rarity == 'Uncommon', 'rare': card.rarity == 'Rare', 'ultrarare': card.rarity == 'Ultra Rare'}"></i>
-			{{ card.rarity }}
+			<i class="rarity-icon fad fa-diamond mr-xs" [ngClass]="{'common': cardVersion.rarity == 'Common', 'uncommon': cardVersion.rarity == 'Uncommon', 'rare': cardVersion.rarity == 'Rare', 'ultrarare': cardVersion.rarity == 'Ultra Rare'}"></i>
+			{{ cardVersion.rarity }}
 		</p>
 
 		<p *ngIf="cardVersion?.abilityText" class="mt-md"><span class="detail-label">ABILITY TEXT</span><span [innerHTML]="globalVars.parseAbilityText(cardVersion?.abilityText)"></span></p>

@@ -1,13 +1,13 @@
 <div class="card-preview" [ngClass]="{'hi-res': hiRes }" id="card-preview">
 	<div class="card-content">
 
-		<div class="card-type-icon" *ngIf="card.type">
-			<img *ngIf="card.type == 'Core'" alt="Core" title="Core" class="type-icon" src="assets/images/icons/core.png">
-			<img *ngIf="card.type == 'Leg'" alt="Leg" title="Leg" class="type-icon" src="assets/images/icons/leg.png">
-			<img *ngIf="card.type == 'Arm'" alt="Arm" title="Arm" class="type-icon" src="assets/images/icons/arm.png">
-			<img *ngIf="card.type == 'Head'" alt="Head" title="Head" class="type-icon" src="assets/images/icons/head.png">
-			<img *ngIf="card.type == 'Hardpoint'" alt="Hardpoint" title="Hardpoint" class="type-icon" src="assets/images/icons/hardpoint.png">
-			<img *ngIf="card.type == 'Mod'" alt="Mod" title="Mod" class="type-icon" src="assets/images/icons/mod.png">
+		<div class="card-type-icon" *ngIf="cardVersion.type">
+			<img *ngIf="cardVersion.type == 'Core'" alt="Core" title="Core" class="type-icon" src="assets/images/icons/core.png">
+			<img *ngIf="cardVersion.type == 'Leg'" alt="Leg" title="Leg" class="type-icon" src="assets/images/icons/leg.png">
+			<img *ngIf="cardVersion.type == 'Arm'" alt="Arm" title="Arm" class="type-icon" src="assets/images/icons/arm.png">
+			<img *ngIf="cardVersion.type == 'Head'" alt="Head" title="Head" class="type-icon" src="assets/images/icons/head.png">
+			<img *ngIf="cardVersion.type == 'Hardpoint'" alt="Hardpoint" title="Hardpoint" class="type-icon" src="assets/images/icons/hardpoint.png">
+			<img *ngIf="cardVersion.type == 'Mod'" alt="Mod" title="Mod" class="type-icon" src="assets/images/icons/mod.png">
 		</div>
 
 		<div class="card-slots" *ngIf="cardVersion.legSlots || cardVersion.armSlots || cardVersion.headSlots || cardVersion.hardpointSlots || cardVersion.modSlots">
@@ -58,14 +58,14 @@
 			</div>
 		</div>
 
-		<p class="font-card-body card-type" *ngIf="card.type || card.subtype">{{ card.type }} {{ card.subtype ? (" - " + card.subtype) : "" }}</p>
+		<p class="font-card-body card-type" *ngIf="cardVersion.type || cardVersion.subtype">{{ cardVersion.type }} {{ cardVersion.subtype ? (" - " + cardVersion.subtype) : "" }}</p>
 
-		<h2 class="font-card-name card-name"*ngIf="card.name">{{ card.name }}</h2>
+		<h2 class="font-card-name card-name"*ngIf="cardVersion.name">{{ cardVersion.name }}</h2>
 
 		<p class="font-card-body card-ability-text" *ngIf="cardVersion.abilityText" [innerHTML]="globalVars.parseAbilityText(cardVersion.abilityText)"></p>
 
-		<div class="card-stats-wrapper" *ngIf="card.type == 'Core' || card.type == 'Leg' || card.type == 'Arm' || card.type == 'Head'">
-			<div class="card-stat" *ngIf="cardVersion.coreHealth || card.type == 'Core'">
+		<div class="card-stats-wrapper" *ngIf="cardVersion.type == 'Core' || cardVersion.type == 'Leg' || cardVersion.type == 'Arm' || cardVersion.type == 'Head'">
+			<div class="card-stat" *ngIf="cardVersion.coreHealth || cardVersion.type == 'Core'">
 				<img class="stat-icon" src="assets/images/icons/corehealth.png" alt="Core Health" title="Core Health">
 				<span class="stat-text font-card-stats">{{ cardVersion.coreHealth }}</span>
 			</div>
@@ -83,7 +83,7 @@
 			</div>
 		</div>
 
-		<img *ngIf="card?.rarity" class="card-rarity-border" src="assets/images/card-graphics/{{ card?.rarity?.toLowerCase().replace(' ', '') }}.png">
+		<img *ngIf="cardVersion?.rarity" class="card-rarity-border" src="assets/images/card-graphics/{{ cardVersion?.rarity?.toLowerCase().replace(' ', '') }}.png">
 
 	</div>
 	<img class="card-art" src="{{ cardVersion.imageUrl ? cardVersion.imageUrl : placeholderCardArtUrl }}">

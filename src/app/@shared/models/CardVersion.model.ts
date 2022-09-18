@@ -1,8 +1,10 @@
-import { NewLaunchProfileMember } from "aws-sdk/clients/nimble";
-
 export class CardVersion {
 	id: number;
 	version: number;
+	name: string;
+	type: string;
+	subtype: string;
+	rarity: string;
 	imageUrl: string;
 	abilityText: string;
 	legSlots: number;
@@ -24,6 +26,10 @@ export class CardVersion {
 	constructor(obj?) {
 		this.id = obj?.id ?? null;
 		this.version = obj?.version ?? null;
+		this.name = obj?.name ?? "";
+		this.type = obj?.type ?? "";
+		this.subtype = obj?.subtype ?? "";
+		this.rarity = obj?.rarity ?? "";
 		this.imageUrl = obj?.imageUrl ?? "https://mechen-card-art.s3.amazonaws.com/placeholder_bg_art.png";
 		this.abilityText = obj?.abilityText ?? "";
 		this.legSlots = obj?.legSlots ?? 0;
