@@ -15,7 +15,7 @@
     "build:local": "ng build -c=local && npm run replace_index_modules",
     "serve:dev": "ng serve -c=dev",
     "build:dev": "ng build -c=dev && npm run replace_index_modules",
-    "deploy:dev": "ng build -c=dev && aws s3 cp ./dist s3://rhochmuth-portfolio-dev --recursive --profile rhochmuth_dev && aws cloudfront create-invalidation --distribution-id E1JOG0PM5XOUV6 --paths /* --profile rhochmuth_dev",
+    "deploy:dev": "ng build -c=dev && aws s3 cp ./dist s3://mechen-frontend-dev --recursive --profile rhochmuth_dev && aws cloudfront create-invalidation --distribution-id E2RZZ7U4LQNJ4D --paths /* --profile rhochmuth_dev",
     "serve:qa": "ng serve -c=qa",
     "build:qa": "ng build -c=qa && npm run replace_index_modules",
     "deploy:qa": "echo No deployment process has been configured for the qa environment yet",

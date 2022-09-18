@@ -6,21 +6,11 @@ export const environment = {
 	defaultGridPageSize: 10,
 
 	// API Config
-	apiUrl: "https://localhost:44341",
-	apiUrlExtension: "/api/v1",
-
-	// OpenIddict config
-	oiGrantType: "password",
-	oiGrantTypeRefresh: "refresh_token",
-	oiScope: "openid offline_access",
-	oiClientId: "Nucleus",
-	sessionRenewalNotificationThresholdInMinutes: 1,
-	token_endpoint: "/Auth/token",
-  revoke_endpoint: "/Auth/revoke",
-  refresh_endpoint: "/Auth/token"
+	apiUrl: "https://2yelm9ews7.execute-api.us-east-1.amazonaws.com/dev",
+	apiUrlExtension: "",
 
 	// Cognito config
 	// user_pool_id: "us-east-1_M75h6e7MK",
-  // app_client_id: "7ndes6uau0hhq1ubr7n6jehsj5",
-  // region: "us-east-1"
+	// app_client_id: "7ndes6uau0hhq1ubr7n6jehsj5",
+	// region: "us-east-1"
 };
