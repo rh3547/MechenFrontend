@@ -89,8 +89,15 @@ export class GlobalVars {
 	];
 
 	public abilityKeywords: string[] = [
+		"Sustain",
+		"Shimmer",
 		"Shield",
-		"Sustain"
+		"Dwindle",
+		"Sacrifice",
+		"Counter",
+		"Scrap",
+		"Scavenge",
+		"Backup"
 	];
 
 	constructor(
