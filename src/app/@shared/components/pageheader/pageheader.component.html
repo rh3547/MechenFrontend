@@ -11,6 +11,12 @@
 					<p class="f-nav m-0 link-text">Card Library</p>
 				</a>
 			</div>
+			<div class="link-wrapper mr-sm">
+				<a class="pointer d-flex flex-align-items-center link" routerLink="{{ routes.Cards.CardSearchPending }}" [queryParams]="globalVars.cardSearchQPs" routerLinkActive="active">
+					<i class="far fa-books mr-sm link-icon"></i>
+					<p class="f-nav m-0 link-text">Pending Cards</p>
+				</a>
+			</div>
 			<!-- <div class="link-wrapper mr-sm">
 				<a class="pointer d-flex flex-align-items-center link icon-only" routerLink="{{ routes.Cards.CardSearch }}" routerLinkActive="active">
 					<i class="far fa-search mr-sm link-icon"></i>

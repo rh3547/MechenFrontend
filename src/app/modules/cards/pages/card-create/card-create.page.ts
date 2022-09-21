@@ -158,20 +158,19 @@ export class CardCreatePage implements OnInit, OnDestroy, AfterViewInit {
 		if (this.formGroup.valid) {
 			this.globalVars.showProcessingLoader("Saving card...");
 
-			let card = new Card(this.formGroup.value);
+			let card = new Card(this.card ?? this.formGroup.value);
+			card.updateValues(this.formGroup.value);
 			delete card.id;
 			delete card.cardVersions;
 
-			let cardVersion = new CardVersion(this.formGroup.value);
+			let cardVersion = new CardVersion(this.cardVersion ?? this.formGroup.value);
+			cardVersion.updateValues(this.formGroup.value);
 			delete cardVersion.id;
 			delete cardVersion.cardId;
 
 			if (this.editMode) {
 				if (this.cardVersion.version != this.highestVersion) {
-					card.name = this.card.name;
-					card.type = this.card.type;
-					card.subtype = this.card.subtype;
-					card.rarity = this.card.rarity;
+					card.updateValues(this.card);
 				}
 
 				this.api.Cards.patch(this.cardId, card).subscribe((cardRes) => {
@@ -195,6 +194,7 @@ export class CardCreatePage implements OnInit, OnDestroy, AfterViewInit {
 			}
 			else {
 				cardVersion.version = 1;
+				card.approved = false;
 
 				this.api.Cards.post("", card).subscribe((cardRes) => {
 					this.api.Cards.post(`${cardRes.id}/card-versions`, cardVersion).subscribe((cardVersionRes) => {

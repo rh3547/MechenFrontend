@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, HostListener, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { GlobalVars } from '@services';
+import { Api, GlobalVars } from '@services';
 import { Card } from '@models';
 import { CardVersion } from '@models/CardVersion.model';
 import { NgnSelectOption } from '@ng-nuc/components';
@@ -24,6 +24,7 @@ export class CardViewerComponent implements OnInit, OnChanges, AfterViewInit {
 	constructor(
 		public globalVars: GlobalVars,
 		private router: Router,
+		private api: Api
 	) { }
 
 	ngOnInit(): void { }
@@ -61,5 +62,13 @@ export class CardViewerComponent implements OnInit, OnChanges, AfterViewInit {
 
 	public editCard() {
 		this.router.navigateByUrl(resolveRouteParams(Routes.Cards.CardEdit, { id: this.card.id }));
+	}
+
+	public approveCard() {
+		this.globalVars.showProcessingLoader("Approving card...");
+		this.api.Cards.patch(this.card.id, { approved: true }).subscribe((cardRes) => {
+			this.globalVars.hideProcessingLoader();
+			this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => this.router.navigateByUrl(resolveRouteParams(Routes.Cards.CardView, { id: this.card.id })));
+		});
 	}
 }

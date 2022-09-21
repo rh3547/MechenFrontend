@@ -48,4 +48,12 @@ export class CardVersion {
 		this.areaOfEffect = obj?.areaOfEffect ?? "";
 		this.cardId = obj?.cardId ?? null;
 	}
+
+	updateValues(obj) {
+		Object.keys(obj).forEach(key => {
+			if (this.hasOwnProperty(key) && obj[key] != null && obj[key] != undefined) {
+				this[key] = obj[key];
+			}
+		});
+	}
 }

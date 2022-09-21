@@ -17,7 +17,8 @@ export var RouteParts = {
 	},
 	Cards: {
 		CardsRoot: "cards",
-		CardSearch: "",
+		CardSearch: "search",
+		CardSearchPending: "pending",
 		CardView: ":id",
 		CardCreate: "create",
 		CardEdit: "edit/:id"
@@ -44,6 +45,7 @@ export var Routes = {
 	Cards: {
 		CardsRoot: buildRoute([RouteParts.Cards.CardsRoot]),
 		CardSearch: buildRoute([RouteParts.Cards.CardsRoot, RouteParts.Cards.CardSearch]),
+		CardSearchPending: buildRoute([RouteParts.Cards.CardsRoot, RouteParts.Cards.CardSearchPending]),
 		CardView: buildRoute([RouteParts.Cards.CardsRoot, RouteParts.Cards.CardView]),
 		CardCreate: buildRoute([RouteParts.Cards.CardsRoot, RouteParts.Cards.CardCreate]),
 		CardEdit: buildRoute([RouteParts.Cards.CardsRoot, RouteParts.Cards.CardEdit])

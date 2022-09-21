@@ -20,6 +20,8 @@ export class CardSearchPage implements OnInit, OnDestroy, AfterViewInit {
 	public routeParts = RouteParts;
 	public routes = Routes;
 
+	public pendingMode: boolean = false;
+
 	public cardTypeOptions: NgnSelectOption[] = this.globalVars.cardTypeOptions;
 
 	public searchTerm: string = "";
@@ -44,6 +46,13 @@ export class CardSearchPage implements OnInit, OnDestroy, AfterViewInit {
 			});
 
 		this.routeSub = this.activatedRoute.queryParams.subscribe((qp) => {
+			if (this.router.url.includes("/pending")) {
+				this.pendingMode = true;
+			}
+			else {
+				this.pendingMode = false;
+			}
+
 			if (qp.term) {
 				this.searchTerm = qp.term;
 			}
@@ -89,8 +98,15 @@ export class CardSearchPage implements OnInit, OnDestroy, AfterViewInit {
 			"filter[order][1]": "name ASC"
 		};
 
+		if (this.pendingMode) {
+			filters["filter[where][and][0][approved]"] = false
+		}
+		else {
+			filters["filter[where][and][0][approved]"] = true
+		}
+
 		if (this.searchTerm) {
-			filters["filter[where][and][0][name][regexp]"] = `/${this.searchTerm}/i`;
+			filters["filter[where][and][1][name][regexp]"] = `/${this.searchTerm}/i`;
 			this.globalVars.cardSearchQPs["term"] = this.searchTerm;
 		}
 		else {
@@ -98,7 +114,7 @@ export class CardSearchPage implements OnInit, OnDestroy, AfterViewInit {
 		}
 
 		if (this.cardTypeFilter) {
-			filters["filter[where][and][1][type]"] = this.cardTypeFilter;
+			filters["filter[where][and][2][type]"] = this.cardTypeFilter;
 			this.globalVars.cardSearchQPs["type"] = this.cardTypeFilter;
 		}
 		else {

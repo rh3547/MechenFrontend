@@ -115,7 +115,8 @@
 				<button class="edit-btn mb-md" (click)="editCard()"><i class="fas fa-edit mr-sm"></i>Edit Card</button>
 				<button class="download-btn mb-md" (click)="downloadImage()"><i class="fas fa-download mr-sm"></i>Download</button>
 			</div>
-			<button class="add-to-deck-btn"><i class="fas fa-plus mr-sm"></i>Add to Deck</button>
+			<button *ngIf="card.approved == true" class="add-to-deck-btn"><i class="fas fa-plus mr-sm"></i>Add to Deck</button>
+			<button *ngIf="card.approved == false" class="add-to-deck-btn bg-success" (click)="approveCard()"><i class="fas fa-thumbs-up mr-sm"></i>Approve Card</button>
 		</div>
 	</div>
 </div>
