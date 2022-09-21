@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { ErrorInterceptor } from './interceptors';
 import { NgxNotificationMsgModule } from 'ngx-notification-msg';
 import { AuthInterceptor } from '@ng-nuc/core';
+import { NgxSmartModalModule } from 'ngx-smart-modal';
 
 import { FourZeroFourPage } from './pages/404/404.page';
 import { FourZeroOnePage } from './pages/401/401.page';
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
 		CommonModule,
 		HttpClientModule,
 		NgxNotificationMsgModule,
+		NgxSmartModalModule.forRoot(),
 		RouterModule
 	],
 	providers: [

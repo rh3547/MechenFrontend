@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { GlobalVars, ThemeService } from '@services';
 import { AuthProxy, LogoutMethod, AlertService, AlertPosition } from '@ng-nuc/core';
 import { OpenIddictService } from '@ng-nuc/auth-openiddict';
@@ -6,13 +6,15 @@ import { environment } from '@environments/environment';
 import { Router } from '@angular/router';
 import { Routes } from '@routes';
 import { CognitoService } from '@ng-nuc/auth-cognito';
+import { NgxSmartModalComponent, NgxSmartModalService } from 'ngx-smart-modal';
+import { ChangelogModal } from '@app/@shared/components/modals/changelog-modal/changelog-modal.modal';
 
 @Component({
 	selector: 'app-root',
 	templateUrl: './core.component.html',
 	styleUrls: ['./core.component.scss']
 })
-export class CoreComponent implements OnInit {
+export class CoreComponent implements OnInit, AfterViewInit {
 
 	constructor(
 		private themeService: ThemeService,
@@ -20,6 +22,7 @@ export class CoreComponent implements OnInit {
 		private authProxy: AuthProxy,
 		private alertService: AlertService,
 		private router: Router,
+		private modalService: NgxSmartModalService,
 
 		// Choose an auth subject
 		private authSubject: OpenIddictService // npm install @ng-nuc/auth-openiddict
@@ -94,5 +97,34 @@ export class CoreComponent implements OnInit {
 
 	ngOnInit() {
 		this.themeService.init();
+	}
+
+	ngAfterViewInit() {
+		let lastChangelogSeen = window.localStorage.getItem("lastChangelogSeen");
+		if (!lastChangelogSeen || lastChangelogSeen != this.globalVars.appVersion) {
+			this.showChangelogModal();
+		}
+	}
+
+	showChangelogModal() {
+		// Present the modal
+		var modal = this.modalService.create('changelogModal', ChangelogModal, { closable: false, dismissable: false, customClass: "changelog-modal" }).open();
+
+		// Set the modal data
+		modal.setData({
+			modalId: 'changelogModal'
+		});
+
+		// Respond to the modal closing
+		modal.onAnyCloseEventFinished.subscribe((modal: NgxSmartModalComponent) => {
+			var data = modal.getData();
+
+			// Ok
+			if (data.closeType == "confirm") {
+				window.localStorage.setItem("lastChangelogSeen", this.globalVars.appVersion);
+			}
+
+			this.modalService.removeModal('changelogModal');
+		});
 	}
 }

@@ -15,6 +15,8 @@ const LOW_SEARCH_AMOUNT_THRESHOLD = "LowSearchAmountThreshold";
 })
 export class GlobalVars {
 
+	public appVersion = "1.1";
+
 	public minDateMoment = moment().year(1900).month(1).date(1);
 	public maxDateMoment = moment().month(1).date(1).add(100, "years");
 	public currentDateMoment = moment();
@@ -99,6 +101,8 @@ export class GlobalVars {
 		"Scavenge",
 		"Backup"
 	];
+
+	public cardSearchQPs = {};
 
 	constructor(
 		private httpClient: HttpClient,

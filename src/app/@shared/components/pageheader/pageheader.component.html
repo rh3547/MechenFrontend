@@ -6,7 +6,7 @@
 	<div class="ph-nav-right">
 		<div class="full">
 			<div class="link-wrapper mr-sm">
-				<a class="pointer d-flex flex-align-items-center link" routerLink="{{ routes.Cards.CardSearch }}" routerLinkActive="active">
+				<a class="pointer d-flex flex-align-items-center link" routerLink="{{ routes.Cards.CardSearch }}" [queryParams]="globalVars.cardSearchQPs" routerLinkActive="active">
 					<i class="far fa-books mr-sm link-icon"></i>
 					<p class="f-nav m-0 link-text">Card Library</p>
 				</a>
@@ -34,8 +34,7 @@
 					<i class="far fa-bars"></i>
 				</div>
 				<div class="mobile-user-dropdown" ngbDropdownMenu aria-labelledby="mobileMenuToggle">
-					<a ngbDropdownItem (click)="scrollTo('home')" [ngClass]="{'active': navService.activeNav == 'home'}" class="pointer link-text">Home</a>
-					<!-- <a ngbDropdownItem (click)="scrollTo(routeParts.Home.Skills)" [ngClass]="{'active': navService.activeNav == routeParts.Home.Skills}" class="pointer link-text">Skills</a> -->
+					<a ngbDropdownItem routerLink="{{ routes.Cards.CardSearch }}" [queryParams]="globalVars.cardSearchQPs" routerLinkActive="active" class="pointer link-text">Card Library</a>
 				</div>
 			</div>
 	  </div>

@@ -1,5 +1,11 @@
 @import '../../../../../theme/styles.scss';
 
+::ng-deep {
+	.card-create-wrapper .ngn-select-wrapper {
+		margin-bottom: 16px;
+	}
+}
+
 .main-content {
 	width: calc(100vw - 128px);
 	z-index: 99;
@@ -73,12 +79,22 @@
 	color: map-get($colors, contrast) !important;
 }
 
-.download-btn, .back-btn {
+.secondary-btn {
 	background-color: #393944;
+	transition: background-color .2s;
+}
+
+.delete-btn:hover {
+	background-color: map-get($colors, danger);
+	transition: background-color .2s;
 }
 
 .button-group {
 	display: flex;
+
+	button {
+		min-width: 200px;
+	}
 
 	button:not(:last-child) {
 		margin-right: 16px;

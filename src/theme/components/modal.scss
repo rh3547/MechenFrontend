@@ -1,5 +1,13 @@
 //=============================================================================== [ Modal Styles ]
 //
+::ng-deep {
+	.overlay.nsm-overlay-open {
+		display: flex;
+    justify-content: center;
+    align-items: center;
+	}
+}
+
 .nsm-content {
 	border-radius: 5px;
 	padding: 0;
@@ -16,7 +24,7 @@
 	}
 
 	path {
-		fill: map-get($colors, primary-contrast);
+		fill: map-get($colors, contrast);
 	}
 }
 
@@ -26,13 +34,13 @@
 	padding-right: 16px;
 	padding-top: 8px;
 	padding-bottom: 8px;
-	background-color: map-get($colors, primary);
+	background-color: #3c3c48;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 
 	.modal-title {
 		font-size: 16px;
-		color: map-get($colors, primary-contrast);
+		color: map-get($colors, contrast);
 	}
 }
 
@@ -42,7 +50,7 @@
 	padding-right: 16px;
 	padding-top: 16px;
 	padding-bottom: 16px;
-	background-color: #ffffff;
+	background-color: map-get($colors, background-light);
 
 	.message {
 		font-size: 14px;
@@ -59,7 +67,7 @@
 	padding-right: 16px;
 	padding-top: 16px;
 	padding-bottom: 16px;
-	background-color: map-get($colors, light);
+	background-color: map-get($colors, background-light);
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 
@@ -143,8 +151,12 @@
 }
 
 // App-specific modal heights
-.btn-modal {
-	&.generic-confirm-modal .modal-wrapper {
-		height: 280px;
+.nsm-dialog {
+	&.generic-confirm-modal {
+		// height: 280px;
+	}
+
+	&.changelog-modal {
+		max-width: 50%;
 	}
 }

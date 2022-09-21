@@ -3,11 +3,19 @@
   <div class="content-wrapper">
 		<nuc-pageheader
 			titleContent="<h1><span class='fg-primary'>Mech</span> Card Game</h1>"
-			subtitleContent="<h3 class='fw-normal fg-contrast-muted'>Create Card</h3>">
+			subtitleContent="<h3 class='fw-normal fg-contrast-muted'>{{ editMode ? 'Edit' : 'Create' }} Card</h3>">
 		</nuc-pageheader>
 		<div class="p-relative mb-xl pt-xxl">
 			<div class="card-create-wrapper p-lg mt-xl">
 				<div class="mr-xxl">
+					<ngn-select
+						*ngIf="editMode"
+						[options]="versionOptions"
+						[allowMultiple]="false"
+						[useModelValues]="true"
+						[(ngModel)]="cardVersion"
+						(ngModelChange)="cardVersionChanged($event)">
+				</ngn-select>
 					<card-preview [card]="cardPreview" [cardVersion]="cardVersionPreview"></card-preview>
 				</div>
 
@@ -241,9 +249,14 @@
 						</div>
 					</div>
 
-					<div class="button-group mt-xl">
-						<button class="back-btn" *ngIf="editMode" (click)="backToView()"><i class="fas fa-arrow-left mr-sm"></i>Back to View</button>
-						<button class="download-btn" (click)="downloadImage()"><i class="fas fa-download mr-sm"></i>Download</button>
+					<div class="button-group mt-xl" *ngIf="editMode">
+						<button class="secondary-btn" (click)="backToView()"><i class="fas fa-arrow-left mr-sm"></i>Back to View</button>
+						<button class="secondary-btn delete-btn" (click)="deleteCard()"><i class="fas fa-trash mr-sm"></i>Delete Card</button>
+						<button class="secondary-btn delete-btn" *ngIf="versionOptions.length > 1 && cardVersion?.version == highestVersion" (click)="deleteCardVersion()"><i class="fas fa-trash mr-sm"></i>Delete Card Version</button>
+					</div>
+
+					<div class="button-group mt-md">
+						<button class="secondary-btn" (click)="downloadImage()"><i class="fas fa-download mr-sm"></i>Download</button>
 						<button *ngIf="!editMode" (click)="saveCard(true)"><i class="fas fa-save mr-sm"></i>Save and Create Another</button>
 						<button (click)="saveCard()"><i class="fas fa-save mr-sm"></i>Save</button>
 					</div>

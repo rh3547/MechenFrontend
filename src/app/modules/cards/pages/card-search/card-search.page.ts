@@ -43,7 +43,16 @@ export class CardSearchPage implements OnInit, OnDestroy, AfterViewInit {
 				this.getFilteredCards();
 			});
 
-		this.routeSub = this.activatedRoute.params.subscribe((val) => {
+		this.routeSub = this.activatedRoute.queryParams.subscribe((qp) => {
+			if (qp.term) {
+				this.searchTerm = qp.term;
+			}
+
+			if (qp.type) {
+				let strType = (<string>qp.type);
+				this.cardTypeFilter = strType.substring(0, 1).toUpperCase() + strType.substring(1, strType.length);
+			}
+
 			this.loadPage();
 		});
 	}
@@ -75,14 +84,25 @@ export class CardSearchPage implements OnInit, OnDestroy, AfterViewInit {
 	}
 
 	public getFilteredCards() {
-		let filters = {};
+		let filters = {
+			"filter[order][0]": "type ASC",
+			"filter[order][1]": "name ASC"
+		};
 
 		if (this.searchTerm) {
 			filters["filter[where][and][0][name][regexp]"] = `/${this.searchTerm}/i`;
+			this.globalVars.cardSearchQPs["term"] = this.searchTerm;
+		}
+		else {
+			delete this.globalVars.cardSearchQPs["term"];
 		}
 
 		if (this.cardTypeFilter) {
 			filters["filter[where][and][1][type]"] = this.cardTypeFilter;
+			this.globalVars.cardSearchQPs["type"] = this.cardTypeFilter;
+		}
+		else {
+			delete this.globalVars.cardSearchQPs["type"];
 		}
 
 		this.api.Cards.get("", filters).subscribe((data) => {

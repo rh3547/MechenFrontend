@@ -22,7 +22,7 @@ export class PageHeaderComponent implements OnInit, AfterViewInit {
 	constructor(
 		private authProxy: AuthProxy,
 		private router: Router,
-		private globalVars: GlobalVars,
+		public globalVars: GlobalVars,
 		public navService: NavService,
 		private location: Location
 	) { }

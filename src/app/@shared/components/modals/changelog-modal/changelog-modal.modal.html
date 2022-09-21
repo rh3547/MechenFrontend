@@ -1,0 +1,37 @@
+<div class="nuc-modal-header">
+	<i class="fas fa-file-alt fg-contrast d-inline-block mr-md"></i>
+  <h4 class="modal-title m-0px d-inline-block">What's New? - Version {{ globalVars.appVersion }} Changelog</h4>
+</div>
+
+<div class="nuc-modal-body nuc-scrollbar pb-0">
+  <div class="message pt-md pb-md">
+    <div class="">
+			<h4 class="fg-primary">New Features</h4>
+			<hr class="divider">
+			<ul>
+				<li><b>Card Version Editing</b>: Added the ability to edit previous versions of a card on the card edit screen. Past versions can now be tweaked or corrected if needed and can also be saved as new versions.</li>
+				<li><b>Card Deletion</b>: Added the ability to delete all versions of a card, or the most recent version of a card from the card edit screen.</li>
+			</ul>
+		</div>
+    <div class="mt-xl">
+			<h4 class="fg-primary">Quality of Life Improvements</h4>
+			<hr class="divider">
+			<ul>
+				<li><b>Card Version Sort Order</b>: All dropdowns showing card versions will now properly show in numerical order.</li>
+				<li><b>Card Search Sort Order</b>: Cards shown when searching cards in the card library are now sorted by type, then by name.</li>
+				<li><b>Card Search Retention</b>: Filter criteria is now saved when navigating back to the card library page.</li>
+			</ul>
+		</div>
+    <div class="mt-xl">
+			<h4 class="fg-primary">Bug Fixes</h4>
+			<hr class="divider">
+			<ul>
+				<li><b>Card View Details Cutoff</b>: Fixed an issue on the card view screen where details on some cards with longer ability text were getting cut off by the buttons at the bottom of the pane.</li>
+			</ul>
+		</div>
+  </div>
+	<hr class="bg-medium-3 pr-md pl-md mt-0 mb-0">
+</div>
+<div class="nuc-modal-footer nuc-button-footer">
+  <button (click)="confirm()" class="btn thin bg-primary">Ok</button>
+</div>

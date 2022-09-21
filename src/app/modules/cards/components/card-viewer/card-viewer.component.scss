@@ -29,15 +29,20 @@
 		}
 	}
 
-	.card-details {
+	.card-breakdown-wrapper {
 		padding-top: 32px;
-		background-color: map-get($colors, background-light);
-		border-radius: 5px;
+		padding-bottom: 32px;
     padding-left: 32px;
     padding-right: 32px;
+		background-color: map-get($colors, background-light);
+		border-radius: 5px;
 		position: relative;
 		margin-bottom: 24px;
 		max-width: 450px;
+		min-width: 450px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 
 		hr {
 			background: map-get($colors, contrast);
@@ -140,12 +145,12 @@
 		}
 	}
 
+	.card-details {
+		flex: 1;
+	}
+
 	.buttons-section {
-		margin: 0;
-    position: absolute;
-    bottom: 16px;
-    left: 16px;
-    right: 16px;
+		margin-top: 24px;
 
 		button {
 			width: 100%;
