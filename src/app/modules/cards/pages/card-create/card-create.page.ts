@@ -35,6 +35,7 @@ export class CardCreatePage implements OnInit, OnDestroy, AfterViewInit {
 	public formGroup: FormGroup;
 	public formSub: Subscription;
 	public cardTypeOptions: NgnSelectOption[] = this.globalVars.cardTypeOptions;
+	public manufacturerOptions: NgnSelectOption[] = this.globalVars.manufacturerOptions;
 	public cardRarityOptions: NgnSelectOption[] = this.globalVars.cardRarityOptions;
 	public cardDirectionOptions: NgnSelectOption[] = this.globalVars.cardDirectionOptions;
 	public cardAreaOfEffectOptions: NgnSelectOption[] = this.globalVars.cardAreaOfEffectOptions;
@@ -59,6 +60,7 @@ export class CardCreatePage implements OnInit, OnDestroy, AfterViewInit {
 			rarity: ["", [Validators.required]],
 			type: ["", [Validators.required]],
 			subtype: ["", []],
+			manufacturer: ["", []],
 			imageUrl: ["", []],
 			abilityText: ["", []],
 			legSlots: [0, []],
@@ -225,6 +227,7 @@ export class CardCreatePage implements OnInit, OnDestroy, AfterViewInit {
 			rarity: this.cardVersion.rarity,
 			type: this.cardVersion.type,
 			subtype: this.cardVersion.subtype,
+			manufacturer: this.cardVersion.manufacturer,
 			imageUrl: this.cardVersion.imageUrl,
 			abilityText: this.cardVersion.abilityText,
 			legSlots: this.cardVersion.legSlots,

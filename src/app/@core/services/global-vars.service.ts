@@ -15,7 +15,7 @@ const LOW_SEARCH_AMOUNT_THRESHOLD = "LowSearchAmountThreshold";
 })
 export class GlobalVars {
 
-	public appVersion = "1.2";
+	public appVersion = "1.4.0";
 
 	public minDateMoment = moment().year(1900).month(1).date(1);
 	public maxDateMoment = moment().month(1).date(1).add(100, "years");
@@ -67,6 +67,16 @@ export class GlobalVars {
 		new NgnSelectOption({ name: "Mod", value: "Mod" })
 	];
 
+	public manufacturerOptions: NgnSelectOption[] = [
+		new NgnSelectOption({ name: "Bassiniks Mechs", value: "Bassiniks Mechs" }),
+		new NgnSelectOption({ name: "Cytotion Tech", value: "Cytotion Tech" }),
+		new NgnSelectOption({ name: "Steelforge Industries", value: "Steelforge Industries" }),
+		new NgnSelectOption({ name: "Smolder Inc.", value: "Smolder Inc." }),
+		new NgnSelectOption({ name: "PynPoint", value: "PynPoint" }),
+		new NgnSelectOption({ name: "Myhtic Mods", value: "Myhtic Mods" }),
+		new NgnSelectOption({ name: "Glyf Tech", value: "Glyf Tech" })
+	];
+
 	public cardRarityOptions: NgnSelectOption[] = [
 		new NgnSelectOption({ name: "Common", value: "Common" }),
 		new NgnSelectOption({ name: "Uncommon", value: "Uncommon" }),
@@ -99,8 +109,26 @@ export class GlobalVars {
 		"Counter",
 		"Scrap",
 		"Scavenge",
-		"Backup"
+		"Backup",
+		"Entrench",
+		"Stunned",
+		"Sleep Mode",
 	];
+
+	public abilityKeywordDescriptions = {
+		"Sustain": "All energy spent to activate abilities on this card is sustained. Sustained energy is given immediately at the end of your turn and can be used to activate abilities on opponents\' turns. Sustained energy is depleted at the start of your next turn.",
+		"Shimmer": "Any ability activated by an opponent that targets you receives a -2 maximum range penalty (down to a minimum of 1 maximum range). This effect can only be triggered once per turn and the effects only last for that attack.",
+		"Shield": "The next time you would take damage of any kind from a single hit, negate that damage. 1 shield is depleted each time this effect is triggered.",
+		"Dwindle": "You may spend core health in place of energy to activate abilities on this card.",
+		"Sacrifice": "You may sacrifice any drone you control to pay for up to 2 energy to activate abilities on this card.",
+		"Counter": "Upon taking core health damage on an opponent\'s turn, you may activate a single ability on this card without spending an action point.",
+		"Scrap": "You may spend armor in place of energy to activate abilities on this card.",
+		"Scavenge": "Each time an activated ability on this card deals armor damage to an opponent, gain 1 armor.",
+		"Backup": "Abilities on this card can be used while stunned.",
+		"Entrench": "At the start of your next turn, your agility is set to half of it's maximum value.",
+		"Stunned": "While stunned, your agility is reduced to 0, you are unable to move, and cannot activate any abilities.",
+		"Sleep Mode": "While in sleep mode you are considered Stunned, but generate 1 energy at the start of each player\'s turn. Immediately exit sleep mode when you are attacked, or by spending 1 agility point after 1 entire round of being in sleep mode.",
+	};
 
 	public cardSearchQPs = {};
 
@@ -194,20 +222,30 @@ export class GlobalVars {
 	}
 
 	public parseAbilityText(text: string) {
-		text = text.replace(/(leg)(?=[:'.,\s])/gm, "<img src='assets/images/icons/leg.png' alt='Leg' title='Leg' class='ability-icon'>");
-		text = text.replace(/(arm)(?=[:'.,\s])/gm, "<img src='assets/images/icons/arm.png' alt='Arm' title='Arm' class='ability-icon'>");
-		text = text.replace(/(head)(?=[:'.,\s])/gm, "<img src='assets/images/icons/head.png' alt='Head' title='Head' class='ability-icon'>");
-		text = text.replace(/(hardpoint)(?=[:'.,\s])/gm, "<img src='assets/images/icons/hardpoint.png' alt='Hardpoint' title='Hardpoint' class='ability-icon'>");
-		text = text.replace(/(mod)(?=[:'.,\s])/gm, "<img src='assets/images/icons/mod.png' alt='Mod' title='Mod' class='ability-icon'>");
-		text = text.replace(/(core health)(?=[:'.,\s])/gm, "<img src='assets/images/icons/corehealth.png' alt='Core Health' title='Core Health' class='ability-icon'>");
-		text = text.replace(/(core)(?=[:'.,\s])/gm, "<img src='assets/images/icons/core.png' alt='Core' title='Core' class='ability-icon'>");
-		text = text.replace(/(armor)(?=[:'.,\s])/gm, "<img src='assets/images/icons/armor.png' alt='Armor' title='Armor' class='ability-icon'>");
-		text = text.replace(/(agility)(?=[:'.,\s])/gm, "<img src='assets/images/icons/agility.png' alt='Agility' title='Agility' class='ability-icon'>");
-		text = text.replace(/(energy)(?=[:'.,\s])/gm, "<img src='assets/images/icons/energy.png' alt='Energy' title='Energy' class='ability-icon'>");
+		text = text.replace(/(activate|Activate)(?=[:'.,\s)\]])/gm, "<img src='assets/images/icons/activate_color.png' alt='Activate' title='Activate' class='ability-icon activated'>");
+		text = text.replace(/(shoot|Shoot)(?=[:'.,\s)\]])/gm, "<img src='assets/images/icons/shoot_color.png' alt='Ranged Attack' title='Ranged Attack' class='ability-icon activated'>");
+		text = text.replace(/(ranged|ranged attack|Ranged attack)(?=[:'.,\s)\]])/gm, "<img src='assets/images/icons/shoot_color.png' alt='Ranged Attack' title='Ranged Attack' class='ability-icon activated-middle'>");
+		text = text.replace(/(swing|Swing)(?=[:'.,\s)\]])/gm, "<img src='assets/images/icons/swords_color.png' alt='Melee Attack' title='Melee Attack' class='ability-icon activated'>");
+		text = text.replace(/(melee|melee attack|Melee attack)(?=[:'.,\s)\]])/gm, "<img src='assets/images/icons/swords_color.png' alt='Melee Attack' title='Melee Attack' class='ability-icon activated-middle'>");
+		text = text.replace(/(leg)(?=[:'.,\s)\]])/gm, "<img src='assets/images/icons/leg.png' alt='Leg' title='Leg' class='ability-icon'>");
+		text = text.replace(/(arm)(?=[:'.,\s)\]])/gm, "<img src='assets/images/icons/arm.png' alt='Arm' title='Arm' class='ability-icon'>");
+		text = text.replace(/(head)(?=[:'.,\s)\]])/gm, "<img src='assets/images/icons/head.png' alt='Head' title='Head' class='ability-icon'>");
+		text = text.replace(/(hardpoint)(?=[:'.,\s)\]])/gm, "<img src='assets/images/icons/hardpoint.png' alt='Hardpoint' title='Hardpoint' class='ability-icon'>");
+		text = text.replace(/(mod)(?=[:'.,\s)\]])/gm, "<img src='assets/images/icons/mod.png' alt='Mod' title='Mod' class='ability-icon'>");
+		text = text.replace(/(core health)(?=[:'.,\s)\]])/gm, "<img src='assets/images/icons/corehealth.png' alt='Core Health' title='Core Health' class='ability-icon'>");
+		text = text.replace(/(core)(?=[:'.,\s)\]])/gm, "<img src='assets/images/icons/core.png' alt='Core' title='Core' class='ability-icon'>");
+		text = text.replace(/(armor)(?=[:'.,\s)\]])/gm, "<img src='assets/images/icons/armor.png' alt='Armor' title='Armor' class='ability-icon'>");
+		text = text.replace(/(agility)(?=[:'.,\s)\]])/gm, "<img src='assets/images/icons/agility.png' alt='Agility' title='Agility' class='ability-icon'>");
+		text = text.replace(/(energy)(?=[:'.,\s)\]])/gm, "<img src='assets/images/icons/energy.png' alt='Energy' title='Energy' class='ability-icon'>");
+		text = text.replace(/(cooldown)(?=[:'.,\s)\]])/gm, "<img src='assets/images/icons/cooldown.png' alt='Cooldown' title='Cooldown' class='ability-icon'>");
+		text = text.replace(/(range)(?=[:'.,\s)\]])/gm, "<img src='assets/images/icons/range.png' alt='Range' title='Range' class='ability-icon'>");
+		text = text.replace(/(\[)/gm, "<span class='card-left-bracket'>[</span>");
+		text = text.replace(/(\()/gm, "<span class='card-left-paren'>(</span>");
 
 		this.abilityKeywords.forEach((keyword) => {
 			if (text.includes(keyword)) {
-				text = text.replace(keyword, `<span class='ability-keyword'>${keyword}</span>`);
+				let regex = new RegExp(`(${keyword})`, "gm");
+				text = text.replace(regex, `<span class="ability-keyword" title="${this.abilityKeywordDescriptions[keyword]}">${keyword}</span>`);
 			}
 		});
 

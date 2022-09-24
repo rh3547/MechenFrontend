@@ -118,6 +118,10 @@
 		}
 	}
 
+	.card-ability-text {
+		@include font-body;
+	}
+
 	.card-stats-wrapper {
 		display: flex;
 		margin-top: -12px;

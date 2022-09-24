@@ -121,6 +121,11 @@ export class CardSearchPage implements OnInit, OnDestroy, AfterViewInit {
 			delete this.globalVars.cardSearchQPs["type"];
 		}
 
+		this.router.navigate([], {
+			relativeTo: this.activatedRoute,
+			queryParams: this.globalVars.cardSearchQPs
+		});
+
 		this.api.Cards.get("", filters).subscribe((data) => {
 			this.cards = data;
 		});

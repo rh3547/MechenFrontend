@@ -1,19 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GlobalVars } from '@app/@core/services';
+import { NgnSelectOption } from '@ng-nuc/components';
 import { NgxSmartModalService, NgxSmartModalComponent } from 'ngx-smart-modal';
 
 const defaultModalId = "generic-confirm";
-const defaultTitle = "Confirm";
-const defaultMessage = "Are you sure you want to continue?";
-const defaultHeaderClass = "";
-const defaultBodyClass = "";
-const defaultMessageClass = "mb-md";
-const defaultFooterClass = "flex-justify-end";
-const defaultCancelBtnText = "Cancel";
-const defaultCancelBtnClass = "theme-btn thin bg-medium-2 fg-white pl-xl pr-xl";
-const defaultConfirmBtnText = "Confirm";
-const defaultConfirmBtnClass = "theme-btn thin fg-white pl-xl pr-xl";
-const defaultIconClass = "fas fa-question";
+
 @Component({
 	selector: 'changelog-modal-component',
 	templateUrl: './changelog-modal.modal.html',
@@ -24,6 +15,13 @@ export class ChangelogModal implements OnInit {
 	private modal: NgxSmartModalComponent;
 
 	@Input() modalId: string = defaultModalId;
+
+	public version: string;
+	public versionOptions: NgnSelectOption[] = [
+		new NgnSelectOption({ name: "1.2.0", value: "1.2.0" }),
+		new NgnSelectOption({ name: "1.3.0", value: "1.3.0" }),
+		new NgnSelectOption({ name: "1.4.0", value: "1.4.0" }),
+	];
 
 	constructor(
 		private modalService: NgxSmartModalService,
@@ -38,7 +36,7 @@ export class ChangelogModal implements OnInit {
 	}
 
 	ngOnInit() {
-
+		this.version = `${this.globalVars.appVersion}`;
 	}
 
 	public cancel() {

@@ -36,11 +36,11 @@
 		</div>
 
 		<div class="card-slots-wrapper" *ngIf="cardVersion.cooldown || cardVersion.minRange || cardVersion.maxRange || cardVersion.direction || cardVersion.areaOfEffect">
-			<div class="card-slot cooldown-slot" *ngIf="cardVersion.cooldown" title="{{ cardVersion.cooldown }} Cooldown">
+			<div class="card-slot hardpoint-slot cooldown-slot" *ngIf="cardVersion.cooldown" title="{{ cardVersion.cooldown }} Cooldown">
 				<img class="slot-icon" src="assets/images/icons/cooldown.png" alt="Cooldown">
 				<span class="slot-text font-card-stats">&nbsp;{{ cardVersion.cooldown }}</span>
 			</div>
-			<div class="card-slot range-slot" *ngIf="cardVersion.minRange || cardVersion.maxRange" title="{{ cardVersion.minRange ? cardVersion.minRange : 'No' }} Min Range / {{ cardVersion.maxRange ? cardVersion.maxRange : 'No' }} Max Range">
+			<div class="card-slot hardpoint-slot range-slot" *ngIf="cardVersion.minRange || cardVersion.maxRange" title="{{ cardVersion.minRange ? cardVersion.minRange : 'No' }} Min Range / {{ cardVersion.maxRange ? cardVersion.maxRange : 'No' }} Max Range">
 				<img class="slot-icon" src="assets/images/icons/range.png" alt="Range">
 				<span class="slot-text font-card-stats">
 					{{ cardVersion.minRange ? cardVersion.minRange : "" }}
@@ -50,34 +50,34 @@
 					<img class="infinite-range-icon" *ngIf="!cardVersion.maxRange" src="assets/images/icons/infinite_range.png" alt="None">
 				</span>
 			</div>
-			<div class="card-slot direction-stat" *ngIf="cardVersion.direction" title="{{ cardVersion.direction }} Direction">
+			<div class="card-slot hardpoint-slot direction-stat" *ngIf="cardVersion.direction" title="{{ cardVersion.direction }} Direction">
 				<img class="direction-icon" src="assets/images/icons/direction_{{ cardVersion.direction.toLowerCase() }}.png" alt="Direction">
 			</div>
-			<div class="card-slot aoe-stat" *ngIf="cardVersion.areaOfEffect" title="{{ cardVersion.areaOfEffect == 'Single' ? (cardVersion.areaOfEffect + ' Target') : (cardVersion.areaOfEffect + ' Area of Effect')}}">
+			<div class="card-slot hardpoint-slot aoe-stat" *ngIf="cardVersion.areaOfEffect" title="{{ cardVersion.areaOfEffect == 'Single' ? (cardVersion.areaOfEffect + ' Target') : (cardVersion.areaOfEffect + ' Area of Effect')}}">
 				<img class="aoe-icon" src="assets/images/icons/aoe_{{ cardVersion.areaOfEffect.toLowerCase() }}.png" alt="Area of Effect">
 			</div>
 		</div>
 
-		<p class="font-card-body card-type" *ngIf="cardVersion.type || cardVersion.subtype">{{ cardVersion.type }} {{ cardVersion.subtype ? (" - " + cardVersion.subtype) : "" }}</p>
+		<p class="font-card-body card-type" *ngIf="cardVersion.type || cardVersion.subtype || cardVersion.manufacturer">{{ cardVersion.type }} {{ cardVersion.subtype ? (" - " + cardVersion.subtype) : "" }} {{ cardVersion.manufacturer ? (" - " + cardVersion.manufacturer) : "" }}</p>
 
 		<h2 class="font-card-name card-name"*ngIf="cardVersion.name">{{ cardVersion.name }}</h2>
 
-		<p class="font-card-body card-ability-text" *ngIf="cardVersion.abilityText" [innerHTML]="globalVars.parseAbilityText(cardVersion.abilityText)"></p>
+		<div class="font-card-body card-ability-text" *ngIf="cardVersion.abilityText" [innerHTML]="globalVars.parseAbilityText(cardVersion.abilityText)"></div>
 
-		<div class="card-stats-wrapper" *ngIf="cardVersion.type == 'Core' || cardVersion.type == 'Leg' || cardVersion.type == 'Arm' || cardVersion.type == 'Head'">
+		<div class="card-stats-wrapper" *ngIf="(cardVersion.type == 'Core' || cardVersion.type == 'Leg' || cardVersion.type == 'Arm' || cardVersion.type == 'Head') || ((cardVersion.type == 'Hardpoint' || cardVersion.type == 'Mod') && (cardVersion.coreHealth || cardVersion.armor || cardVersion.agility || cardVersion.energy))">
 			<div class="card-stat" *ngIf="cardVersion.coreHealth || cardVersion.type == 'Core'">
 				<img class="stat-icon" src="assets/images/icons/corehealth.png" alt="Core Health" title="Core Health">
 				<span class="stat-text font-card-stats">{{ cardVersion.coreHealth }}</span>
 			</div>
-			<div class="card-stat">
+			<div class="card-stat" *ngIf="(cardVersion.type != 'Hardpoint' && cardVersion.type != 'Mod') || (cardVersion.armor != 0)">
 				<img class="stat-icon" src="assets/images/icons/armor.png" alt="Armor" title="Armor">
 				<span class="stat-text font-card-stats">{{ cardVersion.armor }}</span>
 			</div>
-			<div class="card-stat">
+			<div class="card-stat" *ngIf="(cardVersion.type != 'Hardpoint' && cardVersion.type != 'Mod') || (cardVersion.agility != 0)">
 				<img class="stat-icon" src="assets/images/icons/agility.png" alt="Agility" title="Agility">
 				<span class="stat-text font-card-stats">{{ cardVersion.agility }}</span>
 			</div>
-			<div class="card-stat">
+			<div class="card-stat" *ngIf="(cardVersion.type != 'Hardpoint' && cardVersion.type != 'Mod') || (cardVersion.energy != 0)">
 				<img class="stat-icon" src="assets/images/icons/energy.png" alt="Energy" title="Energy">
 				<span class="stat-text font-card-stats">{{ cardVersion.energy }}</span>
 			</div>

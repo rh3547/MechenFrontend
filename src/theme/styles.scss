@@ -43,13 +43,40 @@ body {
 .ability-icon {
 	width: 32px;
 	transform: translateY(-2px);
-	margin-left: -4px;
-	margin-right: -4px;
+	margin-left: -8px;
+	margin-right: -6px;
 	margin-top: -3px;
 	margin-bottom: -3px;
+
+	&.activated {
+		margin-left: -6px;
+		margin-right: -2px;
+	}
+
+	&.activated-middle {
+		margin-left: -6px;
+		margin-right: -6px;
+	}
 }
 
 .ability-keyword {
 	color: #fecb3a !important;
 	font-weight: 500 !important;
+}
+
+.card-ability-text {
+	hr {
+		background-color: white;
+		opacity: .3;
+		margin-top: 8px;
+		margin-bottom: 8px;
+	}
+}
+
+.card-left-bracket {
+	margin-right: 4px;
+}
+
+.card-left-paren {
+	margin-right: 3px;
 }

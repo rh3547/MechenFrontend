@@ -26,9 +26,23 @@
 							<p class="field-label">NAME</p>
 							<input type="text" formControlName="name" [ngnValidate]="submitted" [ngnValidateLock]="!submitted">
 						</div>
+					</div>
+
+					<div class="form-row">
 						<div class="form-field flex-1">
 							<p class="field-label">CARD ART URL</p>
 							<input type="text" formControlName="imageUrl">
+						</div>
+						<div class="form-field flex-1">
+							<p class="field-label">RARITY</p>
+							<ngn-select
+								[options]="cardRarityOptions"
+								[allowMultiple]="false"
+								[useModelValues]="true"
+								[defaultControlText]="''"
+								formControlName="rarity"
+								[ngnValidate]="submitted" [ngnValidateLock]="!submitted">
+							</ngn-select>
 						</div>
 					</div>
 
@@ -49,13 +63,14 @@
 							<input type="text" formControlName="subtype">
 						</div>
 						<div class="form-field flex-1">
-							<p class="field-label">RARITY</p>
+							<p class="field-label">MANUFACTURER</p>
 							<ngn-select
-								[options]="cardRarityOptions"
+								[options]="manufacturerOptions"
 								[allowMultiple]="false"
 								[useModelValues]="true"
 								[defaultControlText]="''"
-								formControlName="rarity"
+								[allowSingleDeselection]="true"
+								formControlName="manufacturer"
 								[ngnValidate]="submitted" [ngnValidateLock]="!submitted">
 							</ngn-select>
 						</div>
@@ -119,7 +134,7 @@
 
 					<div class="form-row">
 						<div class="form-field flex-1">
-							<p class="field-label">ABILITY TEXT</p>
+							<p class="field-label">ABILITY TEXT<i class="fas fa-question-circle ml-sm" [ngbTooltip]="abilityTextTooltip" placement="bottom"></i></p>
 							<textarea type="text" formControlName="abilityText"></textarea>
 						</div>
 					</div>
@@ -211,7 +226,7 @@
 						</div>
 					</div>
 
-					<div class="form-row" *ngIf="formGroup.controls.type.value == 'Leg' || formGroup.controls.type.value == 'Arm' || formGroup.controls.type.value == 'Head'">
+					<div class="form-row" *ngIf="formGroup.controls.type.value == 'Leg' || formGroup.controls.type.value == 'Arm' || formGroup.controls.type.value == 'Head' || formGroup.controls.type.value == 'Hardpoint' || formGroup.controls.type.value == 'Mod'">
 						<div class="form-field flex-1">
 							<p class="field-label">PART STATS</p>
 							<div class="slot-fields-wrapper">
@@ -264,3 +279,8 @@
 		</div>
 	</div>
 </div>
+<ng-template #abilityTextTooltip>
+	<div class="card-ability-text">
+		<p>Shoot: <span [innerHTML]="globalVars.parseAbilityText('Shoot ')"></span></p>
+	</div>
+</ng-template>

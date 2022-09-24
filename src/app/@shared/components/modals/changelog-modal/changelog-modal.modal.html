@@ -1,34 +1,77 @@
 <div class="nuc-modal-header">
 	<i class="fas fa-file-alt fg-contrast d-inline-block mr-md"></i>
-  <h4 class="modal-title m-0px d-inline-block">What's New? - Version {{ globalVars.appVersion }} Changelog</h4>
+  <h4 class="modal-title m-0px d-inline-block">What's New? - Version {{ version }} Changelog</h4>
 </div>
 
 <div class="nuc-modal-body nuc-scrollbar pb-0">
-  <div class="message pt-md pb-md">
-    <div class="">
-			<h4 class="fg-primary">New Features</h4>
-			<hr class="divider">
-			<ul>
-				<li><b>Card Version Editing</b>: Added the ability to edit previous versions of a card on the card edit screen. Past versions can now be tweaked or corrected if needed and can also be saved as new versions.</li>
-				<li><b>Card Deletion</b>: Added the ability to delete all versions of a card, or the most recent version of a card from the card edit screen.</li>
-				<li><b>Pending Cards</b>: Newly created cards are now added in a pending state while being worked on ahead of approval. You can search through pending cards on the "Pending Cards" screen. Cards that have not yet been approved may be approved by clicking the "approve" button on the card view screen.</li>
-			</ul>
+  <div class="message pb-md">
+		<div class="mb-lg">
+			<p class="field-label">Version</p>
+			<ngn-select
+				[options]="versionOptions"
+				[allowMultiple]="false"
+				[useModelValues]="true"
+				[defaultControlText]="''"
+				[enableVirtualization]="false"
+				[(ngModel)]="version">
+			</ngn-select>
 		</div>
-    <div class="mt-xl">
-			<h4 class="fg-primary">Quality of Life Improvements</h4>
-			<hr class="divider">
-			<ul>
-				<li><b>Card Version Sort Order</b>: All dropdowns showing card versions will now properly show in numerical order.</li>
-				<li><b>Card Search Sort Order</b>: Cards shown when searching cards in the card library are now sorted by type, then by name.</li>
-				<li><b>Card Search Retention</b>: Filter criteria is now saved when navigating back to the card library page.</li>
-			</ul>
+
+		<div *ngIf="version == '1.4.0'">
+			<div class="">
+				<h4 class="fg-primary">New Features</h4>
+				<hr class="divider">
+				<ul>
+					<li><b>Card Manufacturers</b>: Added a new "Manufacturer" field to cards that allows you to select a part manufacturer from a dropdown.</li>
+					<li><b>Enabled Core Stats on Hardpoints and Mods</b>: The armor, agility, and energy stat inputs will now appear for Hardpoints and Mods on the card create page so those parts can now grant bonuses or banes to those stats.</li>
+					<li><b>Ability Text Keyword Descriptions</b>: Descriptions of card keywords are now shown when hovering over a highlighted keyword in a card's ability text.</li>
+				</ul>
+			</div>
+			<div class="mt-xl">
+				<h4 class="fg-primary">Bug Fixes</h4>
+				<hr class="divider">
+				<ul>
+					<li><b>Ability Text Keyword Bug</b>: Fixed an issue on the card create screen where only the first instance of a named keyword would be highlighted. All named keywords in a card's ability text will now be properly highlighted.</li>
+				</ul>
+			</div>
 		</div>
-    <div class="mt-xl">
-			<h4 class="fg-primary">Bug Fixes</h4>
-			<hr class="divider">
-			<ul>
-				<li><b>Card View Details Cutoff</b>: Fixed an issue on the card view screen where details on some cards with longer ability text were getting cut off by the buttons at the bottom of the pane.</li>
-			</ul>
+
+		<div *ngIf="version == '1.3.0'">
+			<div class="">
+				<h4 class="fg-primary">New Features</h4>
+				<hr class="divider">
+				<ul>
+					<li><b>Card Activation Icons</b>: Added additional icon parsing to ability text. You can now use "Shoot", "Melee", or "Activate" as icon keywords.</li>
+				</ul>
+			</div>
+		</div>
+
+		<div *ngIf="version == '1.2.0'">
+			<div class="">
+				<h4 class="fg-primary">New Features</h4>
+				<hr class="divider">
+				<ul>
+					<li><b>Card Version Editing</b>: Added the ability to edit previous versions of a card on the card edit screen. Past versions can now be tweaked or corrected if needed and can also be saved as new versions.</li>
+					<li><b>Card Deletion</b>: Added the ability to delete all versions of a card, or the most recent version of a card from the card edit screen.</li>
+					<li><b>Pending Cards</b>: Newly created cards are now added in a pending state while being worked on ahead of approval. You can search through pending cards on the "Pending Cards" screen. Cards that have not yet been approved may be approved by clicking the "approve" button on the card view screen.</li>
+				</ul>
+			</div>
+			<div class="mt-xl">
+				<h4 class="fg-primary">Quality of Life Improvements</h4>
+				<hr class="divider">
+				<ul>
+					<li><b>Card Version Sort Order</b>: All dropdowns showing card versions will now properly show in numerical order.</li>
+					<li><b>Card Search Sort Order</b>: Cards shown when searching cards in the card library are now sorted by type, then by name.</li>
+					<li><b>Card Search Retention</b>: Filter criteria is now saved when navigating back to the card library page.</li>
+				</ul>
+			</div>
+			<div class="mt-xl">
+				<h4 class="fg-primary">Bug Fixes</h4>
+				<hr class="divider">
+				<ul>
+					<li><b>Card View Details Cutoff</b>: Fixed an issue on the card view screen where details on some cards with longer ability text were getting cut off by the buttons at the bottom of the pane.</li>
+				</ul>
+			</div>
 		</div>
   </div>
 	<hr class="bg-medium-3 pr-md pl-md mt-0 mb-0">

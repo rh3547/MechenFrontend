@@ -39,6 +39,11 @@
 				padding-top: 2px;
 				padding-bottom: 2px;
 
+				&.hardpoint-slot {
+					padding-top: 0px;
+					padding-bottom: 0px;
+				}
+
 				&.cooldown-slot {
 					width: auto;
 

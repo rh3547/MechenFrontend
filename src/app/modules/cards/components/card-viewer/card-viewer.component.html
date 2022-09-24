@@ -22,7 +22,7 @@
 				<img *ngIf="cardVersion.type == 'Head'" alt="Head" title="Head" class="type-icon" src="assets/images/icons/head.png">
 				<img *ngIf="cardVersion.type == 'Hardpoint'" alt="Hardpoint" title="Hardpoint" class="type-icon" src="assets/images/icons/hardpoint.png">
 				<img *ngIf="cardVersion.type == 'Mod'" alt="Mod" title="Mod" class="type-icon" src="assets/images/icons/mod.png">
-				{{ cardVersion.type }} - {{ cardVersion.subtype }}
+				{{ cardVersion.type }} {{ cardVersion.subtype ? (" - " + cardVersion.subtype) : "" }} {{ cardVersion.manufacturer ? (" - " + cardVersion.manufacturer) : "" }}
 			</p>
 
 			<hr>
@@ -33,7 +33,7 @@
 				{{ cardVersion.rarity }}
 			</p>
 
-			<p *ngIf="cardVersion?.abilityText" class="mt-md"><span class="detail-label">ABILITY TEXT</span><span [innerHTML]="globalVars.parseAbilityText(cardVersion?.abilityText)"></span></p>
+			<div *ngIf="cardVersion?.abilityText" class="mt-md"><span class="detail-label">ABILITY TEXT</span><div class="card-ability-text" [innerHTML]="globalVars.parseAbilityText(cardVersion?.abilityText)"></div></div>
 
 			<div class="detail-section mt-md" *ngIf="cardVersion?.cooldown || cardVersion?.minRange || cardVersion?.maxRange || cardVersion?.direction || cardVersion?.areaOfEffect">
 				<span class="detail-label mb-xs">ABILITY STATS</span>

@@ -4,6 +4,7 @@ export class CardVersion {
 	name: string;
 	type: string;
 	subtype: string;
+	manufacturer: string;
 	rarity: string;
 	imageUrl: string;
 	abilityText: string;
@@ -29,6 +30,7 @@ export class CardVersion {
 		this.name = obj?.name ?? "";
 		this.type = obj?.type ?? "";
 		this.subtype = obj?.subtype ?? "";
+		this.manufacturer = obj?.manufacturer ?? "";
 		this.rarity = obj?.rarity ?? "";
 		this.imageUrl = obj?.imageUrl ?? "https://mechen-card-art.s3.amazonaws.com/placeholder_bg_art.png";
 		this.abilityText = obj?.abilityText ?? "";
