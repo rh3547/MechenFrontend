@@ -74,7 +74,8 @@ export class GlobalVars {
 		new NgnSelectOption({ name: "Smolder Inc.", value: "Smolder Inc." }),
 		new NgnSelectOption({ name: "PynPoint", value: "PynPoint" }),
 		new NgnSelectOption({ name: "Myhtic Mods", value: "Myhtic Mods" }),
-		new NgnSelectOption({ name: "Glyf Tech", value: "Glyf Tech" })
+		new NgnSelectOption({ name: "Glyf Tech", value: "Glyf Tech" }),
+		new NgnSelectOption({ name: "Aerolite", value: "Aerolite" }),
 	];
 
 	public cardRarityOptions: NgnSelectOption[] = [
