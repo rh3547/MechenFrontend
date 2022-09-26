@@ -7,6 +7,7 @@ import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import { Router } from '@angular/router';
 import { resolveRouteParams, Routes } from '@routes';
+import { DeckService } from '@services/deck.service';
 
 @Component({
 	selector: 'card-viewer',
@@ -24,7 +25,8 @@ export class CardViewerComponent implements OnInit, OnChanges, AfterViewInit {
 	constructor(
 		public globalVars: GlobalVars,
 		private router: Router,
-		private api: Api
+		private api: Api,
+		public deckService: DeckService
 	) { }
 
 	ngOnInit(): void { }

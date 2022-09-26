@@ -1,0 +1,101 @@
+<div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;" class="bg-background"></div>
+<div class="main-content">
+  <div class="content-wrapper">
+		<nuc-pageheader
+			titleContent="<h1><span class='fg-primary'>Mech</span> Card Game</h1>"
+			subtitleContent="<h3 class='fw-normal fg-contrast-muted'>Deck Details</h3>">
+		</nuc-pageheader>
+		<div class="p-relative deck-view mb-xl pt-xxl">
+			<div class="deck-view-header" *ngIf="deck">
+				<div class="scroll-hide"></div>
+				<div class="deck-view-toolbar mt-lg mb-md">
+					<a class="toolbar-link mr-xl pointer" *ngIf="deckService.currentDeck && deckService.currentDeck?.id == deck?.id" (click)="navToCardSearch()"><i class="fas fa-arrow-left mr-sm"></i>Back to Card Search</a>
+					<a class="toolbar-link mr-xl pointer" *ngIf="deckService.currentDeck && deckService.currentDeck?.id == deck?.id" (click)="deckService.finishEditingDeck()"><i class="fas fa-check mr-sm"></i>Finish Editing Deck</a>
+					<a class="toolbar-link mr-xl pointer" *ngIf="!deckService.currentDeck || deckService.currentDeck?.id != deck?.id" (click)="addCardsToDeck()"><i class="fas fa-plus mr-sm"></i>Add Cards to Deck</a>
+					<a class="toolbar-link" routerLink="{{ getEditRoute() }}"><i class="fas fa-edit mr-sm"></i>Edit Deck Details</a>
+				</div>
+				<div class="deck-breakdown-wrapper">
+					<deck-details [deck]="deck"></deck-details>
+				</div>
+				<div class="deck-cards-wrapper mt-lg" *ngIf="deck?.type == 'Mech'">
+					<p class="section-lbl">CORE</p>
+					<hr>
+					<div class="deck-card-array">
+						<div class="deck-card-preview" *ngIf="deck?.deckStats?.core">
+							<card-preview [cardVersion]="deck?.deckStats?.core?.card"></card-preview>
+							<button class="secondary-btn delete-btn" (click)="deleteCard(deck?.deckStats?.core)"><i class="fas fa-trash mr-sm"></i>Remove from Deck</button>
+						</div>
+					</div>
+					<div *ngIf="!deck?.deckStats?.core">
+						<p class="text-center mt-lg">This deck contains no core. <a class="add-card-link" (click)="addCardsToDeck('Core')">Add one now?</a></p>
+					</div>
+				</div>
+				<div class="deck-cards-wrapper mt-lg" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
+					<p class="section-lbl">LEGS</p>
+					<hr>
+					<div class="deck-card-array">
+						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.legs">
+							<card-preview [cardVersion]="deckCard.card"></card-preview>
+							<button class="secondary-btn delete-btn" (click)="deleteCard(deckCard)"><i class="fas fa-trash mr-sm"></i>Remove from Deck</button>
+						</div>
+					</div>
+					<div *ngIf="deck?.deckStats?.legs.length == 0">
+						<p class="text-center mt-lg">This deck contains no legs. <a class="add-card-link" (click)="addCardsToDeck('Leg')">Add some now?</a></p>
+					</div>
+				</div>
+				<div class="deck-cards-wrapper mt-lg" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
+					<p class="section-lbl">ARMS</p>
+					<hr>
+					<div class="deck-card-array">
+						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.arms">
+							<card-preview [cardVersion]="deckCard.card"></card-preview>
+							<button class="secondary-btn delete-btn" (click)="deleteCard(deckCard)"><i class="fas fa-trash mr-sm"></i>Remove from Deck</button>
+						</div>
+					</div>
+					<div *ngIf="deck?.deckStats?.arms.length == 0">
+						<p class="text-center mt-lg">This deck contains no arms. <a class="add-card-link" (click)="addCardsToDeck('Arm')">Add some now?</a></p>
+					</div>
+				</div>
+				<div class="deck-cards-wrapper mt-lg" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
+					<p class="section-lbl">HEADS</p>
+					<hr>
+					<div class="deck-card-array">
+						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.heads">
+							<card-preview [cardVersion]="deckCard.card"></card-preview>
+							<button class="secondary-btn delete-btn" (click)="deleteCard(deckCard)"><i class="fas fa-trash mr-sm"></i>Remove from Deck</button>
+						</div>
+					</div>
+					<div *ngIf="deck?.deckStats?.heads.length == 0">
+						<p class="text-center mt-lg">This deck contains no heads. <a class="add-card-link" (click)="addCardsToDeck('Head')">Add some now?</a></p>
+					</div>
+				</div>
+				<div class="deck-cards-wrapper mt-lg" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
+					<p class="section-lbl">HARDPOINTS</p>
+					<hr>
+					<div class="deck-card-array">
+						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.hardpoints">
+							<card-preview [cardVersion]="deckCard.card"></card-preview>
+							<button class="secondary-btn delete-btn" (click)="deleteCard(deckCard)"><i class="fas fa-trash mr-sm"></i>Remove from Deck</button>
+						</div>
+					</div>
+					<div *ngIf="deck?.deckStats?.hardpoints.length == 0">
+						<p class="text-center mt-lg">This deck contains no hardpoints. <a class="add-card-link" (click)="addCardsToDeck('Hardpoint')">Add some now?</a></p>
+					</div>
+				</div>
+				<div class="deck-cards-wrapper mt-lg" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
+					<p class="section-lbl">MODS</p>
+					<hr>
+					<div class="deck-card-array">
+						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.mods">
+							<card-preview [cardVersion]="deckCard.card"></card-preview>
+							<button class="secondary-btn delete-btn" (click)="deleteCard(deckCard)"><i class="fas fa-trash mr-sm"></i>Remove from Deck</button>
+						</div>
+					</div>
+					<div *ngIf="deck?.deckStats?.mods.length == 0">
+						<p class="text-center mt-lg">This deck contains no mods. <a class="add-card-link" (click)="addCardsToDeck('Mod')">Add some now?</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -24,4 +24,6 @@ export class Api {
 
 	public Cards = new GenericApiService(this.http).setApiUrl(this.globalApiUrl + "/cards");
 	public CardVersions = new GenericApiService(this.http).setApiUrl(this.globalApiUrl + "/card-versions");
+	public Decks = new GenericApiService(this.http).setApiUrl(this.globalApiUrl + "/decks");
+	public DeckCards = new GenericApiService(this.http).setApiUrl(this.globalApiUrl + "/deck-cards");
 }

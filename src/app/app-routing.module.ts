@@ -12,6 +12,7 @@ const routes: NgRoutes = [
 
 	// Public
 	{ path: RouteParts.Cards.CardsRoot, loadChildren: () => import('@modules/cards/cards.module').then((m) => m.CardsModule) },
+	{ path: RouteParts.Decks.DecksRoot, loadChildren: () => import('@modules/decks/decks.module').then((m) => m.DecksModule) },
 
 	// Guarded
 	// Example of role guard with allowed roles

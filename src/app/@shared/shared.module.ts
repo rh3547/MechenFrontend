@@ -20,6 +20,10 @@ import { NgnComponentsModule } from '@ng-nuc/components';
 
 import { RoleCheckDirective } from './directives/role-check.directive';
 
+import { DeckOverlayComponent } from './components/deck-overlay/deck-overlay.component';
+import { DeckDetailsComponent } from './components/deck-details/deck-details.component';
+import { CardPreviewComponent } from './components/card-preview/card-preview.component';
+
 @NgModule({
 	declarations: [
 		ConfirmModal,
@@ -28,7 +32,10 @@ import { RoleCheckDirective } from './directives/role-check.directive';
 		PageHeaderComponent,
 		SidebarComponent,
 		ToolbarComponent,
-		RoleCheckDirective
+		RoleCheckDirective,
+		DeckDetailsComponent,
+		DeckOverlayComponent,
+		CardPreviewComponent
 	],
 	imports: [
 		CommonModule,
@@ -49,7 +56,10 @@ import { RoleCheckDirective } from './directives/role-check.directive';
 		PageHeaderComponent,
 		SidebarComponent,
 		ToolbarComponent,
-		RoleCheckDirective
+		RoleCheckDirective,
+		DeckDetailsComponent,
+		DeckOverlayComponent,
+		CardPreviewComponent
 	],
 	providers: []
 })

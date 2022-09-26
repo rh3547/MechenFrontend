@@ -1,0 +1,75 @@
+@import '../../../../../theme/styles.scss';
+
+::ng-deep {
+	.deck-create-wrapper .ngn-select-wrapper {
+		margin-bottom: 16px;
+	}
+}
+
+.main-content {
+	width: calc(100vw - 128px);
+	z-index: 99;
+	position: absolute;
+}
+
+.deck-create-wrapper {
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	justify-content: center;
+}
+
+.deck-form {
+	min-width: 700px;
+  max-width: 700px;
+}
+
+.field-label {
+	font-size: 13px;
+	opacity: .6;
+}
+
+.form-row {
+	display: flex;
+
+	&:not(:last-child) {
+		margin-bottom: 24px;
+	}
+}
+
+.form-field {
+	width: 100%;
+}
+
+.form-field:not(:last-child) {
+	margin-right: 16px;
+}
+
+.toggle-text {
+	margin-bottom: 0;
+  line-height: 27px;
+	color: map-get($colors, contrast) !important;
+}
+
+.secondary-btn {
+	background-color: #393944;
+	transition: background-color .2s;
+}
+
+.delete-btn:hover {
+	background-color: map-get($colors, danger);
+	transition: background-color .2s;
+}
+
+.button-group {
+	display: flex;
+
+	button {
+		min-width: 200px;
+	}
+
+	button:not(:last-child) {
+		margin-right: 16px;
+	}
+}

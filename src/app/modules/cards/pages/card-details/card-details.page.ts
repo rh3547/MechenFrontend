@@ -7,6 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Routes, resolveRouteParams, RouteParts } from '@app/app-routes';
 import { Card } from '@models';
+import { DeckService } from '@services/deck.service';
 
 @Component({
 	selector: 'card-details-page',
@@ -27,7 +28,8 @@ export class CardDetailsPage implements OnInit, OnDestroy, AfterViewInit {
 		public globalVars: GlobalVars,
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
-		private modalService: NgxSmartModalService
+		private modalService: NgxSmartModalService,
+		public deckService: DeckService
 	) {
 		this.routeSub = this.activatedRoute.params.subscribe((val) => {
 			this.globalVars.showPageLoader();

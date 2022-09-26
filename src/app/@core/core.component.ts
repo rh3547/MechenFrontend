@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 import { Routes } from '@routes';
 import { CognitoService } from '@ng-nuc/auth-cognito';
 import { NgxSmartModalComponent, NgxSmartModalService } from 'ngx-smart-modal';
-import { ChangelogModal } from '@app/@shared/components/modals/changelog-modal/changelog-modal.modal';
+import { ChangelogModal } from '@shared/components/modals/changelog-modal/changelog-modal.modal';
+import { DeckService } from '@app/@core/services/deck.service';
 
 @Component({
 	selector: 'app-root',

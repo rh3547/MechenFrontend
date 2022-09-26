@@ -22,6 +22,13 @@ export var RouteParts = {
 		CardView: ":id",
 		CardCreate: "create",
 		CardEdit: "edit/:id"
+	},
+	Decks: {
+		DecksRoot: "decks",
+		DeckSearch: "search",
+		DeckView: ":id",
+		DeckCreate: "create",
+		DeckEdit: "edit/:id"
 	}
 };
 
@@ -49,6 +56,13 @@ export var Routes = {
 		CardView: buildRoute([RouteParts.Cards.CardsRoot, RouteParts.Cards.CardView]),
 		CardCreate: buildRoute([RouteParts.Cards.CardsRoot, RouteParts.Cards.CardCreate]),
 		CardEdit: buildRoute([RouteParts.Cards.CardsRoot, RouteParts.Cards.CardEdit])
+	},
+	Decks: {
+		DecksRoot: buildRoute([RouteParts.Decks.DecksRoot]),
+		DeckSearch: buildRoute([RouteParts.Decks.DecksRoot, RouteParts.Decks.DeckSearch]),
+		DeckView: buildRoute([RouteParts.Decks.DecksRoot, RouteParts.Decks.DeckView]),
+		DeckCreate: buildRoute([RouteParts.Decks.DecksRoot, RouteParts.Decks.DeckCreate]),
+		DeckEdit: buildRoute([RouteParts.Decks.DecksRoot, RouteParts.Decks.DeckEdit])
 	}
 };
 

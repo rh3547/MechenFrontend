@@ -1,4 +1,5 @@
 <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;" class="bg-background"></div>
+<deck-overlay *ngIf="deckService.currentDeck" [deck]="deckService.currentDeck"></deck-overlay>
 <div class="main-content">
   <div class="content-wrapper">
 		<nuc-pageheader
@@ -42,6 +43,7 @@
 					</div>
 				</a>
 			</div>
+			<div class="deck-overlay-spacer" *ngIf="deckService.currentDeck"></div>
 		</div>
 	</div>
 </div>

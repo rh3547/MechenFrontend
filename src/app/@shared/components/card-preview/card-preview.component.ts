@@ -9,8 +9,6 @@ import { CardVersion } from '@models/CardVersion.model';
 	styleUrls: ['./card-preview.component.scss']
 })
 export class CardPreviewComponent implements OnInit, OnChanges, AfterViewInit {
-
-	@Input() card: Card;
 	@Input() cardVersion: CardVersion;
 	@Input() hiRes: boolean = false;
 
@@ -24,13 +22,5 @@ export class CardPreviewComponent implements OnInit, OnChanges, AfterViewInit {
 
 	ngAfterViewInit(): void { }
 
-	ngOnChanges(changes: SimpleChanges) {
-		if (changes.card) {
-
-		}
-
-		if (changes.cardVersion) {
-
-		}
-	}
+	ngOnChanges(changes: SimpleChanges) { }
 }

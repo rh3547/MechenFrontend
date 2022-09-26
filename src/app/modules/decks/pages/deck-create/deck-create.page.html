@@ -1,0 +1,45 @@
+<div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;" class="bg-background"></div>
+<div class="main-content">
+  <div class="content-wrapper">
+		<nuc-pageheader
+			titleContent="<h1><span class='fg-primary'>Mech</span> Card Game</h1>"
+			subtitleContent="<h3 class='fw-normal fg-contrast-muted'>{{ editMode ? 'Edit' : 'Create' }} Deck</h3>">
+		</nuc-pageheader>
+		<div class="p-relative mb-xl pt-xxl">
+			<div class="deck-create-wrapper p-lg mt-xl">
+				<form class="fg deck-form" [formGroup]="formGroup">
+
+					<div class="form-row">
+						<div class="form-field flex-1">
+							<p class="field-label">NAME</p>
+							<input type="text" formControlName="name" [ngnValidate]="submitted" [ngnValidateLock]="!submitted">
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-field flex-1">
+							<p class="field-label">TYPE</p>
+							<ngn-select
+								[options]="deckTypeOptions"
+								[allowMultiple]="false"
+								[useModelValues]="true"
+								[defaultControlText]="''"
+								formControlName="type"
+								[ngnValidate]="submitted" [ngnValidateLock]="!submitted">
+							</ngn-select>
+						</div>
+					</div>
+
+					<div class="button-group mt-xl" *ngIf="editMode">
+						<button class="secondary-btn" (click)="backToView()"><i class="fas fa-arrow-left mr-sm"></i>Back to View</button>
+						<button class="secondary-btn delete-btn" (click)="deleteDeck()"><i class="fas fa-trash mr-sm"></i>Delete Deck</button>
+					</div>
+
+					<div class="button-group mt-md">
+						<!-- <button *ngIf="!editMode" (click)="saveDeck(true)"><i class="fas fa-save mr-sm"></i>Save and Create Another</button> -->
+						<button (click)="saveDeck()"><i class="fas fa-save mr-sm"></i>Save</button>
+					</div>
+				</form>
+		</div>
+	</div>
+</div>

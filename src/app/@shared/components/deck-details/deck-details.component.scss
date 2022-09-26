@@ -1,0 +1,74 @@
+@import '../../../../theme/styles.scss';
+
+.deck-details {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+}
+
+.deck-title {
+	flex: 1;
+}
+
+.deck-name {
+
+}
+
+.type-icon {
+	width: 35px;
+	transform: translate(-10px, -2px);
+	margin-right: -15px;
+	opacity: .6;
+}
+
+.stats-and-slots {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.deck-stats-wrapper {
+	display: flex;
+	margin-top: -12px;
+	justify-content: flex-end;
+
+	.deck-stat {
+		display: inline-block;
+		padding-right: 8px;
+
+		&:not(:last-child) {
+			margin-right: 8px;
+		}
+
+		.stat-icon {
+			width: 50px;
+			transform: translateX(-10px);
+		}
+
+		.stat-text {
+			color: map-get($colors, contrast);
+			font-weight: bold;
+			font-size: 18px;
+			transform: translate(-10px, 3px);
+			display: inline-block;
+		}
+	}
+}
+
+.current-deck-lbl {
+	font-size: 14px !important;
+  opacity: .6;
+}
+
+.deck-details-toolbar {
+	display: flex;
+	justify-content: flex-start;
+
+	.toolbar-link {
+		color: map-get($colors, primary) !important;
+	}
+
+	.toolbar-link:hover {
+		text-decoration: underline;
+	}
+}

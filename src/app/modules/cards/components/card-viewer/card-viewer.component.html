@@ -7,7 +7,7 @@
 					[useModelValues]="true"
 					[(ngModel)]="cardVersion">
 			</ngn-select>
-			<card-preview [card]="card" [cardVersion]="cardVersion"></card-preview>
+			<card-preview [cardVersion]="cardVersion"></card-preview>
 		</div>
 	</div>
 	<div class="card-breakdown-wrapper mt-xl">
@@ -112,11 +112,11 @@
 
 		<div class="buttons-section">
 			<div class="button-group">
-				<button class="edit-btn mb-md" (click)="editCard()"><i class="fas fa-edit mr-sm"></i>Edit Card</button>
-				<button class="download-btn mb-md" (click)="downloadImage()"><i class="fas fa-download mr-sm"></i>Download</button>
+				<button class="edit-btn" (click)="editCard()"><i class="fas fa-edit mr-sm"></i>Edit Card</button>
+				<button class="download-btn" (click)="downloadImage()"><i class="fas fa-download mr-sm"></i>Download</button>
 			</div>
-			<button *ngIf="card.approved == true" class="add-to-deck-btn"><i class="fas fa-plus mr-sm"></i>Add to Deck</button>
-			<button *ngIf="card.approved == false" class="add-to-deck-btn bg-success" (click)="approveCard()"><i class="fas fa-thumbs-up mr-sm"></i>Approve Card</button>
+			<button *ngIf="card.approved == true && deckService.currentDeck" [disabled]="!deckService.canAddCardToDeck(cardVersion)" (click)="deckService.addCardToDeck(cardVersion)" class="add-to-deck-btn mt-md"><i class="fas fa-plus mr-sm"></i>Add to Deck</button>
+			<button *ngIf="card.approved == false" class="add-to-deck-btn bg-success mt-md" (click)="approveCard()"><i class="fas fa-thumbs-up mr-sm"></i>Approve Card</button>
 		</div>
 	</div>
 </div>

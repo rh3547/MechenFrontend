@@ -1,0 +1,63 @@
+<div *ngIf="deck" class="deck-details">
+	<div class="deck-title">
+		<p class="current-deck-lbl" *ngIf="overlayMode">CURRENT DECK</p>
+		<h1 class="deck-name">{{ deck.name }}</h1>
+		<p class="fg-medium-2 mb-0">
+			<img *ngIf="deck.type == 'Mech'" alt="Mech" title="Mech" class="type-icon" src="assets/images/icons/head.png">
+			<img *ngIf="deck.type == 'Support'" alt="Support" title="Support" class="type-icon" src="assets/images/icons/core.png">
+			{{ deck.type }}
+		</p>
+		<div class="deck-details-toolbar mt-md" *ngIf="overlayMode">
+			<a class="toolbar-link mr-xl pointer" (click)="deckService.viewDeck()"><i class="fas fa-arrow-left mr-sm"></i>View Deck</a>
+			<a class="toolbar-link pointer" (click)="deckService.finishEditingDeck()"><i class="fas fa-check mr-sm"></i>Finish Editing Deck</a>
+		</div>
+	</div>
+	<div class="stats-and-slots" *ngIf="deck.type == 'Mech'">
+		<div class="detail-section">
+			<div class="deck-stats-wrapper">
+				<div class="deck-stat">
+					<img class="stat-icon" src="assets/images/icons/corehealth.png" alt="Core Health" title="Core Health">
+					<span class="stat-text">{{ deck?.deckStats?.coreHealth }}</span>
+				</div>
+				<div class="deck-stat">
+					<img class="stat-icon" src="assets/images/icons/armor.png" alt="Armor" title="Armor">
+					<span class="stat-text">{{ deck?.deckStats?.armor }}</span>
+				</div>
+				<div class="deck-stat">
+					<img class="stat-icon" src="assets/images/icons/agility.png" alt="Agility" title="Agility">
+					<span class="stat-text">{{ deck?.deckStats?.agility }}</span>
+				</div>
+				<div class="deck-stat">
+					<img class="stat-icon" src="assets/images/icons/energy.png" alt="Energy" title="Energy">
+					<span class="stat-text">{{ deck?.deckStats?.energy }}</span>
+				</div>
+			</div>
+		</div>
+		<div class="detail-section mt-md">
+			<div class="deck-stats-wrapper">
+				<div class="deck-stat">
+					<img class="stat-icon" src="assets/images/icons/leg.png" alt="Leg Slots" title="Leg Slots">
+					<span class="stat-text">{{ deck?.deckStats?.legs?.length }} / {{ deck?.deckStats?.legSlots }}</span>
+				</div>
+				<div class="deck-stat">
+					<img class="stat-icon" src="assets/images/icons/arm.png" alt="Arm Slots" title="Arm Slots">
+					<span class="stat-text">{{ deck?.deckStats?.arms?.length }} / {{ deck?.deckStats?.armSlots }}</span>
+				</div>
+				<div class="deck-stat">
+					<img class="stat-icon" src="assets/images/icons/head.png" alt="Head Slots" title="Head Slots">
+					<span class="stat-text">{{ deck?.deckStats?.heads?.length }} / {{ deck?.deckStats?.headSlots }}</span>
+				</div>
+				<div class="deck-stat">
+					<img class="stat-icon" src="assets/images/icons/hardpoint.png" alt="Hardpoint Slots" title="Hardpoint Slots">
+					<span class="stat-text">{{ deck?.deckStats?.hardpoints?.length }} / {{ deck?.deckStats?.hardpointSlots }}</span>
+				</div>
+				<div class="deck-stat">
+					<img class="stat-icon" src="assets/images/icons/mod.png" alt="Mod Slots" title="Mod Slots">
+					<span class="stat-text">{{ deck?.deckStats?.mods?.length }} / {{ deck?.deckStats?.modSlots }}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

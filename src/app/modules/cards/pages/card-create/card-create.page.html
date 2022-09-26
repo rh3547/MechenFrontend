@@ -16,7 +16,7 @@
 						[(ngModel)]="cardVersion"
 						(ngModelChange)="cardVersionChanged($event)">
 				</ngn-select>
-					<card-preview [card]="cardPreview" [cardVersion]="cardVersionPreview"></card-preview>
+					<card-preview [cardVersion]="cardVersionPreview"></card-preview>
 				</div>
 
 				<form class="fg card-form" [formGroup]="formGroup">
@@ -134,7 +134,8 @@
 
 					<div class="form-row">
 						<div class="form-field flex-1">
-							<p class="field-label">ABILITY TEXT<i class="fas fa-question-circle ml-sm" [ngbTooltip]="abilityTextTooltip" placement="bottom"></i></p>
+							<!-- <i class="fas fa-question-circle ml-sm" [ngbTooltip]="abilityTextTooltip" placement="bottom"></i> -->
+							<p class="field-label">ABILITY TEXT</p>
 							<textarea type="text" formControlName="abilityText"></textarea>
 						</div>
 					</div>

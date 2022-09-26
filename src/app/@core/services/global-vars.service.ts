@@ -101,6 +101,11 @@ export class GlobalVars {
 		new NgnSelectOption({ name: "Cone", value: "Cone" })
 	];
 
+	public deckTypeOptions: NgnSelectOption[] = [
+		new NgnSelectOption({ name: "Mech", value: "Mech" }),
+		new NgnSelectOption({ name: "Support", value: "Support" }),
+	];
+
 	public abilityKeywords: string[] = [
 		"Sustain",
 		"Shimmer",
@@ -132,6 +137,7 @@ export class GlobalVars {
 	};
 
 	public cardSearchQPs = {};
+	public deckSearchQPs = {};
 
 	constructor(
 		private httpClient: HttpClient,

@@ -1,0 +1,43 @@
+<div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;" class="bg-background"></div>
+<div class="main-content">
+  <div class="content-wrapper">
+		<nuc-pageheader
+			titleContent="<h1><span class='fg-primary'>Mech</span> Card Game</h1>"
+			subtitleContent="<h3 class='fw-normal fg-contrast-muted'>Deck Library</h3>">
+		</nuc-pageheader>
+		<div class="p-relative mb-xl pt-xxl">
+			<div class="scroll-hide"></div>
+			<div class="deck-search-toolbar mt-lg">
+				<a class="toolbar-link" routerLink="{{ routes.Decks.DeckCreate }}"><i class="fas fa-plus mr-sm"></i>Create New Deck</a>
+			</div>
+			<div class="deck-search bg-background-light mt-md p-md">
+				<div class="deck-filter search-filter p-relative">
+					<i class="search-icon fas fa-search"></i>
+					<input type="text" class="search-input" placeholder="Search decks by name..." [(ngModel)]="searchTerm" (ngModelChange)="searchTermChanged($event)">
+					<i class="clear-search-icon fas fa-times-circle" *ngIf="searchTerm" (click)="searchTerm = ''; searchTermChanged('')"></i>
+				</div>
+				<ngn-select
+						[options]="deckTypeOptions"
+						[allowMultiple]="false"
+						[useModelValues]="true"
+						[allowSingleDeselection]="true"
+						[defaultControlText]="'Filter by deck type...'"
+						[(ngModel)]="deckTypeFilter"
+						(ngModelChange)="getFilteredDecks()"
+						class="deck-filter deck-type-filter">
+				</ngn-select>
+			</div>
+			<div class="deck-results-wrapper pt-lg">
+				<a *ngFor="let deck of decks" class="deck-result-link" routerLink="{{ getDeckRoute(deck) }}">
+					<div class="deck-result">
+						<h4 class="m-0">
+							<img *ngIf="deck.type == 'Mech'" alt="Mech" title="Mech" class="type-icon" src="assets/images/icons/head.png">
+							<img *ngIf="deck.type == 'Support'" alt="Support" title="Support" class="type-icon" src="assets/images/icons/core.png">
+							{{ deck.name }}
+						</h4>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

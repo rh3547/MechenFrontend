@@ -17,20 +17,12 @@
 					<p class="f-nav m-0 link-text">Pending Cards</p>
 				</a>
 			</div>
-			<!-- <div class="link-wrapper mr-sm">
-				<a class="pointer d-flex flex-align-items-center link icon-only" routerLink="{{ routes.Cards.CardSearch }}" routerLinkActive="active">
-					<i class="far fa-search mr-sm link-icon"></i>
+			<div class="link-wrapper mr-sm">
+				<a class="pointer d-flex flex-align-items-center link" routerLink="{{ routes.Decks.DeckSearch }}" [queryParams]="globalVars.deckSearchQPs" routerLinkActive="active">
+					<i class="far fa-clone mr-sm link-icon"></i>
+					<p class="f-nav m-0 link-text">Deck Library</p>
 				</a>
-			</div> -->
-			<!-- <div class="link-wrapper mr-sm">
-				<div class="sep"></div>
-			</div> -->
-			<!-- <div class="link-wrapper mr-sm">
-				<a class="pointer d-flex flex-align-items-center link" (click)="scrollTo(routeParts.Home.Skills)" [ngClass]="{'active': navService.activeNav == routeParts.Home.Skills}">
-					<i class="far fa-book-spells mr-sm link-icon"></i>
-					<p class="f-nav m-0 link-text">Skills</p>
-				</a>
-			</div> -->
+			</div>
 	  </div>
 
 		<!--Mobile Menu-->

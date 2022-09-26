@@ -1,0 +1,146 @@
+@import '../../../../../theme/styles.scss';
+
+.main-content {
+	width: calc(100vw - 128px);
+	z-index: 99;
+	position: absolute;
+}
+
+.deck-view-header {
+	position: sticky;
+  top: 160px;
+  z-index: 100;
+	max-width: 1920px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.scroll-hide {
+	width: 100%;
+	position: fixed;
+	left: 0;
+	right: 0;
+	height: 320px;
+	top: -160px;
+	background-color: map-get($colors, background);
+	z-index: 50;
+}
+
+.deck-view-toolbar {
+	display: flex;
+	justify-content: end;
+	position: sticky;
+  top: 120px;
+  z-index: 100;
+
+	.toolbar-link {
+		color: map-get($colors, primary) !important;
+	}
+
+	.toolbar-link:hover {
+		text-decoration: underline;
+	}
+}
+
+.deck-breakdown-wrapper {
+	padding-top: 32px;
+	padding-bottom: 32px;
+	padding-left: 32px;
+	padding-right: 32px;
+	background-color: map-get($colors, background-light);
+	border-radius: 5px;
+	position: relative;
+	width: 100%;
+	min-width: 500px;
+
+	hr {
+		background: map-get($colors, contrast);
+		margin-top: 4px;
+		margin-bottom: 25px;
+		margin-left: 0;
+		opacity: .2;
+	}
+}
+
+.deck-cards-wrapper {
+	padding-top: 32px;
+	padding-bottom: 32px;
+	padding-left: 32px;
+	padding-right: 32px;
+	border-radius: 5px;
+	position: relative;
+	width: 100%;
+	min-width: 500px;
+
+	hr {
+		background: map-get($colors, contrast);
+		margin-top: 4px;
+		margin-bottom: 25px;
+		margin-left: 0;
+		opacity: .2;
+	}
+}
+
+.section-lbl {
+	opacity: .6;
+}
+
+.deck-card-array {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.deck-card-preview {
+	transform-origin: left;
+	transform: scale(.6);
+	margin-top: -100px;
+	margin-bottom: -150px;
+	margin-right: -100px;
+
+	transition: all .3s;
+
+	.delete-btn {
+		height: 0px !important;
+    padding: 0px  !important;
+    margin: 0px  !important;
+    opacity: 0 !important;
+		transform: scale(0);
+	}
+
+	&:hover {
+		background-color: map-get($colors, background-light);
+		border-radius: 8px;
+		padding: 16px;
+		margin-top: 32px;
+		margin-bottom: 32px;
+		margin-right: 16px;
+		transform: scale(1);
+
+		transition: all .3s ease-in-out .3s;
+
+		.delete-btn {
+			height: auto !important;
+    	padding: 12px  !important;
+    	margin-top: 16px  !important;
+    	opacity: 1 !important;
+			transform: scale(1);
+			transition: all .3s ease-in-out .3s;
+		}
+	}
+}
+
+.secondary-btn {
+	width: 100%;
+	background-color: #393944;
+	transition: background-color .2s;
+}
+
+.delete-btn:hover {
+	background-color: map-get($colors, danger);
+	transition: background-color .2s;
+}
+
+.add-card-link {
+	color: map-get($colors, primary) !important;
+	cursor: pointer;
+}

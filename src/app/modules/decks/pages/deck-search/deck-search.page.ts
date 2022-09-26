@@ -6,31 +6,30 @@ import { GlobalVars } from '@services/global-vars.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
 import { Routes, resolveRouteParams, RouteParts, buildRoute } from '@app/app-routes';
-import { Card } from '@models';
 import { NgnSelectOption } from '@ng-nuc/components';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { DeckService } from '@services/deck.service';
+import { Deck } from '@models/Deck.model';
 
 @Component({
-	selector: 'card-search-page',
-	templateUrl: './card-search.page.html',
-	styleUrls: ['./card-search.page.scss'],
+	selector: 'deck-search-page',
+	templateUrl: './deck-search.page.html',
+	styleUrls: ['./deck-search.page.scss'],
 })
-export class CardSearchPage implements OnInit, OnDestroy, AfterViewInit {
+export class DeckSearchPage implements OnInit, OnDestroy, AfterViewInit {
 	private routeSub: Subscription;
 	public routeParts = RouteParts;
 	public routes = Routes;
 
 	public pendingMode: boolean = false;
 
-	public cardTypeOptions: NgnSelectOption[] = this.globalVars.cardTypeOptions;
+	public deckTypeOptions: NgnSelectOption[] = this.globalVars.deckTypeOptions;
 
 	public searchTerm: string = "";
 	private searchTermSubject: Subject<string> = new Subject<string>();
 
-	public cardTypeFilter: string = "";
+	public deckTypeFilter: string = "";
 
-	public cards: Card[] = [];
+	public decks: Deck[] = [];
 
 	constructor(
 		private api: Api,
@@ -38,30 +37,22 @@ export class CardSearchPage implements OnInit, OnDestroy, AfterViewInit {
 		public globalVars: GlobalVars,
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
-		private modalService: NgxSmartModalService,
-		public deckService: DeckService
+		private modalService: NgxSmartModalService
 	) {
 		this.searchTermSubject
 			.pipe(debounceTime(300), distinctUntilChanged())
 			.subscribe(value => {
-				this.getFilteredCards();
+				this.getFilteredDecks();
 			});
 
 		this.routeSub = this.activatedRoute.queryParams.subscribe((qp) => {
-			if (this.router.url.includes("/pending")) {
-				this.pendingMode = true;
-			}
-			else {
-				this.pendingMode = false;
-			}
-
 			if (qp.term) {
 				this.searchTerm = qp.term;
 			}
 
 			if (qp.type) {
 				let strType = (<string>qp.type);
-				this.cardTypeFilter = strType.substring(0, 1).toUpperCase() + strType.substring(1, strType.length);
+				this.deckTypeFilter = strType.substring(0, 1).toUpperCase() + strType.substring(1, strType.length);
 			}
 
 			this.loadPage();
@@ -69,7 +60,7 @@ export class CardSearchPage implements OnInit, OnDestroy, AfterViewInit {
 	}
 
 	private loadPage() {
-		this.getFilteredCards();
+		this.getFilteredDecks();
 	}
 
 	ngOnInit() {
@@ -86,50 +77,43 @@ export class CardSearchPage implements OnInit, OnDestroy, AfterViewInit {
 		}, 200);
 	}
 
-	public getCardRoute(card: Card) {
-		return resolveRouteParams(Routes.Cards.CardView, { id: card.id });
+	public getDeckRoute(deck: Deck) {
+		return resolveRouteParams(Routes.Decks.DeckView, { id: deck.id });
 	}
 
 	public searchTermChanged(term: string) {
 		this.searchTermSubject.next(term);
 	}
 
-	public getFilteredCards() {
+	public getFilteredDecks() {
 		let filters = {
 			"filter[order][0]": "type ASC",
 			"filter[order][1]": "name ASC"
 		};
 
-		if (this.pendingMode) {
-			filters["filter[where][and][0][approved]"] = false
-		}
-		else {
-			filters["filter[where][and][0][approved]"] = true
-		}
-
 		if (this.searchTerm) {
 			filters["filter[where][and][1][name][regexp]"] = `/${this.searchTerm}/i`;
-			this.globalVars.cardSearchQPs["term"] = this.searchTerm;
+			this.globalVars.deckSearchQPs["term"] = this.searchTerm;
 		}
 		else {
-			delete this.globalVars.cardSearchQPs["term"];
+			delete this.globalVars.deckSearchQPs["term"];
 		}
 
-		if (this.cardTypeFilter) {
-			filters["filter[where][and][2][type]"] = this.cardTypeFilter;
-			this.globalVars.cardSearchQPs["type"] = this.cardTypeFilter;
+		if (this.deckTypeFilter) {
+			filters["filter[where][and][2][type]"] = this.deckTypeFilter;
+			this.globalVars.deckSearchQPs["type"] = this.deckTypeFilter;
 		}
 		else {
-			delete this.globalVars.cardSearchQPs["type"];
+			delete this.globalVars.deckSearchQPs["type"];
 		}
 
 		this.router.navigate([], {
 			relativeTo: this.activatedRoute,
-			queryParams: this.globalVars.cardSearchQPs
+			queryParams: this.globalVars.deckSearchQPs
 		});
 
-		this.api.Cards.get("", filters).subscribe((data) => {
-			this.cards = data;
+		this.api.Decks.get("", filters).subscribe((data) => {
+			this.decks = data;
 		});
 	}
 }
