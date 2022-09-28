@@ -75,6 +75,10 @@ export class DeckViewPage implements OnInit, OnDestroy, AfterViewInit {
 		return resolveRouteParams(Routes.Decks.DeckEdit, { id: this.deckId });
 	}
 
+	getViewCardRoute(deckCard: DeckCard) {
+		return resolveRouteParams(Routes.Cards.CardView, { id: deckCard.card.cardId });
+	}
+
 	addCardsToDeck(cardType: string) {
 		this.deckService.setCurrentDeck(this.deck);
 		this.navToCardSearch(cardType);
@@ -89,9 +93,16 @@ export class DeckViewPage implements OnInit, OnDestroy, AfterViewInit {
 			.then(() => {
 				this.globalVars.showProcessingLoader("Removing card...");
 				this.api.DeckCards.delete(deckCard.id).subscribe(() => {
+					this.deck.cards.splice(this.deck.cards.findIndex(x => x.id == deckCard.id), 1);
+					let deckStats = new DeckStats({ cards: this.deck.cards });
+					this.deck = new Deck({ ...this.deck, deckStats: deckStats });
+
+					if (this.deckService.currentDeck.id == this.deck.id) {
+						this.deckService.currentDeck = this.deck;
+					}
+
 					this.globalVars.hideProcessingLoader();
 					this.alertService.toastSuccess("Card removed succcessfully!", "Card Removed");
-					this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => this.router.navigateByUrl(resolveRouteParams(Routes.Decks.DeckView, { id: this.deckId })));
 				});
 			})
 			.catch(() => { });

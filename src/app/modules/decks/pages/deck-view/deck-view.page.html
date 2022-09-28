@@ -17,12 +17,12 @@
 				<div class="deck-breakdown-wrapper">
 					<deck-details [deck]="deck"></deck-details>
 				</div>
-				<div class="deck-cards-wrapper mt-lg" *ngIf="deck?.type == 'Mech'">
-					<p class="section-lbl">CORE</p>
+				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech'">
+					<p class="section-lbl">CORE<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Core')"></i></p>
 					<hr>
 					<div class="deck-card-array">
 						<div class="deck-card-preview" *ngIf="deck?.deckStats?.core">
-							<card-preview [cardVersion]="deck?.deckStats?.core?.card"></card-preview>
+							<a routerLink="{{ getViewCardRoute(deck?.deckStats?.core) }}"><card-preview [cardVersion]="deck?.deckStats?.core?.card"></card-preview></a>
 							<button class="secondary-btn delete-btn" (click)="deleteCard(deck?.deckStats?.core)"><i class="fas fa-trash mr-sm"></i>Remove from Deck</button>
 						</div>
 					</div>
@@ -30,12 +30,12 @@
 						<p class="text-center mt-lg">This deck contains no core. <a class="add-card-link" (click)="addCardsToDeck('Core')">Add one now?</a></p>
 					</div>
 				</div>
-				<div class="deck-cards-wrapper mt-lg" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
-					<p class="section-lbl">LEGS</p>
+				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
+					<p class="section-lbl">LEGS<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Leg')"></i></p>
 					<hr>
 					<div class="deck-card-array">
 						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.legs">
-							<card-preview [cardVersion]="deckCard.card"></card-preview>
+							<a routerLink="{{ getViewCardRoute(deckCard) }}"><card-preview [cardVersion]="deckCard.card"></card-preview></a>
 							<button class="secondary-btn delete-btn" (click)="deleteCard(deckCard)"><i class="fas fa-trash mr-sm"></i>Remove from Deck</button>
 						</div>
 					</div>
@@ -43,12 +43,12 @@
 						<p class="text-center mt-lg">This deck contains no legs. <a class="add-card-link" (click)="addCardsToDeck('Leg')">Add some now?</a></p>
 					</div>
 				</div>
-				<div class="deck-cards-wrapper mt-lg" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
-					<p class="section-lbl">ARMS</p>
+				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
+					<p class="section-lbl">ARMS<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Arm')"></i></p>
 					<hr>
 					<div class="deck-card-array">
 						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.arms">
-							<card-preview [cardVersion]="deckCard.card"></card-preview>
+							<a routerLink="{{ getViewCardRoute(deckCard) }}"><card-preview [cardVersion]="deckCard.card"></card-preview></a>
 							<button class="secondary-btn delete-btn" (click)="deleteCard(deckCard)"><i class="fas fa-trash mr-sm"></i>Remove from Deck</button>
 						</div>
 					</div>
@@ -56,12 +56,12 @@
 						<p class="text-center mt-lg">This deck contains no arms. <a class="add-card-link" (click)="addCardsToDeck('Arm')">Add some now?</a></p>
 					</div>
 				</div>
-				<div class="deck-cards-wrapper mt-lg" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
-					<p class="section-lbl">HEADS</p>
+				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
+					<p class="section-lbl">HEADS<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Head')"></i></p>
 					<hr>
 					<div class="deck-card-array">
 						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.heads">
-							<card-preview [cardVersion]="deckCard.card"></card-preview>
+							<a routerLink="{{ getViewCardRoute(deckCard) }}"><card-preview [cardVersion]="deckCard.card"></card-preview></a>
 							<button class="secondary-btn delete-btn" (click)="deleteCard(deckCard)"><i class="fas fa-trash mr-sm"></i>Remove from Deck</button>
 						</div>
 					</div>
@@ -69,12 +69,12 @@
 						<p class="text-center mt-lg">This deck contains no heads. <a class="add-card-link" (click)="addCardsToDeck('Head')">Add some now?</a></p>
 					</div>
 				</div>
-				<div class="deck-cards-wrapper mt-lg" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
-					<p class="section-lbl">HARDPOINTS</p>
+				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
+					<p class="section-lbl">HARDPOINTS<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Hardpoint')"></i></p>
 					<hr>
 					<div class="deck-card-array">
 						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.hardpoints">
-							<card-preview [cardVersion]="deckCard.card"></card-preview>
+							<a routerLink="{{ getViewCardRoute(deckCard) }}"><card-preview [cardVersion]="deckCard.card"></card-preview></a>
 							<button class="secondary-btn delete-btn" (click)="deleteCard(deckCard)"><i class="fas fa-trash mr-sm"></i>Remove from Deck</button>
 						</div>
 					</div>
@@ -82,12 +82,12 @@
 						<p class="text-center mt-lg">This deck contains no hardpoints. <a class="add-card-link" (click)="addCardsToDeck('Hardpoint')">Add some now?</a></p>
 					</div>
 				</div>
-				<div class="deck-cards-wrapper mt-lg" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
-					<p class="section-lbl">MODS</p>
+				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
+					<p class="section-lbl">MODS<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Mod')"></i></p>
 					<hr>
 					<div class="deck-card-array">
 						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.mods">
-							<card-preview [cardVersion]="deckCard.card"></card-preview>
+							<a routerLink="{{ getViewCardRoute(deckCard) }}"><card-preview [cardVersion]="deckCard.card"></card-preview></a>
 							<button class="secondary-btn delete-btn" (click)="deleteCard(deckCard)"><i class="fas fa-trash mr-sm"></i>Remove from Deck</button>
 						</div>
 					</div>
@@ -95,6 +95,7 @@
 						<p class="text-center mt-lg">This deck contains no mods. <a class="add-card-link" (click)="addCardsToDeck('Mod')">Add some now?</a></p>
 					</div>
 				</div>
+				<div style="height: 300px;"></div>
 			</div>
 		</div>
 	</div>

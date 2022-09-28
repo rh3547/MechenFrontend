@@ -46,42 +46,76 @@ export class DeckStats {
 		cards.forEach((deckCard: DeckCard) => {
 			this.updateStatsFromCard(deckCard);
 		});
+
+		// Special Card Cases
+		// ==================
+
+		// Interlaced Armor Plating
+		let numInterlacedArmorPlating = cards.filter(x => x.card.name == "Interlaced Armor Plating").length;
+		if (numInterlacedArmorPlating > 1) {
+			this.armor += (((numInterlacedArmorPlating - 1) * 2) * numInterlacedArmorPlating);
+		}
+
+		this.sortCards(this.legs);
+		this.sortCards(this.arms);
+		this.sortCards(this.heads);
+		this.sortCards(this.hardpoints);
+		this.sortCards(this.mods);
 	}
 
 	updateStatsFromCard(deckCard: DeckCard) {
-		if (deckCard.card.type == "Core") {
+		let card = deckCard.card;
+
+		if (card.type == "Core") {
 			this.core = deckCard;
 		}
 
-		else if (deckCard.card.type == "Leg") {
+		else if (card.type == "Leg") {
 			this.legs.push(deckCard);
 		}
 
-		else if (deckCard.card.type == "Arm") {
+		else if (card.type == "Arm") {
 			this.arms.push(deckCard);
 		}
 
-		else if (deckCard.card.type == "Head") {
+		else if (card.type == "Head") {
 			this.heads.push(deckCard);
 		}
 
-		else if (deckCard.card.type == "Hardpoint") {
+		else if (card.type == "Hardpoint") {
 			this.hardpoints.push(deckCard);
 		}
 
-		else if (deckCard.card.type == "Mod") {
+		else if (card.type == "Mod") {
 			this.mods.push(deckCard);
 		}
 
-		this.coreHealth = this.coreHealth + deckCard.card.coreHealth;
-		this.armor = this.armor + deckCard.card.armor;
-		this.agility = this.agility + deckCard.card.agility;
-		this.energy = this.energy + deckCard.card.energy;
-		this.legSlots = this.legSlots + deckCard.card.legSlots;
-		this.armSlots = this.armSlots + deckCard.card.armSlots;
-		this.headSlots = this.headSlots + deckCard.card.headSlots;
-		this.hardpointSlots = this.hardpointSlots + deckCard.card.hardpointSlots;
-		this.modSlots = this.modSlots + deckCard.card.modSlots;
+		this.coreHealth = this.coreHealth + card.coreHealth;
+		this.armor = this.armor + card.armor;
+		this.agility = this.agility + card.agility;
+		this.energy = this.energy + card.energy;
+		this.legSlots = this.legSlots + card.legSlots;
+		this.armSlots = this.armSlots + card.armSlots;
+		this.headSlots = this.headSlots + card.headSlots;
+		this.hardpointSlots = this.hardpointSlots + card.hardpointSlots;
+		this.modSlots = this.modSlots + card.modSlots;
+	}
+
+	public sortCards(cards: DeckCard[]) {
+		cards.sort((a: DeckCard, b: DeckCard) => {
+			let subtypeA = a.card.subtype.toLowerCase();
+			let subtypeB = b.card.subtype.toLowerCase();
+			let nameA = a.card.name.toLowerCase();
+			let nameB = b.card.name.toLowerCase();
+
+			// if (subtypeA < subtypeB) return -1;
+			// if (subtypeA > subtypeB) return 1;
+			if (nameA < nameB) return -1;
+			if (nameA > nameB) return 1;
+			return 0;
+		});
+
+		return cards;
 	}
 
 	updateValues(obj) {

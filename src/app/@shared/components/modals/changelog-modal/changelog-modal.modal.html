@@ -17,6 +17,35 @@
 			</ngn-select>
 		</div>
 
+		<div *ngIf="version == '1.5.1'">
+			<div class="">
+				<h4 class="fg-primary">New Features</h4>
+				<hr class="divider">
+				<ul>
+					<li><b>Deck Card Special Rules</b>: Added the ability for special rules to be applied for certain cards when adding them to your deck. For example: The additional armor gained from having multiple copies of Interlaced Armor Plating.</li>
+				</ul>
+			</div>
+			<div class="mt-xl">
+				<h4 class="fg-primary">Quality of Life Improvements</h4>
+				<hr class="divider">
+				<ul>
+					<li><b>Deck Add Card Shortcuts</b>: Added shortcut "plus" icons for each card section in the deck viewer that allow quick adding of cards within each type.</li>
+					<li><b>Deck Card Sort Order</b>: Cards within each "type" section on the deck view screen are now sorted by name.</li>
+					<li><b>Deck Card Click Shortcut</b>: Clicking on a card in the deck view screen will now navigate to that card's view screen.</li>
+					<li><b>Deck View Bottom Section Spacing</b>: Added more spacing to the bottom of the deck view page so you are able to scroll down further to better see cards in the last section.</li>
+				</ul>
+			</div>
+			<div class="mt-xl">
+				<h4 class="fg-primary">Bug Fixes</h4>
+				<hr class="divider">
+				<ul>
+					<li><b>Deck Card Removal</b>: Fixed an issue where cards removed from a deck on the deck view screen wouldn't be reflected after navigating to the card library screen.</li>
+					<li><b>Deck Card Wrap Spacing</b>: Fixed an issue where no vertical spacing was present between cards in sections on the deck view screen that had more cards than could fit in a single row.</li>
+					<li><b>Smoother Deck Card Hovering</b>: Fixed an issue that caused cards hovered over on the deck view screen to slightly jitter before fully scaling up to be viewed.</li>
+				</ul>
+			</div>
+		</div>
+
 		<div *ngIf="version == '1.5.0'">
 			<div class="">
 				<h4 class="fg-primary">New Features</h4>

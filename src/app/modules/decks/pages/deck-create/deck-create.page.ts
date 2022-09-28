@@ -153,11 +153,11 @@ export class DeckCreatePage implements OnInit, OnDestroy, AfterViewInit {
 						this.globalVars.setProcessingText("Deleting cards in deck...");
 						this.deck.cards.forEach((deckCard) => {
 							deleteCalls.push(this.api.DeckCards.delete(deckCard.id).toPromise());
-							Promise.all(deleteCalls).then(() => {
-								this.globalVars.hideProcessingLoader();
-								this.alertService.toastSuccess("Deck deleted succcessfully!", "Deck Deleted");
-								this.router.navigate([Routes.Decks.DeckSearch]);
-							});
+						});
+						Promise.all(deleteCalls).then(() => {
+							this.globalVars.hideProcessingLoader();
+							this.alertService.toastSuccess("Deck deleted succcessfully!", "Deck Deleted");
+							this.router.navigate([Routes.Decks.DeckSearch]);
 						});
 					}
 					else {

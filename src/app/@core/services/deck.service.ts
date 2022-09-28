@@ -13,7 +13,7 @@ import { DeckCard } from '@app/@shared/models/DeckCard.model';
 })
 export class DeckService {
 
-	public currentDeck = null;
+	public currentDeck: Deck = null;
 
 	constructor(
 		private router: Router,
@@ -67,7 +67,8 @@ export class DeckService {
 				cardVersionId: card.id
 			}).subscribe((res) => {
 				let deckCard = new DeckCard({ ...res, card: card });
-				deckStats.updateStatsFromCard(deckCard);
+				this.currentDeck.cards.push(deckCard);
+				this.currentDeck.deckStats = new DeckStats({ cards: this.currentDeck.cards });
 				this.globalVars.hideProcessingLoader();
 			});
 		}

@@ -15,7 +15,7 @@ const LOW_SEARCH_AMOUNT_THRESHOLD = "LowSearchAmountThreshold";
 })
 export class GlobalVars {
 
-	public appVersion = "1.5.0";
+	public appVersion = "1.5.1";
 
 	public minDateMoment = moment().year(1900).month(1).date(1);
 	public maxDateMoment = moment().month(1).date(1).add(100, "years");
@@ -131,7 +131,7 @@ export class GlobalVars {
 		"Scrap": "You may spend armor in place of energy to activate abilities on this card.",
 		"Scavenge": "Each time an activated ability on this card deals armor damage to an opponent, gain 1 armor.",
 		"Backup": "Abilities on this card can be used while stunned.",
-		"Entrench": "At the start of your next turn, your agility is set to half of it's maximum value.",
+		"Entrench": "To activate this ability you must be entrenched. If you are not already entrenched, you may do so at any time. While entrenched, your agility is set to half of it's maximum value rounded down at the start of your turn and you are unable to move. Skip an entire turn in order to exit entrench.",
 		"Stunned": "While stunned, your agility is reduced to 0, you are unable to move, and cannot activate any abilities.",
 		"Sleep Mode": "While in sleep mode you are considered Stunned, but generate 1 energy at the start of each player\'s turn. Immediately exit sleep mode when you are attacked, or by spending 1 agility point after 1 entire round of being in sleep mode.",
 	};

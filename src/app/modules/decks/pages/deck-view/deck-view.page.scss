@@ -94,17 +94,14 @@
 	transform-origin: left;
 	transform: scale(.6);
 	margin-top: -100px;
-	margin-bottom: -150px;
+	margin-bottom: -110px;
 	margin-right: -100px;
 
 	transition: all .3s;
 
 	.delete-btn {
-		height: 0px !important;
-    padding: 0px  !important;
-    margin: 0px  !important;
-    opacity: 0 !important;
 		transform: scale(0);
+		margin-top: 16px !important;
 	}
 
 	&:hover {
@@ -119,12 +116,8 @@
 		transition: all .3s ease-in-out .3s;
 
 		.delete-btn {
-			height: auto !important;
-    	padding: 12px  !important;
-    	margin-top: 16px  !important;
-    	opacity: 1 !important;
 			transform: scale(1);
-			transition: all .3s ease-in-out .3s;
+			transition: transform .3s ease-in-out .3s;
 		}
 	}
 }
