@@ -19,7 +19,7 @@
 					<deck-details [deck]="deck"></deck-details>
 				</div>
 				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech'">
-					<p class="section-lbl">CORE<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Core')"></i></p>
+					<p class="section-lbl">CORE ({{ deck?.deckStats?.core ? 1 : 0 }} / 1)<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Core')"></i></p>
 					<hr>
 					<div class="deck-card-array">
 						<div class="deck-card-preview" *ngIf="deck?.deckStats?.core">
@@ -32,7 +32,7 @@
 					</div>
 				</div>
 				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
-					<p class="section-lbl">LEGS<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Leg')"></i></p>
+					<p class="section-lbl">LEGS ({{ deck?.deckStats?.legs?.length }} / {{ deck?.deckStats?.legSlots }})<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Leg')"></i></p>
 					<hr>
 					<div class="deck-card-array">
 						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.legs">
@@ -45,7 +45,7 @@
 					</div>
 				</div>
 				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
-					<p class="section-lbl">ARMS<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Arm')"></i></p>
+					<p class="section-lbl">ARMS ({{ deck?.deckStats?.arms?.length }} / {{ deck?.deckStats?.armSlots }})<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Arm')"></i></p>
 					<hr>
 					<div class="deck-card-array">
 						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.arms">
@@ -58,7 +58,7 @@
 					</div>
 				</div>
 				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
-					<p class="section-lbl">HEADS<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Head')"></i></p>
+					<p class="section-lbl">HEADS ({{ deck?.deckStats?.heads?.length }} / {{ deck?.deckStats?.headSlots }})<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Head')"></i></p>
 					<hr>
 					<div class="deck-card-array">
 						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.heads">
@@ -71,7 +71,7 @@
 					</div>
 				</div>
 				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
-					<p class="section-lbl">HARDPOINTS<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Hardpoint')"></i></p>
+					<p class="section-lbl">HARDPOINTS ({{ deck?.deckStats?.hardpoints?.length }} / {{ deck?.deckStats?.hardpointSlots }})<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Hardpoint')"></i></p>
 					<hr>
 					<div class="deck-card-array">
 						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.hardpoints">
@@ -84,7 +84,7 @@
 					</div>
 				</div>
 				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
-					<p class="section-lbl">MODS<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Mod')"></i></p>
+					<p class="section-lbl">MODS ({{ deck?.deckStats?.mods?.length }} / {{ deck?.deckStats?.modSlots }})<i class="fas fa-plus ml-md fg-primary pointer" (click)="addCardsToDeck('Mod')"></i></p>
 					<hr>
 					<div class="deck-card-array">
 						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.mods">
