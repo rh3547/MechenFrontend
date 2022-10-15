@@ -264,4 +264,29 @@ export class GlobalVars {
 
 		return text;
 	}
+
+	public arrayShuffle(array) {
+		for (var i = 0, length = array.length, swap = 0, temp = ''; i < length; i++) {
+			swap = Math.floor(Math.random() * (i + 1));
+			temp = array[swap];
+			array[swap] = array[i];
+			array[i] = temp;
+		}
+		return array;
+	};
+
+	public percentageChance(values, chances) {
+		for (var i = 0, pool = []; i < chances.length; i++) {
+			for (var i2 = 0; i2 < chances[i]; i2++) {
+				pool.push(i);
+			}
+		}
+		return values[this.arrayShuffle(pool)['0']];
+
+		/*
+		for (var i = 0; i < 20; i++) {
+			console.log(percentageChance(['hi', 'test', 'bye'], [80, 15, 5]));
+		}
+		*/
+	};
 }

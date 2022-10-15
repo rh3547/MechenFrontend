@@ -9,7 +9,7 @@ import { Routes, resolveRouteParams, RouteParts } from '@app/app-routes';
 import { Deck } from '@models/Deck.model';
 import { DeckStats } from '@models/DeckStats.model';
 import { DeckService } from '@services/deck.service';
-import { AlertService } from '@ng-nuc/core';
+import { AlertPosition, AlertService } from '@ng-nuc/core';
 import { ConfirmModal } from '@components/modals/confirm-modal/confirm-modal.modal';
 import { DeckCard } from '@app/@shared/models/DeckCard.model';
 
@@ -47,6 +47,8 @@ export class PlaytestPage implements OnInit, OnDestroy, AfterViewInit {
 
 	public hardpointCooldowns = {};
 	public modCooldowns = {};
+
+	public percentChance: number = 25;
 
 	constructor(
 		private api: Api,
@@ -114,6 +116,14 @@ export class PlaytestPage implements OnInit, OnDestroy, AfterViewInit {
 
 	public startTurn() {
 		this.currentAgility = this.maxAgility;
+
+		Object.keys(this.hardpointCooldowns)?.forEach((key) => {
+			this.hardpointCooldowns[key] = (this.hardpointCooldowns[key] <= 1) ? 0 : (this.hardpointCooldowns[key] - 1);
+		});
+
+		Object.keys(this.modCooldowns)?.forEach((key) => {
+			this.modCooldowns[key] = (this.modCooldowns[key] <= 1) ? 0 : (this.modCooldowns[key] - 1);
+		});
 	}
 
 	public checkEnergy() {
@@ -142,7 +152,7 @@ export class PlaytestPage implements OnInit, OnDestroy, AfterViewInit {
 
 	public removeHardpointCooldown(index: number) {
 		if (this.hardpointCooldowns.hasOwnProperty(index)) {
-			if (this.hardpointCooldowns[index] == 1) {
+			if (this.hardpointCooldowns[index] <= 1) {
 				this.hardpointCooldowns[index] = 0;
 			}
 			else {
@@ -165,7 +175,7 @@ export class PlaytestPage implements OnInit, OnDestroy, AfterViewInit {
 
 	public removeModCooldown(index: number) {
 		if (this.modCooldowns.hasOwnProperty(index)) {
-			if (this.modCooldowns[index] == 1) {
+			if (this.modCooldowns[index] <= 1) {
 				this.modCooldowns[index] = 0;
 			}
 			else {
@@ -194,6 +204,25 @@ export class PlaytestPage implements OnInit, OnDestroy, AfterViewInit {
 	public getModTokenArray(index: number) {
 		if (!this.modCooldowns[index]) return [];
 		return Array.apply(null, Array(this.modCooldowns[index]));
+	}
+
+	public isHardpointOnCooldown(index: number) {
+		return this.hardpointCooldowns[index];
+	}
+
+	public isModOnCooldown(index: number) {
+		return this.modCooldowns[index];
+	}
+
+	public checkChance() {
+		let success = Math.random() < (this.percentChance / 100);
+
+		if (success) {
+			this.alertService.toastSuccess(`Your ${this.percentChance}% chance was successful!`, "Success", 2000, "", AlertPosition.BOTTOM_RIGHT);
+		}
+		else {
+			this.alertService.toastError(`Your ${this.percentChance}% chance has failed..`, "Failed", 2000, "", AlertPosition.BOTTOM_RIGHT);
+		}
 	}
 }
 

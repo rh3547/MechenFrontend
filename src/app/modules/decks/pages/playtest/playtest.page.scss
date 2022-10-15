@@ -246,3 +246,24 @@
 		}
 	}
 }
+
+.on-cooldown {
+	opacity: .32;
+}
+
+.chance-checker {
+	display: flex;
+  align-items: center;
+	margin-left: auto;
+
+	span {
+		font-size: 16px;
+    text-align: right;
+	}
+
+	input {
+		width: 80px;
+    padding-left: 20px;
+    text-align: center;
+	}
+}

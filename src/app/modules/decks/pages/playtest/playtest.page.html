@@ -19,6 +19,12 @@
 					<button (click)="startTurn()" class="mr-xl"><i class="fas fa-play mr-sm"></i>Start Turn</button>
 					<button (click)="exitLowEnergy()" *ngIf="lowEnergyMode && currentEnergy >= 2" class="mr-xl"><i class="fas fa-stop mr-sm"></i>Exit Low Energy Mode</button>
 					<button (click)="exitEmergenceyShutdown()" *ngIf="emergencyShutdownMode && currentEnergy >= 2" class="mr-xl"><i class="fas fa-stop mr-sm"></i>Exit Emergencey Shutdown Mode</button>
+					<div class="chance-checker">
+						<span class="mr-md">Chance Checker:</span>
+						<input type="number" [(ngModel)]="percentChance">
+						<span class="ml-sm">%</span>
+						<button (click)="checkChance()" class="ml-md"><i class="fas fa-dice mr-sm"></i>Roll</button>
+					</div>
 				</div>
 				<div class="stats-wrapper">
 					<div class="stat">
@@ -71,7 +77,7 @@
 								<div class="cooldown-tokens">
 									<div class="token" *ngFor="let token of getHardpointTokenArray(i)"><img src="assets/images/icons/cooldown.png" alt="Cooldown" title="Cooldown"></div>
 								</div>
-								<card-preview [cardVersion]="deckCard.card"></card-preview>
+								<card-preview [ngClass]="{'on-cooldown': isHardpointOnCooldown(i)}" [cardVersion]="deckCard.card"></card-preview>
 							</div>
 							<div class="cooldown-controls">
 								<i class="fas fa-minus-circle pointer" (click)="removeHardpointCooldown(i)"></i>
@@ -93,7 +99,7 @@
 								<div class="cooldown-tokens">
 									<div class="token" *ngFor="let token of getModTokenArray(i)"><img src="assets/images/icons/cooldown.png" alt="Cooldown" title="Cooldown"></div>
 								</div>
-								<card-preview [cardVersion]="deckCard.card"></card-preview>
+								<card-preview [ngClass]="{'on-cooldown': isModOnCooldown(i)}" [cardVersion]="deckCard.card"></card-preview>
 							</div>
 							<div class="cooldown-controls">
 								<i class="fas fa-minus-circle pointer" (click)="removeModCooldown(i)"></i>
