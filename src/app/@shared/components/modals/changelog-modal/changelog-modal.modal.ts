@@ -23,6 +23,7 @@ export class ChangelogModal implements OnInit {
 		new NgnSelectOption({ name: "1.4.0", value: "1.4.0" }),
 		new NgnSelectOption({ name: "1.5.0", value: "1.5.0" }),
 		new NgnSelectOption({ name: "1.5.1", value: "1.5.1" }),
+		new NgnSelectOption({ name: "1.6.0", value: "1.6.0" }),
 	];
 
 	constructor(

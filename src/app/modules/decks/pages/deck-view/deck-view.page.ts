@@ -79,6 +79,10 @@ export class DeckViewPage implements OnInit, OnDestroy, AfterViewInit {
 		return resolveRouteParams(Routes.Cards.CardView, { id: deckCard.card.cardId });
 	}
 
+	getPlaytestRoute() {
+		return resolveRouteParams(Routes.Decks.DeckPlaytest, { id: this.deckId });
+	}
+
 	addCardsToDeck(cardType: string) {
 		this.deckService.setCurrentDeck(this.deck);
 		this.navToCardSearch(cardType);

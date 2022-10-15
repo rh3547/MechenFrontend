@@ -12,7 +12,8 @@
 					<a class="toolbar-link mr-xl pointer" *ngIf="deckService.currentDeck && deckService.currentDeck?.id == deck?.id" (click)="navToCardSearch()"><i class="fas fa-arrow-left mr-sm"></i>Back to Card Search</a>
 					<a class="toolbar-link mr-xl pointer" *ngIf="deckService.currentDeck && deckService.currentDeck?.id == deck?.id" (click)="deckService.finishEditingDeck()"><i class="fas fa-check mr-sm"></i>Finish Editing Deck</a>
 					<a class="toolbar-link mr-xl pointer" *ngIf="!deckService.currentDeck || deckService.currentDeck?.id != deck?.id" (click)="addCardsToDeck()"><i class="fas fa-plus mr-sm"></i>Add Cards to Deck</a>
-					<a class="toolbar-link" routerLink="{{ getEditRoute() }}"><i class="fas fa-edit mr-sm"></i>Edit Deck Details</a>
+					<a class="toolbar-link mr-xl" routerLink="{{ getEditRoute() }}"><i class="fas fa-edit mr-sm"></i>Edit Deck Details</a>
+					<a class="toolbar-link" routerLink="{{ getPlaytestRoute() }}"><i class="fas fa-play mr-sm"></i>Stat Tracker</a>
 				</div>
 				<div class="deck-breakdown-wrapper">
 					<deck-details [deck]="deck"></deck-details>

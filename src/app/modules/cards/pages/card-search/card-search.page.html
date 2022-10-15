@@ -9,7 +9,7 @@
 		<div class="p-relative mb-xl pt-xxl">
 			<div class="scroll-hide"></div>
 			<div class="card-search-toolbar mt-lg">
-				<a class="toolbar-link" routerLink="{{ routes.Cards.CardCreate }}"><i class="fas fa-plus mr-sm"></i>Create New Card</a>
+				<a *ngIf="pendingMode" class="toolbar-link" routerLink="{{ routes.Cards.CardCreate }}"><i class="fas fa-plus mr-sm"></i>Create New Card</a>
 			</div>
 			<div class="card-search bg-background-light mt-md p-md">
 				<div class="card-filter search-filter p-relative">

@@ -1,0 +1,248 @@
+@import '../../../../../theme/styles.scss';
+
+.main-content {
+	width: calc(100vw - 128px);
+	z-index: 99;
+	position: absolute;
+}
+
+.deck-view-header {
+	position: sticky;
+  top: 160px;
+  z-index: 100;
+	max-width: 1920px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.scroll-hide {
+	width: 100%;
+	position: fixed;
+	left: 0;
+	right: 0;
+	height: 320px;
+	top: -160px;
+	background-color: map-get($colors, background);
+	z-index: 50;
+}
+
+.deck-view-toolbar {
+	display: flex;
+	justify-content: end;
+	position: sticky;
+  top: 120px;
+  z-index: 100;
+
+	.toolbar-link {
+		color: map-get($colors, primary) !important;
+	}
+
+	.toolbar-link:hover {
+		text-decoration: underline;
+	}
+}
+
+.deck-breakdown-wrapper {
+	padding-top: 32px;
+	padding-bottom: 32px;
+	padding-left: 32px;
+	padding-right: 32px;
+	background-color: map-get($colors, background-light);
+	border-radius: 5px;
+	position: relative;
+	width: 100%;
+	min-width: 500px;
+
+	hr {
+		background: map-get($colors, contrast);
+		margin-top: 4px;
+		margin-bottom: 25px;
+		margin-left: 0;
+		opacity: .2;
+	}
+}
+
+.secondary-btn {
+	width: 100%;
+	background-color: #393944;
+	transition: background-color .2s;
+}
+
+.delete-btn:hover {
+	background-color: map-get($colors, danger);
+	transition: background-color .2s;
+}
+
+.actions-wrapper {
+	background-color: #21212b;
+  border-radius: 5px;
+	padding: 32px;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	margin-top: 24px;
+	color: map-get($colors, contrast);
+	display: flex;
+  align-items: center;
+
+	span {
+		font-weight: 700;
+    font-size: 20px;
+	}
+}
+
+.stats-wrapper {
+	display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  margin-left: -16px;
+  margin-right: -16px;
+
+	.stat {
+		flex: 1;
+    background-color: #21212b;
+    border-radius: 5px;
+		padding: 16px;
+		padding-bottom: 24px;
+		display: flex;
+    flex-direction: column;
+    align-items: center;
+		margin: 16px;
+
+		.stat-icon {
+			width: 64px;
+		}
+
+		.stat-text {
+			color: map-get($colors, contrast);
+    	font-weight: 700;
+    	font-size: 24px;
+		}
+
+		.stat-controls {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-top: 16px;
+
+			i {
+				color: map-get($colors, contrast);
+    		font-size: 20px;
+				cursor: pointer;
+			}
+
+			input {
+				width: 80px;
+    		padding-left: 20px;
+    		text-align: center;
+			}
+		}
+
+		.stat-messages {
+			margin-top: 16px;
+
+			span {
+				color: map-get($colors, contrast);
+				text-align: center;
+			}
+		}
+	}
+}
+
+.deck-cards-wrapper {
+	padding-top: 32px;
+	padding-bottom: 32px;
+	padding-left: 32px;
+	padding-right: 32px;
+	border-radius: 5px;
+	position: relative;
+	width: 100%;
+	min-width: 500px;
+
+	hr {
+		background: map-get($colors, contrast);
+		margin-top: 4px;
+		margin-bottom: 25px;
+		margin-left: 0;
+		opacity: .2;
+	}
+}
+
+.section-lbl {
+	opacity: .6;
+}
+
+.deck-card-array {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: -16px;
+}
+
+.deck-card-preview {
+	transform-origin: left;
+	transform: scale(.6);
+	margin-top: -100px;
+	margin-bottom: -110px;
+	margin-right: -100px;
+
+	transition: all .3s;
+
+	.cooldown-controls {
+		transform: scale(0);
+		margin-top: 16px !important;
+	}
+
+	&:hover {
+		background-color: map-get($colors, background-light);
+		border-radius: 8px;
+		padding: 16px;
+		transform: scale(1);
+		z-index: 10;
+
+		transition: all .3s ease-in-out .3s;
+
+		.cooldown-controls {
+			transform: scale(1);
+			margin-top: 0px !important;
+    	margin-bottom: -16px;
+			transition: transform .3s ease-in-out .3s;
+		}
+	}
+}
+
+.cooldown-controls {
+	display: flex;
+  align-items: center;
+  justify-content: center;
+
+	i {
+		color: white;
+    font-size: 32px;
+	}
+
+	img {
+
+	}
+}
+
+.cooldown-tokens {
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+  padding: 16px;
+
+	.token {
+		border-radius: 50%;
+    background-color: map-get($colors, primary);
+    transform: scale(.6);
+    box-shadow: 0px 0px 5px 2px #0000002b;
+
+		img {
+			margin: -8px;
+		}
+	}
+}

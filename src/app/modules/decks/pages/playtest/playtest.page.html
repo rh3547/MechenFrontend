@@ -1,0 +1,113 @@
+<div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;" class="bg-background"></div>
+<div class="main-content">
+  <div class="content-wrapper">
+		<nuc-pageheader
+			titleContent="<h1><span class='fg-primary'>Mech</span> Card Game</h1>"
+			subtitleContent="<h3 class='fw-normal fg-contrast-muted'>Deck Stat Tracker</h3>">
+		</nuc-pageheader>
+		<div class="p-relative deck-view mb-xl pt-xxl">
+			<div class="deck-view-header" *ngIf="deck">
+				<div class="scroll-hide"></div>
+				<div class="deck-view-toolbar mt-lg mb-md">
+					<a class="toolbar-link mr-xl pointer" routerLink="{{ getViewDeckRoute() }}"><i class="fas fa-arrow-left mr-sm"></i>Back to Deck View</a>
+				</div>
+				<div class="deck-breakdown-wrapper">
+					<deck-details [deck]="deck"></deck-details>
+				</div>
+				<div class="actions-wrapper">
+					<span class="mr-xl">Round: {{ currentRound }}<i class="fas fa-minus-circle ml-md pointer" (click)="currentRound = currentRound - 1"></i><i class="fas fa-plus-circle ml-md pointer" (click)="currentRound = currentRound + 1"></i></span>
+					<button (click)="startTurn()" class="mr-xl"><i class="fas fa-play mr-sm"></i>Start Turn</button>
+					<button (click)="exitLowEnergy()" *ngIf="lowEnergyMode && currentEnergy >= 2" class="mr-xl"><i class="fas fa-stop mr-sm"></i>Exit Low Energy Mode</button>
+					<button (click)="exitEmergenceyShutdown()" *ngIf="emergencyShutdownMode && currentEnergy >= 2" class="mr-xl"><i class="fas fa-stop mr-sm"></i>Exit Emergencey Shutdown Mode</button>
+				</div>
+				<div class="stats-wrapper">
+					<div class="stat">
+						<img class="stat-icon" src="assets/images/icons/corehealth.png" alt="Core Health" title="Core Health">
+						<span class="stat-text">{{ currentCoreHealth }} / {{ maxCoreHealth }}</span>
+						<div class="stat-controls">
+							<i class="fas fa-minus-circle mr-sm" (click)="currentCoreHealth = currentCoreHealth - coreHealthModifier"></i>
+							<input type="number" [(ngModel)]="coreHealthModifier">
+							<i class="fas fa-plus-circle ml-sm" (click)="currentCoreHealth = currentCoreHealth + coreHealthModifier"></i>
+						</div>
+					</div>
+					<div class="stat">
+						<img class="stat-icon" src="assets/images/icons/armor.png" alt="Armor" title="Armor">
+						<span class="stat-text">{{ currentArmor }} / {{ maxArmor }}</span>
+						<div class="stat-controls">
+							<i class="fas fa-minus-circle mr-sm" (click)="currentArmor = currentArmor - armorModifier"></i>
+							<input type="number" [(ngModel)]="armorModifier">
+							<i class="fas fa-plus-circle ml-sm" (click)="currentArmor = currentArmor + armorModifier"></i>
+						</div>
+					</div>
+					<div class="stat">
+						<img class="stat-icon" src="assets/images/icons/agility.png" alt="Agility" title="Agility">
+						<span class="stat-text">{{ currentAgility }} / {{ maxAgility }}</span>
+						<div class="stat-controls">
+							<i class="fas fa-minus-circle mr-sm" (click)="currentAgility = currentAgility - agilityModifier"></i>
+							<input type="number" [(ngModel)]="agilityModifier">
+							<i class="fas fa-plus-circle ml-sm" (click)="currentAgility = currentAgility + agilityModifier"></i>
+						</div>
+					</div>
+					<div class="stat">
+						<img class="stat-icon" src="assets/images/icons/energy.png" alt="Energy" title="Energy">
+						<span class="stat-text">{{ currentEnergy }} / {{ maxEnergy }}</span>
+						<div class="stat-controls">
+							<i class="fas fa-minus-circle mr-sm" (click)="currentEnergy = currentEnergy - energyModifier; checkEnergy()"></i>
+							<input type="number" [(ngModel)]="energyModifier">
+							<i class="fas fa-plus-circle ml-sm" (click)="currentEnergy = currentEnergy + energyModifier; checkEnergy()"></i>
+						</div>
+						<div class="stat-messages">
+							<span *ngIf="lowEnergyMode">LOW ENERGY MODE</span>
+							<span *ngIf="emergencyShutdownMode">EMERGENCEY SHUTDOWN MODE</span>
+						</div>
+					</div>
+				</div>
+				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
+					<p class="section-lbl">HARDPOINTS</p>
+					<hr>
+					<div class="deck-card-array">
+						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.hardpoints; let i = index">
+							<div>
+								<div class="cooldown-tokens">
+									<div class="token" *ngFor="let token of getHardpointTokenArray(i)"><img src="assets/images/icons/cooldown.png" alt="Cooldown" title="Cooldown"></div>
+								</div>
+								<card-preview [cardVersion]="deckCard.card"></card-preview>
+							</div>
+							<div class="cooldown-controls">
+								<i class="fas fa-minus-circle pointer" (click)="removeHardpointCooldown(i)"></i>
+								<img class="stat-icon" src="assets/images/icons/cooldown.png" alt="Cooldown" title="Cooldown">
+								<i class="fas fa-plus-circle pointer" (click)="addHardpointCooldown(i)"></i>
+							</div>
+						</div>
+					</div>
+					<div *ngIf="deck?.deckStats?.hardpoints.length == 0">
+						<p class="text-center mt-lg">This deck contains no hardpoints.</p>
+					</div>
+				</div>
+				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
+					<p class="section-lbl">MODS</p>
+					<hr>
+					<div class="deck-card-array">
+						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.mods; let i = index">
+							<div>
+								<div class="cooldown-tokens">
+									<div class="token" *ngFor="let token of getModTokenArray(i)"><img src="assets/images/icons/cooldown.png" alt="Cooldown" title="Cooldown"></div>
+								</div>
+								<card-preview [cardVersion]="deckCard.card"></card-preview>
+							</div>
+							<div class="cooldown-controls">
+								<i class="fas fa-minus-circle pointer" (click)="removeModCooldown(i)"></i>
+								<img class="stat-icon" src="assets/images/icons/cooldown.png" alt="Cooldown" title="Cooldown">
+								<i class="fas fa-plus-circle pointer" (click)="addModCooldown(i)"></i>
+							</div>
+						</div>
+					</div>
+					<div *ngIf="deck?.deckStats?.mods.length == 0">
+						<p class="text-center mt-lg">This deck contains no mods.</p>
+					</div>
+				</div>
+				<div style="height: 300px;"></div>
+			</div>
+		</div>
+	</div>
+</div>

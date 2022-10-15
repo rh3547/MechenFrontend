@@ -17,6 +17,7 @@ import { SharedModule } from '@shared/shared.module';
 import { DeckSearchPage } from './pages/deck-search/deck-search.page';
 import { DeckCreatePage } from './pages/deck-create/deck-create.page';
 import { DeckViewPage } from './pages/deck-view/deck-view.page';
+import { PlaytestPage } from './pages/playtest/playtest.page';
 
 // Components
 
@@ -28,7 +29,8 @@ export const maskConfig: Partial<IConfig> = {
 	declarations: [
 		DeckSearchPage,
 		DeckCreatePage,
-		DeckViewPage
+		DeckViewPage,
+		PlaytestPage
 	],
 	imports: [
 		SharedModule,

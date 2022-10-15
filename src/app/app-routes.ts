@@ -28,7 +28,8 @@ export var RouteParts = {
 		DeckSearch: "search",
 		DeckView: ":id",
 		DeckCreate: "create",
-		DeckEdit: "edit/:id"
+		DeckEdit: "edit/:id",
+		DeckPlaytest: "play/:id"
 	}
 };
 
@@ -62,7 +63,8 @@ export var Routes = {
 		DeckSearch: buildRoute([RouteParts.Decks.DecksRoot, RouteParts.Decks.DeckSearch]),
 		DeckView: buildRoute([RouteParts.Decks.DecksRoot, RouteParts.Decks.DeckView]),
 		DeckCreate: buildRoute([RouteParts.Decks.DecksRoot, RouteParts.Decks.DeckCreate]),
-		DeckEdit: buildRoute([RouteParts.Decks.DecksRoot, RouteParts.Decks.DeckEdit])
+		DeckEdit: buildRoute([RouteParts.Decks.DecksRoot, RouteParts.Decks.DeckEdit]),
+		DeckPlaytest: buildRoute([RouteParts.Decks.DecksRoot, RouteParts.Decks.DeckPlaytest]),
 	}
 };
 
