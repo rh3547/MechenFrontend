@@ -49,6 +49,7 @@ export class PlaytestPage implements OnInit, OnDestroy, AfterViewInit {
 	public modCooldowns = {};
 
 	public percentChance: number = 25;
+	public chanceTimes: number = 1;
 
 	constructor(
 		private api: Api,
@@ -215,9 +216,15 @@ export class PlaytestPage implements OnInit, OnDestroy, AfterViewInit {
 	}
 
 	public checkChance() {
-		let success = Math.random() < (this.percentChance / 100);
+		let successes = 0;
+		for (let i = 0; i < this.chanceTimes; i++) {
+			successes = successes + (Math.random() < (this.percentChance / 100) ? 1 : 0);
+		}
 
-		if (success) {
+		if (this.chanceTimes > 1) {
+			this.alertService.toast(`You succeeded a ${this.percentChance}% chance ${successes}/${this.chanceTimes} times.`, "Chance Results", 2000, "", AlertPosition.BOTTOM_RIGHT);
+		}
+		else if (successes > 0) {
 			this.alertService.toastSuccess(`Your ${this.percentChance}% chance was successful!`, "Success", 2000, "", AlertPosition.BOTTOM_RIGHT);
 		}
 		else {

@@ -141,3 +141,14 @@
 		}
 	}
 }
+
+.title-main {
+	display: flex;
+	align-items: center;
+}
+
+.game-version {
+	margin-left: 16px;
+  color: map-get($colors, contrast);
+  opacity: .5;
+}

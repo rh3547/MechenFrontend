@@ -23,6 +23,8 @@
 						<span class="mr-md">Chance Checker:</span>
 						<input type="number" [(ngModel)]="percentChance">
 						<span class="ml-sm">%</span>
+						<input type="number" class="ml-sm" [(ngModel)]="chanceTimes">
+						<span class="ml-sm">time(s)</span>
 						<button (click)="checkChance()" class="ml-md"><i class="fas fa-dice mr-sm"></i>Roll</button>
 					</div>
 				</div>
@@ -110,6 +112,62 @@
 					</div>
 					<div *ngIf="deck?.deckStats?.mods.length == 0">
 						<p class="text-center mt-lg">This deck contains no mods.</p>
+					</div>
+				</div>
+				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
+					<p class="section-lbl">CORE</p>
+					<hr>
+					<div class="deck-card-array">
+						<div class="deck-card-preview">
+							<div>
+								<card-preview [cardVersion]="deck?.deckStats?.core?.card"></card-preview>
+							</div>
+						</div>
+					</div>
+					<div *ngIf="!deck?.deckStats?.core">
+						<p class="text-center mt-lg">This deck contains no core.</p>
+					</div>
+				</div>
+				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
+					<p class="section-lbl">LEGS</p>
+					<hr>
+					<div class="deck-card-array">
+						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.legs; let i = index">
+							<div>
+								<card-preview [cardVersion]="deckCard.card"></card-preview>
+							</div>
+						</div>
+					</div>
+					<div *ngIf="deck?.deckStats?.legs.length == 0">
+						<p class="text-center mt-lg">This deck contains no legs.</p>
+					</div>
+				</div>
+				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
+					<p class="section-lbl">ARMS</p>
+					<hr>
+					<div class="deck-card-array">
+						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.arms; let i = index">
+							<div>
+								<card-preview [cardVersion]="deckCard.card"></card-preview>
+							</div>
+						</div>
+					</div>
+					<div *ngIf="deck?.deckStats?.arms.length == 0">
+						<p class="text-center mt-lg">This deck contains no arms.</p>
+					</div>
+				</div>
+				<div class="deck-cards-wrapper" *ngIf="deck?.type == 'Mech' && deck?.deckStats?.core">
+					<p class="section-lbl">HEADS</p>
+					<hr>
+					<div class="deck-card-array">
+						<div class="deck-card-preview" *ngFor="let deckCard of deck?.deckStats?.heads; let i = index">
+							<div>
+								<card-preview [cardVersion]="deckCard.card"></card-preview>
+							</div>
+						</div>
+					</div>
+					<div *ngIf="deck?.deckStats?.heads.length == 0">
+						<p class="text-center mt-lg">This deck contains no heads.</p>
 					</div>
 				</div>
 				<div style="height: 300px;"></div>

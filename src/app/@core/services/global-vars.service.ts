@@ -16,6 +16,7 @@ const LOW_SEARCH_AMOUNT_THRESHOLD = "LowSearchAmountThreshold";
 export class GlobalVars {
 
 	public appVersion = "1.6.0";
+	public gameVersion = "0.3.0";
 
 	public minDateMoment = moment().year(1900).month(1).date(1);
 	public maxDateMoment = moment().month(1).date(1).add(100, "years");

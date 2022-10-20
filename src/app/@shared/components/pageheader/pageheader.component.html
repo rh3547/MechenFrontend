@@ -1,6 +1,9 @@
 <div class="pageheader">
 	<div class="title">
-		<div [innerHTML]="titleContent"></div>
+		<div class="title-main">
+			<div [innerHTML]="titleContent"></div>
+			<span class="game-version">v{{ globalVars.gameVersion }}</span>
+		</div>
 		<div [innerHTML]="subtitleContent"></div>
 	</div>
 	<div class="ph-nav-right">
