@@ -101,7 +101,7 @@ export class DeckViewPage implements OnInit, OnDestroy, AfterViewInit {
 					let deckStats = new DeckStats({ cards: this.deck.cards });
 					this.deck = new Deck({ ...this.deck, deckStats: deckStats });
 
-					if (this.deckService.currentDeck.id == this.deck.id) {
+					if (this.deckService.currentDeck?.id == this.deck.id) {
 						this.deckService.currentDeck = this.deck;
 					}
 
